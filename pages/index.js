@@ -14,6 +14,7 @@ import GetCompetitionsApi from "@/api/homepage/GetCompetitionsApi";
 import Timeline from "@/components/organisms/home/Timeline";
 import SupportSection from "@/components/organisms/home/SupportSection";
 import MediaPartner from "@/components/organisms/home/MediaPartner";
+import MarqueeSection from "@/components/organisms/home/MarqueeSection";
 
 export async function getServerSideProps() {
   try {
@@ -57,7 +58,8 @@ export default function Home({ competitions }) {
         <meta name="title" content="IITC" />
       </Head>
       <HeroSection />
-      <SupportSection />
+      {/* <SupportSection /> */}
+      <MarqueeSection />
       <AboutSection />
       <SkemaSection />
       <CompetitionSection
