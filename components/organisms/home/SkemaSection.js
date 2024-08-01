@@ -14,18 +14,18 @@ const SkemaSection = () => {
   return (
     <motion.div className="min-h-screen w-full ">
       <Container>
-        <section id="skema" className="py-12 flex justify-center">
+        <section id="skema" className="py-12 flex justify-center bg-silver/40">
           <div className="w-11/12 mx-auto">
             <div className="text-xs md:text-md w-full ">
               <ParagraphSection
                 flashValue={"Show your skill to the world"}
-                title={"Begini alur skema dasar dari event ini"}
+                title={"Gimana si alur dari event ini?"}
                 description={
                   "Baca baik baik detailnya ya, agar tidak salah langkah"
                 }
               />
             </div>
-            <motion.ol className="bg-silver/40 p-2 rounded-xl w-full mt-12 grid gap-3 md:gap-0 md:grid-cols-4">
+            <motion.ol className="p-2 rounded-xl w-full mt-12 grid gap-3 md:grid-cols-4">
               <motion.li
                 whileInView={{ opacity: [0, 1], y: [20, 0] }}
                 transition={{
@@ -64,7 +64,7 @@ const SkemaSection = () => {
                 <SkemaCard
                   imgUrl={"/images/guardicon.png"}
                   title={"Verifikasi Data"}
-                  description={"Data diri yang kamu masukan harus valid ya!."}
+                  description={`Data diri yang kamu masukan harus valid yaaaa!. ${" "}`}
                   modalDescription={
                     <div>
                       <ol className="flex flex-col gap-3">

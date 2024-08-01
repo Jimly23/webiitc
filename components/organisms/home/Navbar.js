@@ -25,39 +25,41 @@ const Navbar = () => {
       <div className="w-full flex z-30 top-6 bg-white bg-opacity-50 justify-center backdrop-blur-md rounded-full px-4 py-2">
         <Container className="flex w-full justify-between items-center">
           <Logo>IITC</Logo>
-          <nav
-            className="flex justify-center items-center "
-            itemScope
-            itemType="https://schema.org/SiteNavigationElement"
-          >
-            <div className="hidden lg:flex justify-start gap-5 w-full items-center">
-              <div className="text-center">
-                <NavItem>
-                  <NavLink target="#hero">Home</NavLink>
-                  <NavLink target="#about">About</NavLink>
-                  <NavLink target="#skema">Skema</NavLink>
-                  <NavLink target="#lomba">Lomba</NavLink>
-                  <NavLink target="#timeline">Timeline</NavLink>
-                  <NavLink target="#faq">FAQ</NavLink>
-                </NavItem>
+          <div className="flex items-center gap-x-5">
+            <nav
+              className="flex justify-center items-center "
+              itemScope
+              itemType="https://schema.org/SiteNavigationElement"
+            >
+              <div className="hidden lg:flex justify-start gap-5 w-full items-center">
+                <div className="text-center">
+                  <NavItem>
+                    <NavLink target="#hero">Home</NavLink>
+                    <NavLink target="#about">About</NavLink>
+                    <NavLink target="#skema">Skema</NavLink>
+                    <NavLink target="#lomba">Lomba</NavLink>
+                    <NavLink target="#timeline">Timeline</NavLink>
+                    <NavLink target="#faq">FAQ</NavLink>
+                  </NavItem>
+                </div>
               </div>
+              <div className="lg:hidden">
+                <button onClick={handleToggleMenu}>
+                  {isMenuOpen ? <FiX /> : <FiMenu />}
+                </button>
+              </div>
+            </nav>
+            <div className="hidden lg:block">
+              {token ? (
+                <Link href={"/dashboard"}>
+                  <Button additionals={"w-full"}>Dashboard</Button>
+                </Link>
+              ) : (
+                <Link href={"/login"}>
+                  <Button additionals={"w-full"}>Masuk</Button>
+                </Link>
+              )}
             </div>
-            <div className="lg:hidden">
-              <button onClick={handleToggleMenu}>
-                {isMenuOpen ? <FiX /> : <FiMenu />}
-              </button>
-            </div>
-          </nav>
-          <div className="hidden lg:block">
-            {token ? (
-              <Link href={"/dashboard"}>
-                <Button additionals={"w-full"}>Dashboard</Button>
-              </Link>
-            ) : (
-              <Link href={"/login"}>
-                <Button additionals={"w-full"}>Masuk</Button>
-              </Link>
-            )}
           </div>
         </Container>
       </div>

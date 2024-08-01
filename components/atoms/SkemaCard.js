@@ -35,10 +35,10 @@ const SkemaCard = ({
       initial="hidden"
       animate="visible"
       exit="exit"
-      className="w-full hover:bg-white border border-slate-300 md:border-none hover:shadow-2xl transition-all duration-700 p-4 rounded-xl flex flex-col justify-between"
+      className="w-full bg-white border  md:border-none hover:shadow-2xl transition-all duration-700 p-4 rounded-xl flex flex-col justify-between"
     >
       <Image
-        className="w-3/12 ml-3 drop-shadow-2xl"
+        className="w-3/12 mx-auto drop-shadow-2xl"
         src={imgUrl}
         alt={`Image ${title}`}
         width={1080}
@@ -50,18 +50,18 @@ const SkemaCard = ({
           size={"description"}
           weight={"bold"}
           additionals={
-            "md:text-xs  lg:text-md flex items-start justify-start bg-red-500"
+            "md:text-xs  lg:text-lg flex items-start justify-center bg-red-500"
           }
         >
           {title}
         </Text>
-        <Text size={"small"}>{description}</Text>
+        <Text size={"small"} additionals={"text-center"}>{description}</Text>
       </div>
       <button
-        className="px-8 py-2 z-30 w-32 cursor-default lg:cursor-pointer bg-gray-300 hover:bg-orange-500 hover:text-white transition-all duration-200 rounded-full"
+        className="px-8 py-2 z-30 w-full cursor-default lg:cursor-pointer bg-gray-300 hover:bg-orange-500 hover:text-white transition-all duration-200 rounded-full"
         onClick={handleOpenModal}
       >
-        Detail
+        Lihat Detail
       </button>
       <div className="z-40">
         <ModalSkema
