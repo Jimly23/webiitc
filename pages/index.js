@@ -18,21 +18,42 @@ import MarqueeSection from "@/components/organisms/home/MarqueeSection";
 
 export async function getServerSideProps() {
   try {
-    const res = await GetCompetitionsApi();
-    if (res.status == 1) {
-      const competitions = res.data?.competitions;
-      return {
-        props: {
-          competitions,
-        },
-      };
-    } else if (res.status == 0) {
-      return {
-        props: {
-          competitions: [],
-        },
-      };
-    }
+    const competitions = [
+      {
+        categories: ["a", "b", "c"],
+        cover: "https://ui-avatars.com/api/?name=ooo?background=random&color=fff",
+        maxMembers: 3,
+        name: "UI/UX",
+        slug: "ui-ux"
+      },
+      {
+        categories: ["a", "b", "c"],
+        cover: "https://ui-avatars.com/api/?name=ooo?background=random&color=fff",
+        maxMembers: 3,
+        name: "UI/UX",
+        slug: "ui-ux"
+      }
+    ]
+    return {
+      props: {
+        competitions,
+      },
+    };
+    // const res = await GetCompetitionsApi();
+    // if (res.status == 1) {
+    //   const competitions = res.data?.competitions;
+    //   return {
+    //     props: {
+    //       competitions,
+    //     },
+    //   };
+    // } else if (res.status == 0) {
+    //   return {
+    //     props: {
+    //       competitions: [],
+    //     },
+    //   };
+    // }
   } catch (error) {
     console.error(error);
     return {
