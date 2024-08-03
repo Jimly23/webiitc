@@ -23,14 +23,21 @@ export async function getServerSideProps() {
         categories: ["a", "b", "c"],
         cover: "https://ui-avatars.com/api/?name=ooo?background=random&color=fff",
         maxMembers: 3,
-        name: "UI/UX",
+        name: "POSTER DESIGN",
         slug: "ui-ux"
       },
       {
         categories: ["a", "b", "c"],
         cover: "https://ui-avatars.com/api/?name=ooo?background=random&color=fff",
         maxMembers: 3,
-        name: "UI/UX",
+        name: "UIUX DESIGN",
+        slug: "ui-ux"
+      },
+      {
+        categories: ["a", "b", "c"],
+        cover: "https://ui-avatars.com/api/?name=ooo?background=random&color=fff",
+        maxMembers: 3,
+        name: "WEB DESIGN",
         slug: "ui-ux"
       }
     ]

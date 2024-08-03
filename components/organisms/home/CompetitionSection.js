@@ -27,7 +27,7 @@ const CompetitionSection = ({
               description={"pilih lomba yang sesuai dengan kemampuan kamu ya.."}
             />
             <motion.div
-              className="rounded-xl w-full mt-12 grid md:grid-cols-3 lg:grid-cols-5 gap-3"
+              className="rounded-xl w-full mt-12 flex items-center justify-center flex-wrap gap-5"
               initial="hidden"
               animate="visible"
               variants={variants}

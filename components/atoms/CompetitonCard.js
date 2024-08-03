@@ -26,7 +26,7 @@ const CompetitonCard = ({
   };
   //console.log(category, title);
   return (
-    <div className="rounded-xl relative w-full overflow-hidden shadow transition-all duration-300 hover:shadow-lg">
+    <div className="rounded-[30px] relative w-[300px] h-[400px] overflow-hidden shadow transition-all duration-300 hover:shadow-lg">
       {isAdmin && (
         <FiTrash
           onClick={onDelete}
@@ -34,16 +34,37 @@ const CompetitonCard = ({
         />
       )}
       <img
-        className="w-full"
+        className="w-full h-full object-cover"
         src={imgSrc}
         alt="Kucing"
         width={1080}
         height={1080}
       />
-      <div className="px-4 py-2 flex flex-col space-y-2">
-        <Text size={"smalltitle"} color={"dark"} weight={"semi"}>
+
+      <div className="absolute left-5 top-5 rounded-full bg-white px-4 pt-2 pb-1">
+        <Text size={"smalltitle"} additionals={"text-orange-400"} weight={"semi"}>
           {title}
         </Text>
+      </div>
+
+      <div className="absolute left-5 right-5 bottom-5 rounded-full bg-white px-4 pt-2 pb-1 flex items-center justify-between">
+        <div className="flex items-center space-x-1">
+          <HiOutlineUsers className="text-dark" />
+          <Text size={"description"} weight={"bold"}>{maxMembers} MAX</Text>
+        </div>
+        <Button
+          additionals={"py-2"}
+          onClick={isAdmin ? handleCLickButton : handleViewDetailCompetition}
+          size={"sm"}
+          color={"dark"}
+        >
+          {isAdmin ? "Edit" : "Lihat Detail"}
+        </Button>
+      </div>
+
+
+
+      {/* <div className="px-4 py-2 flex flex-col space-y-2">
         {category.map((item, index) =>
           index == 0
             ? item.name
@@ -64,7 +85,7 @@ const CompetitonCard = ({
             {isAdmin ? "Edit" : "Detail"}
           </Button>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
