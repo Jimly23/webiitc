@@ -7,6 +7,8 @@ import Text from "@/components/atoms/Text";
 import Link from "next/link";
 import Button from "@/components/atoms/Button";
 import Image from "next/image";
+import NavLink from "@/components/molecules/NavLink";
+import NavItem from "@/components/molecules/NavItem";
 const HeroSection = () => {
   return (
     <section id="hero" className="relative overflow-hidden h-screen shadow">
@@ -59,12 +61,12 @@ const HeroSection = () => {
             </Text>
 
             <div className="flex items-center justify-center md:justify-start gap-x-3">
-              <Link href={"/login"}>
-                <Button additionals={"text-sm"}>Daftar Sekarang</Button>
+              <Link href={"/signup"}>
+                <Button additionals={"text-[20px] lg:py-3"}>Daftar Sekarang</Button>
               </Link>
-              <Link href={"/login"}>
-                <Text color={"dark"} weight={"bold"} additionals="text-start mt-3">Learn More</Text>
-              </Link>
+              <NavItem additionals={"-mt-1"}>
+                <NavLink target="#skema">Learn More</NavLink>
+              </NavItem>
             </div>
           </motion.div>
 

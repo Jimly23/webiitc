@@ -1,66 +1,77 @@
 const timelineData = {
   importantDates: [
     // date hari penting
-    new Date("2023-08-01"),
-    new Date("2023-08-15"),
-    new Date("2023-09-10"),
-    new Date("2023-09-22"),
-    new Date("2023-09-28"),
-    new Date("2023-10-01"),
+    new Date("2024-08-19"),
+    new Date("2024-09-01"),
+    new Date("2024-09-08"),
+    new Date("2024-09-15"),
+    new Date("2024-09-30"),
+    new Date("2024-10-01"),
+    new Date("2024-10-05"),
   ],
   modalContent: {
-    "2023-08-01": {
-      date: new Date("2023-08-01").toLocaleString("id-ID", {
+    "2024-08-19": {
+      date: new Date("2024-08-19").toLocaleString("id-ID", {
         weekday: "long",
         day: "numeric",
         month: "long",
         year: "numeric",
       }),
       title: "Pendaftaran",
-      description: "Gelombang 1 pendaftaran dibuka",
+      description: "Pendaftaran gelombang 1 & Pendaftaran webinar (sampai 7 september)",
     },
-    "2023-08-15": {
-      date: new Date("2023-08-15").toLocaleString("id-ID", {
+    "2024-09-01": {
+      date: new Date("2024-09-01").toLocaleString("id-ID", {
         weekday: "long",
         day: "numeric",
         month: "long",
         year: "numeric",
       }),
       title: "Pendafataran",
-      description: "Gelombang 2 pendaftaran dibuka",
+      description: "Pendaftaran gelombang 2",
     },
-    "2023-09-10": {
-      date: new Date("2023-09-10").toLocaleString("id-ID", {
+    "2024-09-08": {
+      date: new Date("2024-09-08").toLocaleString("id-ID", {
         weekday: "long",
         day: "numeric",
         month: "long",
         year: "numeric",
       }),
-      title: "Lomba Offline",
-      description: "Lomba poster design offline",
+      title: "Webinar",
+      description: "Pelaksanaan webinar",
     },
-    "2023-09-22": {
-      date: new Date("2023-09-22").toLocaleString("id-ID", {
+    "2024-09-15": {
+      date: new Date("2024-09-15").toLocaleString("id-ID", {
         weekday: "long",
         day: "numeric",
         month: "long",
         year: "numeric",
       }),
-      title: "Seleksi",
-      description: "Tahap seleksi dibuka",
+      title: "Awal pengumpulan",
+      description: "Teknikal meeting & Awal pengumpulan submission",
     },
-    "2023-09-28": {
-      date: new Date("2023-09-28").toLocaleString("id-ID", {
+    "2024-09-30": {
+      date: new Date("2024-09-30").toLocaleString("id-ID", {
         weekday: "long",
         day: "numeric",
         month: "long",
         year: "numeric",
       }),
-      title: "Seleksi",
-      description: "Tahap seleksi ditutup",
+      title: "Akhir pengumpulan",
+      description: "Tahap akhir pengumpulan submission",
     },
-    "2023-10-01": {
-      date: new Date("2023-10-01").toLocaleString("id-ID", {
+    "2024-10-01": {
+      date: new Date("2024-10-01").toLocaleString("id-ID", {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      }),
+      title: "Penjurian",
+      description: "",
+    },
+    "2024-10-05": {
+      date: new Date("2024-10-05").toLocaleString("id-ID", {
         weekday: "long",
         day: "numeric",
         month: "long",
@@ -74,7 +85,7 @@ const timelineData = {
 
 // start day & finish
 
-export const startDate = new Date("2023-07-28");
-export const endDate = new Date("2023-10-03");
+export const startDate = new Date("2024-08-05");
+export const endDate = new Date("2024-10-05");
 
 export default timelineData;

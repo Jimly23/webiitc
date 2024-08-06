@@ -81,7 +81,7 @@ const DashboardAdminTemplate = ({ title, children }) => {
         >
           <Image
             className="w-24"
-            src={"/images/LOGO/LOGOFIX.png"}
+            src={"/images/LOGO/LOGOFIX2024.png"}
             alt="logo iitc"
             width={1080}
             height={1080}
