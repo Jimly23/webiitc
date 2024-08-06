@@ -44,7 +44,7 @@ const DashboardUserTemplate = ({ title, children }) => {
           <Image
             onClick={() => router.push("/")}
             className="w-24 cursor-pointer"
-            src={"/images/LOGO/LOGOFIX.png"}
+            src={"/images/LOGO/LOGOFIX2024.png"}
             alt="logo iitc"
             width={1080}
             height={1080}

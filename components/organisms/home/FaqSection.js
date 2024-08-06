@@ -11,19 +11,8 @@ import { RiWhatsappFill } from "react-icons/ri";
 const FaqSection = () => {
   const faqs = [
     {
-      q: "Bagaimana cara pendaftaran lomba IITC?",
-      a: (
-        <div>
-          Kamu bisa mendaftar secara online dengan membuat akun pada button
-          DAFTAR dipojok kanan atas. lebih lengkapnya ada di{" "}
-          <Link
-            href={"/guidebook-pendaftaran"}
-            className="text-blue-500 hover:underline"
-          >
-            guidebook pendaftaran
-          </Link>
-        </div>
-      ),
+      q: "Apa itu IITC?",
+      a: "undefined",
     },
     {
       q: "Bagaimana cara membayar biaya pendaftarannya?",
@@ -43,21 +32,25 @@ const FaqSection = () => {
               <AiFillInstagram />
               iitc_intermedia
             </a>
-
             <a
-              href="https://wa.me/628985485275"
+              href="https://wa.me/6285133711081"
               className="font-semibold flex items-center gap-2 text-blue-500 cursor-default lg:cursor-pointer"
             >
               <RiWhatsappFill />
-              +62-898-548-5275
+              +62-851-3371-1081 
+              (Humas 1)
+            </a>
+            <a
+              href="https://wa.me/6285133711082 "
+              className="font-semibold flex items-center gap-2 text-blue-500 cursor-default lg:cursor-pointer"
+            >
+              <RiWhatsappFill />
+              +62-851-3371-1082 
+              (Humas 2)
             </a>
           </div>
         </div>
       ),
-    },
-    {
-      q: "Penamaan file konfirmasi pembayaran gimana?",
-      a: "Penamaan file tidak ada acuan, yang berarti bebas dengan nama apa saja.",
     },
     {
       q: "Link grup whatsapp nya dimana ya?",
@@ -78,16 +71,12 @@ const FaqSection = () => {
       ),
     },
     {
-      q: "Apakah perlu mengirimkan bukti pembayaran ke CP ?",
-      a: "Tidak perlu, cukup upload bukti pembayaran pada website saja.",
-    },
-    {
-      q: "Apakah semua peserta mendapatkan sertifikat?",
-      a: "Ya, semua peserta yang telah mengikuti lomba akan mendapatkan sertifikat.",
-    },
-    {
       q: "Apakah bisa mendaftar lebih dari satu lomba?",
       a: "Tentu saja bisa.",
+    },
+    {
+      q: "Siapa saja yang dapat mengikuti lomba?",
+      a: "Siapa saja boleh.",
     },
     {
       q: "Apakah wajib melengkapi data profile pada dashboard?",
@@ -103,14 +92,6 @@ const FaqSection = () => {
           {""} <span>kalian pada dashboard di menu profile.</span>
         </div>
       ),
-    },
-    {
-      q: "Bagaimana dengan foto identitas?",
-      a: "Foto identitas gunakan kartu pelajar bagi siswa dan KTM atau kartu tanda mahasiswa bagi mahasiswa.",
-    },
-    {
-      q: "Format pengumpulan Twibbon?",
-      a: "Gunakan screenshot Twibbon yang sudah kalian upload di sosial media kalian.",
     },
   ];
 

@@ -51,16 +51,6 @@ const Footer = () => {
               priority
             />
           </div>
-          <div className="bg-white flex justify-center items-center rounded-full p-2 ">
-            <Image
-              width={10}
-              height={10}
-              priority
-              src="/images/Sponsor/grab.png"
-              alt="logo footer"
-              className="w-10  object-contain"
-            />
-          </div>
         </div>
 
         <p className="mx-auto mt-6 max-w-md text-center leading-relaxed text-slate-100">

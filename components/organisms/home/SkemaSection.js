@@ -106,12 +106,12 @@ const SkemaSection = () => {
                         Pengerjaan sudah boleh dilakukan setelah tanggal
                         pendaftaran dibuka yaitu{" "}
                         <span className="font-semibold text-oren">
-                          1 Agustus 2023
+                          19 Agustus 2024
                         </span>{" "}
-                        sampai dengan sebelum tanggal seleksi projek yaitu pada
+                        sampai dengan sebelum akhir pengumpulan projek yaitu pada
                         tanggal <br />
                         <span className="font-semibold text-oren">
-                          22 September 2023
+                          30 September 2024
                         </span>
                       </p>
                     </div>
@@ -140,7 +140,7 @@ const SkemaSection = () => {
                       karya-karya terbaik yang luar biasa. Pengumuman pemenang
                       akan diumumkan ketika awarding pada tanggal{" "}
                       <span className="text-oren font-semibold">
-                        1 Oktober 2023.
+                        5 Oktober 2024.
                       </span>
                     </p>
                   }
