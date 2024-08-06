@@ -36,11 +36,13 @@ const NavLink = ({ children, target, isSmall = false, isWhite = false }) => {
           isSmall ? "text-sm" : "text-xl"
         } text-poppins transition-all duration-300 ${
           isActive
-            ? "font-semibold text-kuning dark:text-kuning"
-            : "dark:hover:text-kuning"
+            ? "font-semibold text-orange-500 dark:text-orange-500"
+            : "dark:hover:text-orange-500"
         } ${
-          isWhite ? "text-white dark:text-white" : "text-black dark:text-black"
-        } hover:text-kuning`}
+          isWhite
+            ? "text-slate-900 dark:text-slate-900"
+            : "text-black dark:text-black"
+        } hover:text-orange-500`}
         onClick={(e) => {
           e.preventDefault();
           if (document && window) {

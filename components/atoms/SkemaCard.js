@@ -35,7 +35,7 @@ const SkemaCard = ({
       initial="hidden"
       animate="visible"
       exit="exit"
-      className="min-h-[260px] group w-full bg-white hover:bg-orange-400 border  md:border-none hover:shadow-2xl transition-all duration-700 p-4 rounded-xl flex flex-col justify-between"
+      className="min-h-[430px]  group w-full bg-white hover:bg-orange-400 border  md:border-none hover:shadow-2xl transition-all duration-700 p-5 pt-20 rounded-3xl flex flex-col justify-between"
     >
       <Image
         className="w-3/12 mx-auto drop-shadow-2xl"
@@ -55,7 +55,14 @@ const SkemaCard = ({
         >
           {title}
         </Text>
-        <Text size={"small"} additionals={"text-center group-hover:text-white transition-all duration-200"}>{description}</Text>
+        <Text
+          size={"small"}
+          additionals={
+            "text-center group-hover:text-white transition-all duration-200"
+          }
+        >
+          {description}
+        </Text>
       </div>
       <button
         className="px-8 py-2 z-30 w-full cursor-default lg:cursor-pointer bg-slate-800 text-white group-hover:bg-white group-hover:text-orange-400 transition-all duration-200 rounded-full"

@@ -11,7 +11,7 @@ import NavLink from "@/components/molecules/NavLink";
 import NavItem from "@/components/molecules/NavItem";
 const HeroSection = () => {
   return (
-    <section id="hero" className="relative overflow-hidden h-screen shadow">
+    <section id="hero" className="relative overflow-hidden h-screen mt-20">
       <div className="absolute inset-0 -z-10">
         <HeroBackground />
       </div>
@@ -26,7 +26,6 @@ const HeroSection = () => {
           className=" w-[2000px] object-cover object-no-repeat h-screen max-h-screen mt-20 object-left  lg:object-center  "
         />
       </div>
-
 
       <Container className="flex flex-col-reverse lg:flex-row h-[90vh] items-center justify-center z-10">
         <Navbar />
@@ -43,10 +42,12 @@ const HeroSection = () => {
             }}
             className="font-black sm:min-w-[400px] text-center md:text-start text-slate-800 z-10 text-4xl md:text-3xl lg:text-5xl leading-10 w-11/12  md:w-6/12"
           >
-            <Text color={"dark"} additionals="hidden md:block mb-5 text-center w-[250px] border border-orange-500 py-1 rounded-full text-orange-500 bg-orange-100">
+            <Text
+              color={"dark"}
+              additionals="hidden md:block mb-5 text-center w-[250px] border border-orange-500 py-1 rounded-full text-orange-500 bg-orange-100"
+            >
               National IT Competition
             </Text>
-            
             Tunjukan pada{" "}
             <p className="md:my-5">
               Dunia{" "}
@@ -55,16 +56,22 @@ const HeroSection = () => {
               </span>{" "}
             </p>
             Bisa
-
-            <Text color={"dark"} additionals="text-center md:text-start my-5 max-w-2xl">
-              <span className="font-bold">IITC</span> adalah sebuah event nasional yang diselenggarakan oleh Unit kegiatan mahasiswa INTERMEDIA <span className="font-bold">Universitas Amikom Purwokerto</span>
+            <Text
+              color={"dark"}
+              additionals="text-center md:text-start my-5 max-w-2xl"
+            >
+              <span className="font-bold">IITC</span> adalah sebuah event
+              nasional yang diselenggarakan oleh Unit kegiatan mahasiswa
+              INTERMEDIA{" "}
+              <span className="font-bold">Universitas Amikom Purwokerto</span>
             </Text>
-
             <div className="flex items-center justify-center md:justify-start gap-x-3">
               <Link href={"/signup"}>
-                <Button additionals={"text-[20px] lg:py-3"}>Daftar Sekarang</Button>
+                <Button color={"oren"} additionals={"text-[20px] lg:py-3"}>
+                  Daftar Sekarang
+                </Button>
               </Link>
-              <NavItem additionals={"-mt-1"}>
+              <NavItem additionals={"-mt-1 font-semibold "}>
                 <NavLink target="#skema">Learn More</NavLink>
               </NavItem>
             </div>
@@ -72,18 +79,18 @@ const HeroSection = () => {
 
           <div className="flex w-full h-full justify-center max-w-3xl">
             <motion.div
-                initial={{ opacity: 0, x: 200 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, ease: "easeIn" }}
-                className="hidden md:block md:w-7/12 md:bg-contain self-start w-full object-cover bg-red-500 -ml-5 lg:-ml-0"
-              >
-                <Image
-                  src={"/images/bannerIitc.png"}
-                  alt="Gambar Tunjukan Skill"
-                  width={1080}
-                  height={1080}
-                  className="min-w-[300px]"
-                />
+              initial={{ opacity: 0, x: 200 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, ease: "easeIn" }}
+              className="hidden md:block md:w-7/12 md:bg-contain  self-start w-full object-cover bg-red-500 -ml-5 lg:-ml-0 lg:-mr-44"
+            >
+              <Image
+                src={"/images/bannerIitc.png"}
+                alt="Gambar Tunjukan Skill"
+                width={1080}
+                height={1080}
+                className="min-w-[300px]"
+              />
             </motion.div>
           </div>
         </div>

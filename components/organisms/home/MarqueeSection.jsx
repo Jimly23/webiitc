@@ -3,8 +3,8 @@ import Marquee from "react-fast-marquee";
 
 const MarqueeSection = () => {
   return (
-    <div className="relative flex md:mt-5 lg:mt-10 flex-col items-center overflow-hidden h-[200px] p-20">
-      <div className="relative bg-orange-500 py-2 shadow-lg transform rotate-6 md:rotate-3 -mb-10 w-[110vw] -mx-10">
+    <div className="relative flex md:mt-5 lg:-mt-10 flex-col items-center overflow-hidden h-[200px] lg:h-[235px] p-20">
+      <div className="relative bg-orange-500 py-2 shadow-lg transform rotate-6 md:rotate-3 lg:rotate-6 -mb-10 w-[110vw] -mx-10">
         <div className="border-t-2 border-b-2 border-white py-2">
           <Marquee
             autoFill
@@ -24,7 +24,7 @@ const MarqueeSection = () => {
       </div>
 
       {/* Bottom Marquee Section */}
-      <div className="relative bg-orange-500 py-2 shadow-xl transform -rotate-6 md:-rotate-3 -mt-7 w-[110vw] -mx-10">
+      <div className="relative bg-orange-500 py-2 shadow-xl transform -rotate-6 md:-rotate-3 lg:-rotate-6 -mt-7 w-[110vw] -mx-10">
         <div className="border-t-2 border-b-2 border-white py-2">
           <Marquee
             autoFill
