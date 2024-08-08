@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { BsHourglassSplit } from "react-icons/bs";
 
 const Countdown = () => {
-  const targetDate = new Date("September 30, 2024 21:00:00").getTime();
+  const targetDate = new Date("August 19, 2024 21:00:00").getTime();
   const [countdown, setCountdown] = useState({
     days: "",
     hours: "",

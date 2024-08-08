@@ -35,7 +35,7 @@ const SkemaCard = ({
       initial="hidden"
       animate="visible"
       exit="exit"
-      className="min-h-[260px] group w-full bg-white hover:bg-orange-400 border  md:border-none hover:shadow-2xl transition-all duration-700 p-4 rounded-xl flex flex-col justify-between"
+      className="min-h-[300px] group w-full bg-white hover:bg-orange-400 border  md:border-none hover:shadow-2xl transition-all duration-700 p-4 rounded-xl flex flex-col justify-between"
     >
       <Image
         className="w-3/12 mx-auto drop-shadow-2xl"
