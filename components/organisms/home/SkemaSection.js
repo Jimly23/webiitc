@@ -64,7 +64,7 @@ const SkemaSection = () => {
                 <SkemaCard
                   imgUrl={"/images/guardicon.png"}
                   title={"Verifikasi Data"}
-                  description={`Data diri yang kamu masukan harus valid yaaaa!. ${" "}`}
+                  description={`Data diri yang kamu masukan harus valid yaa!. ${" "}`}
                   modalDescription={
                     <div>
                       <ol className="flex flex-col gap-3">

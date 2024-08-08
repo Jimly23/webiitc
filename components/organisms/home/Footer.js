@@ -171,8 +171,8 @@ const Footer = () => {
 
       <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8 border-t border-slate-700">
         <p className="mt-4 text-center text-sm text-white lg:mt-0 ">
-          Copyright &copy; 2023. intermedia All rights reserved. Develop with
-          <span className="font-bold mx-1">sincerity</span>
+          Copyright &copy; 2024. intermedia All rights reserved.
+          {/* <span className="font-bold mx-1">sincerity</span>
           by
           {developers.map(({ githubUrl, name }, i) => (
             <Link
@@ -183,7 +183,7 @@ const Footer = () => {
             >
               {name} {i != developers.length - 1 ? "," : "."}
             </Link>
-          ))}
+          ))} */}
         </p>
       </div>
     </footer>

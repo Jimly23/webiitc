@@ -11,10 +11,6 @@ import { RiWhatsappFill } from "react-icons/ri";
 const FaqSection = () => {
   const faqs = [
     {
-      q: "Apa itu IITC?",
-      a: "undefined",
-    },
-    {
       q: "Bagaimana cara membayar biaya pendaftarannya?",
       a: "Pembayaran dapat dilakukan melalui transfer ke rekening bank atau e-wallet yang akan diinformasikan setelah kamu mendaftar.",
     },
