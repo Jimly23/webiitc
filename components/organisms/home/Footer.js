@@ -43,7 +43,7 @@ const Footer = () => {
           </div>
           <div className="bg-white flex justify-center items-center rounded-full p-2 ">
             <Image
-              src="/images/LOGO/LOGOFIX.png"
+              src="/images/LOGO/LOGOFIX2024.png"
               alt="logo footer"
               className="w-10 p-2 object-contain"
               width={10}
@@ -155,7 +155,7 @@ const Footer = () => {
 
           <li>
             <a
-              href="https://wa.me/628985485275"
+              href="https://wa.me/6285133711081"
               rel="noreferrer"
               target="_blank"
               className="text-slate-300 transition hover:text-slate-300/75"
