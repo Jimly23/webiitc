@@ -18,7 +18,7 @@ const timelineData = {
         year: "numeric",
       }),
       title: "Pendaftaran",
-      description: "Pendaftaran gelombang 1 & Pendaftaran webinar (sampai 7 september)",
+      description: "Pendaftaran gelombang 1",
     },
     "2024-09-01": {
       date: new Date("2024-09-01").toLocaleString("id-ID", {
