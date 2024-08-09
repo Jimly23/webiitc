@@ -98,7 +98,7 @@ export default function Home({ competitions }) {
       />
       <Timeline />
       <FaqSection />
-      <MediaPartner />
+      {/* <MediaPartner /> */}
       <Footer />
     </main>
   );

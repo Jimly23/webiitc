@@ -9,7 +9,7 @@ const HeroBackground = () => {
       width={1920}
       alt="Hero Background"
       priority
-      className="w-full object-cover object-no-repeat h-screen max-h-screen mt-20 object-left  lg:object-center  "
+      className="w-full object-cover object-no-repeat h-screen max-h-screen  object-left  lg:object-center  "
     />
   );
 };
