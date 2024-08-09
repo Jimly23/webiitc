@@ -12,19 +12,46 @@ function MediaPartner() {
         </div>
 
         <div className=" md:my-16 grid grid-cols-4 sm:flex sm:flex-wrap w-11/12 lg:w-11/12 sm:justify-center gap-6 sm:gap-x-12 lg:gap-x-20">
-          <h2 className="lg:text-3xl font-semibold uppercase md:leading-tight text-orange-400 dark:text-gray-300">
+          {/* <h2 className="lg:text-3xl font-semibold uppercase md:leading-tight text-orange-400 dark:text-gray-300">
             Calling For Media Partner
-          </h2>
+          </h2> */}
 
-          {/* <a className="flex-shrink-0 transition hover:-translate-y-1" href="#">
+          <a className="flex-shrink-0 transition hover:-translate-y-1" href="#">
             <Image
               height={100}
               width={100}
-              src={"/images/mediapartner/1.svg"}
+              src={"/images/LOGO/LOGOFIX2024.png"}
               alt="medpart1"
               className="w-12 h-12 md:w-20 md:h-20 mx-auto sm:mx-0"
             />
-          </a> */}
+          </a>
+          <a className="flex-shrink-0 transition hover:-translate-y-1" href="#">
+            <Image
+              height={100}
+              width={100}
+              src={"/images/LOGO/LOGOFIX2024.png"}
+              alt="medpart1"
+              className="w-12 h-12 md:w-20 md:h-20 mx-auto sm:mx-0"
+            />
+          </a>
+          <a className="flex-shrink-0 transition hover:-translate-y-1" href="#">
+            <Image
+              height={100}
+              width={100}
+              src={"/images/LOGO/LOGOFIX2024.png"}
+              alt="medpart1"
+              className="w-12 h-12 md:w-20 md:h-20 mx-auto sm:mx-0"
+            />
+          </a>
+          <a className="flex-shrink-0 transition hover:-translate-y-1" href="#">
+            <Image
+              height={100}
+              width={100}
+              src={"/images/LOGO/LOGOFIX2024.png"}
+              alt="medpart1"
+              className="w-12 h-12 md:w-20 md:h-20 mx-auto sm:mx-0"
+            />
+          </a>
         </div>
 
         {/* <div className="grid grid-cols-12 sm:flex sm:justify-center gap-6 sm:gap-x-12 lg:gap-x-20">
