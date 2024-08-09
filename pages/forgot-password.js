@@ -9,7 +9,7 @@ import React, { useState } from 'react'
 import { AiFillWarning, AiOutlineLoading3Quarters } from 'react-icons/ai'
 import { IoMdArrowBack } from 'react-icons/io'
 
-const forgotPassword = () => {
+const ForgotPassword = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [isHitApi, setIsHitApi] = useState(false);
@@ -76,4 +76,4 @@ const forgotPassword = () => {
   )
 }
 
-export default forgotPassword
+export default ForgotPassword

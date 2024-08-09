@@ -4,12 +4,12 @@ import Text from '@/components/atoms/Text'
 import InputTitle from '@/components/molecules/InputTitle'
 import AuthPage from '@/components/pagetemplate/AuthPage'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 import React, { useState } from 'react'
 import { AiFillWarning, AiOutlineLoading3Quarters } from 'react-icons/ai'
 import { IoMdArrowBack } from 'react-icons/io'
 
-const forgotPassword = () => {
+const ResetPassword = () => {
   const router = useRouter();
   const [password, setPassword] = useState("");
   const [isHitApi, setIsHitApi] = useState(false);
@@ -68,4 +68,4 @@ const forgotPassword = () => {
   )
 }
 
-export default forgotPassword
+export default ResetPassword
