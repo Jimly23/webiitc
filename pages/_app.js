@@ -7,6 +7,9 @@ export default function App({ Component, pageProps }) {
   const router = useRouter();
 
   useEffect(() => {
+    if (process.env.NEXT_PUBLIC_GTM_ID !== null) {
+      TagManager.initialize({ gtmId: process.env.NEXT_PUBLIC_GTM_ID });
+    }
     const handleRouteChange = (url) => {
       gtag.pageview(url);
     };
