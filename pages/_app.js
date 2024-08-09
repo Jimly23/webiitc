@@ -2,6 +2,7 @@ import '@/styles/globals.css'
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import * as gtag from '../lib/gtag';
+import TagManager from 'react-gtm-module';
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
