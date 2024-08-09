@@ -114,6 +114,7 @@ const Login = () => {
             "Submit"
           )}
         </Button>
+        <Link href={'/forgot-password'}><Text className="pt-5 text-oren hover:underline">Lupa password?</Text></Link>
       </AuthPage>
     </div>
   );
