@@ -26,7 +26,7 @@ const CompetitonCard = ({
   };
   //console.log(category, title);
   return (
-    <div className="rounded-[30px] relative w-[300px] h-[400px] overflow-hidden shadow transition-all duration-300 hover:shadow-lg">
+    <div className="rounded-[30px] bg-slate-300 relative w-[300px] h-[400px] overflow-hidden shadow transition-all duration-300 hover:shadow-lg">
       {isAdmin && (
         <FiTrash
           onClick={onDelete}
