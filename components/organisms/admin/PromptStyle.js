@@ -31,7 +31,6 @@ function PromptStyle({ keywords, setKeywords }) {
       setInputValue("");
     }
   }
-
   function checkLetter(event) {
     const val = event.target.value;
     if (keywords.length > 0 && val.length == 0) {
