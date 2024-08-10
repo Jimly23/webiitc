@@ -11,6 +11,7 @@ import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import { FaUserCircle } from "react-icons/fa";
 import { RiTeamLine } from "react-icons/ri";
+import { MdOutlineEventNote } from "react-icons/md";
 const DashboardAdminTemplate = ({ title, children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
@@ -59,6 +60,14 @@ const DashboardAdminTemplate = ({ title, children }) => {
         </>
       ),
     },
+    {
+      href: "/admin/event",
+      label: (
+        <>
+          <MdOutlineEventNote /> <p>Event</p>
+        </>
+      ),
+    },
   ];
   return (
     <>
@@ -77,7 +86,7 @@ const DashboardAdminTemplate = ({ title, children }) => {
         <nav
           className={`${
             isOpen ? "block" : "lg:block hidden"
-          } w-full lg:max-w-[250px] bg-white py-12 px-7 fixed flex flex-col items-center justify-start z-20`}
+          } w-full lg:max-w-[250px] bg-white py-12 px-7 min-h-screen fixed flex flex-col items-center justify-start z-20`}
         >
           <Image
             className="w-24"
