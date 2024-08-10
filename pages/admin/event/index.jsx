@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import GetEvent from "@/api/admin/event/GetEvent";
 import CreateAcara from "@/api/admin/event/CreateAcara";
 import ActivateEvent from "@/api/admin/event/ActivateEvent";
@@ -10,55 +10,60 @@ import CardSelect from "@/components/molecules/CardSelect";
 import ModalSelectEvent from "@/components/molecules/ModalSelectEvent";
 import Alert from "@/components/atoms/Alert";
 
-const Event = ({ initialEvents }) => {
-  const [events, setEvents] = useState(initialEvents || []);
+const Event = () => {
+  const [events, setEvents] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [newEventName, setNewEventName] = useState("");
   const [newEventDescription, setNewEventDescription] = useState("");
   const [editEventId, setEditEventId] = useState(null);
+  const [deleteEventId, setDeleteEventId] = useState(null); // ID event yang ingin dihapus
   const [alertMessage, setAlertMessage] = useState("");
   const [isAlertOpen, setIsAlertOpen] = useState(false);
-  const [activeEventId, setActiveEventId] = useState(null);
+
+  const fetchEvents = async () => {
+    try {
+      const { events } = await GetEvent();
+      setEvents(events || []);
+    } catch {
+      setError("Failed to load events. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchEvents();
+  }, []);
 
   const showAlert = (message) => {
     setAlertMessage(message);
     setIsAlertOpen(true);
-    setTimeout(() => {
-      setIsAlertOpen(false);
-    }, 3000);
+    setTimeout(() => setIsAlertOpen(false), 3000);
   };
 
   const handleCreateEvent = async () => {
-    if (!newEventName || !newEventDescription) {
-      showAlert("Nama dan Deskripsi acara wajib diisi");
-      return;
-    }
+    if (!newEventName || !newEventDescription)
+      return showAlert("Nama dan Deskripsi acara wajib diisi");
 
     try {
       const response = await CreateAcara({
         name: newEventName,
         description: newEventDescription,
       });
-
-      if (response.success) {
-        showAlert(`Event "${newEventName}" telah dibuat`);
+      if (response.status === 1) {
+        showAlert(`${response.message} ${newEventName}`);
         setShowCreateModal(false);
-        const { events } = await GetEvent();
-        setEvents(events || []);
+        fetchEvents();
       } else {
         showAlert(`Error: ${response.message || "Gagal membuat event"}`);
       }
-    } catch (error) {
+    } catch {
       showAlert("Terjadi kesalahan saat membuat event");
     }
-  };
-
-  const handleEditEvent = (id, name, description) => {
-    setEditEventId(id);
-    setNewEventName(name);
-    setNewEventDescription(description);
-    setShowEditModal(true);
   };
 
   const handleUpdateEvent = async () => {
@@ -68,32 +73,29 @@ const Event = ({ initialEvents }) => {
         name: newEventName,
         description: newEventDescription,
       });
-
-      if (response.success) {
+      if (response.status === 1) {
         showAlert(`Event "${newEventName}" telah diperbarui`);
         setShowEditModal(false);
-        const { events } = await GetEvent();
-        setEvents(events || []);
+        fetchEvents();
       } else {
         showAlert(`Error: ${response.message || "Gagal memperbarui event"}`);
       }
-    } catch (error) {
+    } catch {
       showAlert("Terjadi kesalahan saat memperbarui event");
     }
   };
 
-  const handleDeleteEvent = async (id) => {
+  const handleDeleteEvent = async () => {
     try {
-      const response = await DeleteEvent({ id });
-
-      if (response.success) {
+      const response = await DeleteEvent({ id: deleteEventId });
+      if (response.status === 1) {
         showAlert("Event telah dihapus");
-        const { events } = await GetEvent();
-        setEvents(events || []);
+        setShowDeleteModal(false);
+        fetchEvents();
       } else {
         showAlert(`Error: ${response.message || "Gagal menghapus event"}`);
       }
-    } catch (error) {
+    } catch {
       showAlert("Terjadi kesalahan saat menghapus event");
     }
   };
@@ -101,24 +103,18 @@ const Event = ({ initialEvents }) => {
   const handleActivateEvent = async (id) => {
     try {
       const response = await ActivateEvent({ id });
+      console.log("ActivateEvent response:", response);
 
-      if (response.success) {
+      if (response?.status === 1) {
         showAlert("Event telah diaktifkan");
-        const { events } = await GetEvent();
-        setEvents(events || []);
-        setActiveEventId(id);
+        fetchEvents();
       } else {
-        showAlert(`Error: ${response.message || "Gagal mengaktifkan event"}`);
+        showAlert(`Error: ${response?.message || "Gagal mengaktifkan event"}`);
       }
     } catch (error) {
+      console.error("Error caught in handleActivateEvent:", error);
       showAlert("Terjadi kesalahan saat mengaktifkan event");
     }
-  };
-
-  const openCreateModal = () => {
-    setNewEventName("");
-    setNewEventDescription("");
-    setShowCreateModal(true);
   };
 
   return (
@@ -127,33 +123,44 @@ const Event = ({ initialEvents }) => {
         <div className="flex justify-between items-center">
           <h1 className="text-xl font-bold">Daftar Acara</h1>
           <button
-            onClick={openCreateModal}
-            className="bg-blue-500 text-white px-4 py-2 rounded"
+            onClick={() => setShowCreateModal(true)}
+            className="bg-orange-500 text-white px-4 py-2 rounded"
           >
-            Buat Event
+            Buat Acara
           </button>
         </div>
-        <div className="grid gap-4 mt-4">
-          {events.length > 0 ? (
-            events.map((event) => (
+
+        {isLoading ? (
+          <div className="text-center mt-4">Loading...</div>
+        ) : error ? (
+          <div className="text-center mt-4 text-red-500">{error}</div>
+        ) : events.length > 0 ? (
+          <div className="grid gap-4 mt-4">
+            {events.map((event) => (
               <CardSelect
-                key={event?.id}
-                id={event?.id}
-                name={event?.name}
-                description={event?.description}
-                onEdit={() =>
-                  handleEditEvent(event.id, event.name, event.description)
-                } // Edit event
-                onDelete={() => handleDeleteEvent(event.id)} // Delete event
+                key={event.id}
+                id={event.id}
+                name={event.name}
+                description={event.description}
+                onEdit={() => {
+                  setEditEventId(event.id);
+                  setNewEventName(event.name);
+                  setNewEventDescription(event.description);
+                  setShowEditModal(true);
+                }}
+                onDelete={() => {
+                  setDeleteEventId(event.id); // Set ID event yang ingin dihapus
+                  setShowDeleteModal(true); // Tampilkan modal delete
+                }}
                 onActivate={() => handleActivateEvent(event.id)}
-                isActive={event?.id === activeEventId}
+                isActive={event.is_active === 1}
                 onRadioChange={() => handleActivateEvent(event.id)}
               />
-            ))
-          ) : (
-            <div className="text-center">Tidak ada acara terdaftar</div>
-          )}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center mt-4">Tidak ada acara terdaftar</div>
+        )}
       </DashboardCard>
 
       {showCreateModal && (
@@ -204,29 +211,21 @@ const Event = ({ initialEvents }) => {
         </ModalSelectEvent>
       )}
 
+      {showDeleteModal && (
+        <ModalSelectEvent
+          title="Konfirmasi Hapus Event"
+          onClose={() => setShowDeleteModal(false)}
+          onConfirm={handleDeleteEvent}
+        >
+          <p>Apakah Anda yakin ingin menghapus event ini?</p>
+        </ModalSelectEvent>
+      )}
+
       <Alert isOpen={isAlertOpen} onClose={() => setIsAlertOpen(false)}>
         <span>{alertMessage}</span>
       </Alert>
     </DashboardAdminTemplate>
   );
-};
-
-export const getServerSideProps = async () => {
-  const { events, error } = await GetEvent();
-
-  if (error) {
-    return {
-      props: {
-        initialEvents: [],
-      },
-    };
-  }
-
-  return {
-    props: {
-      initialEvents: events || [],
-    },
-  };
 };
 
 export default Event;

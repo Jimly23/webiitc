@@ -2,26 +2,31 @@ import axios from "axios";
 import urlEvent from "@/api/routes/admin/event";
 import GetToken from "@/api/utils/GetToken";
 
+// Membuat instance axios dengan konfigurasi default
+const axiosInstance = axios.create({
+  baseURL: urlEvent,
+  timeout: 5000,
+  headers: {
+    Authorization: GetToken({ isAdmin: true }),
+  },
+});
+
 const DeleteEvent = async ({ id }) => {
   try {
-    const res = await axios({
-      method: "DELETE",
-      url: `${urlEvent}/${id}`,
-      headers: {
-        Authorization: GetToken({ isAdmin: true }),
-      },
-      timeout: 5000,
-      timeoutErrorMessage: "Request time out, coba lagi",
-    });
-    return res.data;
+    const response = await axiosInstance.delete(`/${id}`);
+    return response.data;
   } catch (error) {
-    if (error.code === "ECONNABORTED") {
-      console.log("Timeout error:", error.message);
-    } else {
-      return (
-        error.response?.data || { success: false, message: "Unknown error" }
-      );
+    if (axios.isAxiosError(error)) {
+      if (error.code === "ECONNABORTED") {
+        console.error("Timeout error:", error.message);
+        return { success: false, message: "Request time out, coba lagi" };
+      } else if (error.response) {
+        console.error("Server error:", error.response.data);
+        return error.response.data;
+      }
     }
+    console.error("Unknown error:", error.message);
+    return { success: false, message: "Terjadi kesalahan tidak terduga" };
   }
 };
 
