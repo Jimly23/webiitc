@@ -2,41 +2,39 @@ import axios from "axios";
 import urlEvent from "@/api/routes/admin/event";
 import GetToken from "@/api/utils/GetToken";
 
+const axiosInstance = axios.create({
+  baseURL: urlEvent,
+  timeout: 5000,
+  headers: {
+    Authorization: GetToken({ isAdmin: true }),
+  },
+});
+
 const CreateAcara = async ({ name, description }) => {
-  const data = { name, description };
-  console.log(data);
+  if (!name || !description) {
+    throw new Error("Nama dan deskripsi acara harus diisi");
+  }
+
   try {
-    const res = await axios({
-      method: "POST",
-      url: urlEvent,
-      data,
-      headers: {
-        Authorization: GetToken({ isAdmin: true }),
-      },
-      timeout: 5000,
-      timeoutErrorMessage: "Request time out, coba lagi",
+    const response = await axiosInstance.post("/", {
+      name,
+      description,
     });
 
-    if (res.status === 200 && res.data?.event?.id) {
-      return {
-        success: true,
-        message: res.data.message || "Event created successfully",
-      };
-    } else {
-      return {
-        success: false,
-        message: res.data.message || "Failed to create event",
-      };
-    }
+    return response.data;
   } catch (error) {
-    if (error.code === "ECONNABORTED") {
-      console.log("Timeout error:", error.message);
-      return { success: false, message: error.message };
-    } else {
-      return (
-        error.response?.data || { success: false, message: "Unknown error" }
-      );
+    if (axios.isAxiosError(error)) {
+      if (error.code === "ECONNABORTED") {
+        console.error("Timeout error:", error.message);
+        throw new Error("Request time out, coba lagi");
+      } else if (error.response) {
+        console.error("Server error:", error.response.data);
+        throw new Error(error.response.data.message || "Gagal membuat acara");
+      }
     }
+
+    console.error("Unknown error:", error.message);
+    throw new Error("Terjadi kesalahan tidak terduga");
   }
 };
 
