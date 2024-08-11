@@ -31,7 +31,7 @@ const DashboardAdmin = () => {
 
   const fetchTeams = () => {
     GetAllTeamApi().then((res) => {
-      const fetchedTeams = res.data?.teams?.reverse();
+      const fetchedTeams = res?.data?.teams?.reverse() ?? [];
       setOriginalTeams(fetchedTeams);
       setTeams(fetchedTeams);
       setIsLoading(false);

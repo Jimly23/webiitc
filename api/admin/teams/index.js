@@ -10,16 +10,16 @@ const GetAllTeamApi = async () => {
       headers: {
         Authorization: GetToken({ isAdmin: true }),
       },
-      // timeout: 5000,
-      // timeoutErrorMessage: "Request time out, coba lagi",
+      timeout: 5000,
+      timeoutErrorMessage: "Request time out, coba lagi",
     });
     return res.data;
   } catch (error) {
-    // if ((error.code = "ECONNABORTED")) {
-    //   console.log(error.message);
-    // } else {
-    // }
-    return error.response.data;
+    if ((error.code = "ECONNABORTED")) {
+      console.log(error.message);
+    } else {
+      return error.response.data;
+    }
   }
 };
 

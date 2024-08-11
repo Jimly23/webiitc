@@ -4,8 +4,8 @@ import { useRouter } from 'next/router';
 import * as gtag from '../lib/gtag';
 import TagManager from 'react-gtm-module';
 
+import { PagesProgressBar as ProgressBar } from "next-nprogress-bar";
 export default function App({ Component, pageProps }) {
-  const router = useRouter();
 
   useEffect(() => {
     if (process.env.NEXT_PUBLIC_GTM_ID !== null) {
@@ -20,5 +20,14 @@ export default function App({ Component, pageProps }) {
     };
   }, [router.events]);
 
-  return <Component {...pageProps} />
+  return <>
+      <Component {...pageProps} />
+      <ProgressBar
+        height="4px"
+        color="#f97316"
+        options={{ showSpinner: false }}
+        shallowRouting
+      />
+    </>
+
 }
