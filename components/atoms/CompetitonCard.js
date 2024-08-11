@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import Text from "./Text";
 import { HiOutlineUsers } from "react-icons/hi";
 import Button from "./Button";
@@ -17,6 +17,16 @@ const CompetitonCard = ({
   onDelete,
   handleCLickButton,
 }) => {
+
+  const[isPopup, setIsPopup] = useState(false)
+
+  const handlePopup = () => {
+    setIsPopup(true)
+    setTimeout(() => {
+      setIsPopup(false)
+    }, 3000);
+  }
+
   const handleViewDetailCompetition = () => {
     window.scrollTo(0, 0);
     if (setIsCompetitionDetail != null && setCompetitionName != null) {
@@ -54,13 +64,18 @@ const CompetitonCard = ({
         </div>
         <Button
           additionals={"py-2"}
-          onClick={isAdmin ? handleCLickButton : handleViewDetailCompetition}
+          // onClick={isAdmin ? handleCLickButton : handleViewDetailCompetition}
+          onClick={handlePopup}
           size={"sm"}
           color={"dark"}
         >
           {isAdmin ? "Edit" : "Lihat Detail"}
         </Button>
       </div>
+
+      {isPopup && <div className="absolute z-50 left-0 top-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center text-white text-lg font-medium">
+        <div className="bg-orange-500 px-2 py-1 rounded-lg">Lomba Belum Aktif</div>
+      </div>}
 
 
 
