@@ -2,12 +2,12 @@ import axios from 'axios'
 import { urlResetPassword } from '../routes/auth'
 
 const ResetPasswordApi = async({token,email,password}) => {
-
+  const data = {token, email, password}
   try {
     const res = await axios({
       baseURL: urlResetPassword,
       method: "POST",
-      data: {token,email,password},
+      data,
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",

@@ -3,7 +3,7 @@ import React from 'react'
 
 const notFound = () => {
   return (
-    <ErrorPage statusCode={400} message={"Page Not Found"}/>
+    <ErrorPage statusCode={404} message={"Page Not Found"}/>
   )
 }
 

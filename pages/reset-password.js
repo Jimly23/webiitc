@@ -36,7 +36,7 @@ const ResetPassword = () => {
       setIsSucces(true)
       setTimeout(() => {
         setIsSucces(false)
-      }, 5000);
+      }, 3000);
       router.push("/login");
     } else {
       setIsWrong(true)

@@ -42,6 +42,8 @@ export async function getServerSideProps() {
   ]
   try {
     const res = await GetCompetitionsApi();
+    console.log(res);
+    
     if (res.status == 1) {
       const competitions = res.data?.competitions || [];
       return {
@@ -60,7 +62,7 @@ export async function getServerSideProps() {
     console.error(error);
     return {
       props: {
-        competitions: [],
+        competitions: competitionsDumy,
       },
     };
   }
