@@ -1,3 +1,4 @@
+import ResetPasswordApi from '@/api/auth/ResetPasswordApi'
 import { Button } from '@/components'
 import Alert from '@/components/atoms/Alert'
 import Text from '@/components/atoms/Text'
@@ -6,30 +7,48 @@ import AuthPage from '@/components/pagetemplate/AuthPage'
 import Link from 'next/link'
 import { useRouter } from "next/router";
 import React, { useState } from 'react'
-import { AiFillWarning, AiOutlineLoading3Quarters } from 'react-icons/ai'
+import { AiFillCheckCircle, AiFillWarning, AiOutlineLoading3Quarters } from 'react-icons/ai'
 import { IoMdArrowBack } from 'react-icons/io'
 
 const ResetPassword = () => {
   const router = useRouter();
+  const { token, email } = router.query;
   const [password, setPassword] = useState("");
   const [isHitApi, setIsHitApi] = useState(false);
   const [isSucces, setIsSucces] = useState(false);
   const [isWrong, setIsWrong] = useState(false);
-  const [Message, setMessage] = useState("Berhasil ubah password");
+  const [Message, setMessage] = useState("");
   
-  const handleChangePassword = (e) => {
+  const handleChangePassword = async(e) => {
     e.preventDefault();
-    setIsSucces(true)
-    setTimeout(() => {
-      setIsSucces(false)
-    }, 8000);
-    router.push("/login");
+    const data = {
+      token,
+      email,
+      password
+    }
+
+    setIsHitApi(true)
+    const res = await ResetPasswordApi(data)
+    setIsHitApi(false)
+    
+    if(res.status === 1){
+      setMessage("Berhasil mengubah password")
+      setIsSucces(true)
+      setTimeout(() => {
+        setIsSucces(false)
+      }, 5000);
+      router.push("/login");
+    } else {
+      setIsWrong(true)
+      console.log(res);
+      setMessage("Terjadi kesalahan")
+    }
   };
 
   return (
     <div className="overflow-hidden">
       <Alert onClose={() => setIsSucces(false)} isOpen={isSucces}>
-        <AiOutlineLoading3Quarters className="text-green-400 text-xl animate-spin" />
+      <AiFillCheckCircle className='text-green-400 text-xl'/>
         <p>{Message}</p>
       </Alert>
       <Alert onClose={() => setIsWrong(false)} isOpen={isWrong}>

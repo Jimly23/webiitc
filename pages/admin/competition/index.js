@@ -64,7 +64,7 @@ const AdminLomba = ({ competitions }) => {
               </Button>
             </Link>
           </div>
-          <ol className="rounded-xl w-full mt-12 grid md:grid-cols-3 lg:grid-cols-4 gap-3">
+          <ol className="rounded-xl w-full mt-12 flex flex-wrap gap-3">
             {competitions?.map((competition, index) => (
               <CompetitonCard
                 isAdmin={true}
