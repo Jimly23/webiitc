@@ -59,7 +59,9 @@ function Profile() {
   const [message, setMessage] = useState("");
   const [isSucces, setIsSucces] = useState(false);
   const [isWrong, setIsWrong] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const router = useRouter();
+
   useEffect(() => {
     GetDetailUser()
       .then(async (res) => {
@@ -87,7 +89,12 @@ function Profile() {
         }
       })
 
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        if (err.message) {
+          setErrorMessage(err.message);
+        }
+        console.log(err);
+      });
   }, []);
 
   const handleSave = async () => {
@@ -165,8 +172,17 @@ function Profile() {
         <p>{message}</p>
       </Alert>
       <Alert onClose={() => setIsWrong(false)} isOpen={isWrong}>
-        {isWrong ? (
+        {/* {isWrong ? (
           <AiOutlineCloseCircle className="text-red text-xl" />
+        ) : (
+          <AiOutlineLoading3Quarters className="text-red text-xl animate-spin" />
+        )} */}
+        {isWrong ? (
+          errorMessage ? (
+            <p className="text-red text-xl">{errorMessage}</p>
+          ) : (
+            <AiOutlineCloseCircle className="text-red text-xl" />
+          )
         ) : (
           <AiOutlineLoading3Quarters className="text-red text-xl animate-spin" />
         )}

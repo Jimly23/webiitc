@@ -20,18 +20,18 @@ const CompetitonCard = ({
 
   const[isPopup, setIsPopup] = useState(false)
 
-  const handlePopup = () => {
-    setIsPopup(true)
-    setTimeout(() => {
-      setIsPopup(false)
-    }, 3000);
-  }
-
   const handleViewDetailCompetition = () => {
-    window.scrollTo(0, 0);
-    if (setIsCompetitionDetail != null && setCompetitionName != null) {
-      setCompetitionName(slug);
-      setIsCompetitionDetail(true);
+    if(slug === 'dummy'){
+      setIsPopup(true)
+      setTimeout(() => {
+        setIsPopup(false)
+      }, 3000);
+    } else {
+      window.scrollTo(0, 0);
+      if (setIsCompetitionDetail != null && setCompetitionName != null) {
+        setCompetitionName(slug);
+        setIsCompetitionDetail(true);
+      }
     }
   };
   //console.log(category, title);
@@ -65,7 +65,7 @@ const CompetitonCard = ({
         <Button
           additionals={"py-2"}
           // onClick={isAdmin ? handleCLickButton : handleViewDetailCompetition}
-          onClick={handlePopup}
+          onClick={handleViewDetailCompetition}
           size={"sm"}
           color={"dark"}
         >
