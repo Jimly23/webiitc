@@ -1,3 +1,4 @@
+import ForgotPasswordApi from '@/api/auth/ForgotPasswordApi'
 import { Button } from '@/components'
 import Alert from '@/components/atoms/Alert'
 import Text from '@/components/atoms/Text'
@@ -6,7 +7,7 @@ import AuthPage from '@/components/pagetemplate/AuthPage'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
-import { AiFillWarning, AiOutlineLoading3Quarters } from 'react-icons/ai'
+import { AiFillCheckCircle, AiFillWarning, AiOutlineLoading3Quarters } from 'react-icons/ai'
 import { IoMdArrowBack } from 'react-icons/io'
 
 const ForgotPassword = () => {
@@ -15,24 +16,31 @@ const ForgotPassword = () => {
   const [isHitApi, setIsHitApi] = useState(false);
   const [isSucces, setIsSucces] = useState(false);
   const [isWrong, setIsWrong] = useState(false);
-  const [Message, setMessage] = useState("Link sudah di kirim, silahkan cek email anda");
-  const handleLogin = (e) => {
+  const [message, setMessage ] = useState("");
+  const handleLogin = async (e) => {
     e.preventDefault();
-    setIsSucces(true)
-    setTimeout(() => {
-      setIsSucces(false)
-    }, 8000);
-    router.push("/reset-password")
+    setIsHitApi(true)
+    const res = await ForgotPasswordApi(email)
+    if(res.status === 1){
+      setIsSucces(true)
+      setMessage("Berhasil, silahkan cek email anda untuk mengganti password")
+      console.log(res);
+    } else {
+      setIsWrong(true)
+      console.log(res);
+      setMessage("Terjadi kesalahan")
+    }
+    setIsHitApi(false)
   };
   return (
     <div className="overflow-hidden">
       <Alert onClose={() => setIsSucces(false)} isOpen={isSucces}>
-        <AiOutlineLoading3Quarters className="text-green-400 text-xl animate-spin" />
-        <p>{Message}</p>
+        <AiFillCheckCircle className='text-green-400 text-xl'/>
+        <p>{message}</p>
       </Alert>
       <Alert onClose={() => setIsWrong(false)} isOpen={isWrong}>
         <AiFillWarning className="text-red text-xl" />
-        <p>{Message}</p>
+        <p>{message}</p>
       </Alert>
       <AuthPage
         description={"Daftar IIT Competition dan jadilah juara sejati!"}

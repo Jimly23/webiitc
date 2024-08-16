@@ -29,7 +29,7 @@ const Signup = () => {
   const [isSucces, setIsSucces] = useState(false);
   const [Message, setMessage] = useState("");
   const [isUsed, setIsUsed] = useState(false);
-  const [isPopUp, setIsPopUp] = useState(true);
+  const [isPopUp, setIsPopUp] = useState(false);
   const router = useRouter();
   useEffect(() => {
     const token = Cookies.get("token");
@@ -45,7 +45,7 @@ const Signup = () => {
   const validateMatchPassword = () => {
     return password == confirmPassword;
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateNumber(phone)) {
       setIsNaN(true);
@@ -199,9 +199,9 @@ const Signup = () => {
           />
         </div>
         <Button
-          disabled={true}
+          disabled={false}
           color={"gradient2"}
-          additionals={"cursor-no-drop"}
+          // additionals={"cursor-no-drop"}
         >
           {isHitApi ? (
             <AiOutlineLoading3Quarters className="text-white text-xl animate-spin" />

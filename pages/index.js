@@ -17,59 +17,55 @@ import MediaPartner from "@/components/organisms/home/MediaPartner";
 import MarqueeSection from "@/components/organisms/home/MarqueeSection";
 
 export async function getServerSideProps() {
-  const competitions = [
+  const competitionsDumy = [
     {
       categories: ["a", "b", "c"],
       cover: "/images/bannerIitc.png",
       maxMembers: 3,
       name: "IITC 2024",
-      slug: "ui-ux"
+      slug: "dummy"
     },
     {
       categories: ["a", "b", "c"],
       cover: "/images/bannerIitc.png",
       maxMembers: 3,
       name: "IITC 2024",
-      slug: "ui-ux"
+      slug: "dummy"
     },
     {
       categories: ["a", "b", "c"],
       cover: "/images/bannerIitc.png",
       maxMembers: 3,
       name: "IITC 2024",
-      slug: "ui-ux"
+      slug: "dummy"
     }
   ]
-  return {
-    props: {
-      competitions,
-    },
-  };
-
-  // try {
-  //   const res = await GetCompetitionsApi();
-  //   if (res.status == 1) {
-  //     const competitions = res.data?.competitions;
-  //     return {
-  //       props: {
-  //         competitions,
-  //       },
-  //     };
-  //   } else if (res.status == 0) {
-  //     return {
-  //       props: {
-  //         competitions: [],
-  //       },
-  //     };
-  //   }
-  // } catch (error) {
-  //   console.error(error);
-  //   return {
-  //     props: {
-  //       competitions: [],
-  //     },
-  //   };
-  // }
+  try {
+    const res = await GetCompetitionsApi();
+    console.log(res);
+    
+    if (res.status == 1) {
+      const competitions = res.data?.competitions || [];
+      return {
+        props: {
+          competitions: competitions.length? competitions:competitionsDumy,
+        },
+      };
+    } else if (res.status == 0) {
+      return {
+        props: {
+          competitions: [],
+        },
+      };
+    }
+  } catch (error) {
+    console.error(error);
+    return {
+      props: {
+        competitions: competitionsDumy,
+      },
+    };
+  }
 }
 
 export default function Home({ competitions }) {
