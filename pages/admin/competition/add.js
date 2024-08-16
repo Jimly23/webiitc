@@ -86,16 +86,11 @@ const AddCompetition = () => {
     const pattern = /^(https?:\/\/)?[\w\-]+(\.[\w\-]+)+[/#?]?.*$/i;
     return pattern.test(url);
   };
-
   const handleSubmit = async () => {
-    // Convert price to a number and ensure it's valid
     const parsedPrice = parseFloat(competitionData.htm);
     const isValidPrice = !isNaN(parsedPrice);
-
-    // Validate the guideBookLink URL format
     const isValidguideBookLinkLink = isValidURL(competitionData.guideBookLink);
 
-    // Check validation before proceeding
     if (!isValidPrice) {
       setAlert({
         message: "Harga harus berupa angka.",
@@ -118,20 +113,17 @@ const AddCompetition = () => {
     try {
       const res = await CreateCompetitionApi({
         ...competitionData,
-
         price: parsedPrice,
         isIndividu: competitionData.isIndividu ? 1 : 0,
         maxMembers: parseInt(competitionData.maxMembers),
       });
 
-      // Display the message from backend in the Alert
       setAlert({
         message: res.message,
         isSuccess: res.status === 1,
         isVisible: true,
       });
 
-      // If success, reset the form
       if (res.status === 1) {
         setCompetitionData({
           cover: null,
@@ -144,11 +136,10 @@ const AddCompetition = () => {
           selectedCategories: [],
           isIndividu: false,
           stacks: [],
-          juknis: [],
+          criteria: [],
         });
       }
     } catch (error) {
-      // Display error message from backend
       setAlert({
         message:
           error.response?.data?.message ||
@@ -160,7 +151,7 @@ const AddCompetition = () => {
       setIsLoading(false);
     }
   };
-
+  console.log(competitionData);
   return (
     <div className="overflow-hidden">
       <Alert

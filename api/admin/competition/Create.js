@@ -3,14 +3,25 @@ import GetToken from "@/api/utils/GetToken";
 import { urlGetCompetitions } from "@/api/routes/homepage/GetCompetitions";
 
 const CreateCompetitionApi = async (competitionData) => {
+  if (!competitionData || typeof competitionData !== "object") {
+    throw new Error("Invalid competitionData: must be an object and not null");
+  }
+
   const formData = new FormData();
+  console.log(formData);
+  if (competitionData.cover) {
+    formData.append("cover", competitionData.cover);
+  }
 
   Object.entries(competitionData).forEach(([key, value]) => {
-    const formattedValue =
-      typeof value === "object" && value !== null
-        ? JSON.stringify(value)
-        : value;
-    formData.append(key, formattedValue);
+    if (key !== "cover") {
+      // Pastikan cover tidak ditambahkan dua kali
+      const formattedValue =
+        typeof value === "object" && value !== null
+          ? JSON.stringify(value)
+          : value;
+      formData.append(key, formattedValue);
+    }
   });
 
   try {
@@ -22,7 +33,7 @@ const CreateCompetitionApi = async (competitionData) => {
       timeout: 30000,
       timeoutErrorMessage: "Request time out, coba lagi",
     });
-
+    console.log(data);
     return data;
   } catch (error) {
     if (error.code === "ECONNABORTED") {
