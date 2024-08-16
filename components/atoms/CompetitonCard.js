@@ -17,14 +17,13 @@ const CompetitonCard = ({
   onDelete,
   handleCLickButton,
 }) => {
-
-  const[isPopup, setIsPopup] = useState(false)
+  const [isPopup, setIsPopup] = useState(false);
 
   const handleViewDetailCompetition = () => {
-    if(slug === 'dummy'){
-      setIsPopup(true)
+    if (slug === "dummy") {
+      setIsPopup(true);
       setTimeout(() => {
-        setIsPopup(false)
+        setIsPopup(false);
       }, 3000);
     } else {
       window.scrollTo(0, 0);
@@ -52,7 +51,11 @@ const CompetitonCard = ({
       />
 
       <div className="absolute left-5 top-5 rounded-full bg-white px-4 pt-2 pb-1">
-        <Text size={"smalltitle"} additionals={"text-orange-400"} weight={"semi"}>
+        <Text
+          size={"smalltitle"}
+          additionals={"text-orange-400"}
+          weight={"semi"}
+        >
           {title}
         </Text>
       </div>
@@ -60,12 +63,13 @@ const CompetitonCard = ({
       <div className="absolute left-5 right-5 bottom-5 rounded-full bg-white px-4 pt-2 pb-1 flex items-center justify-between">
         <div className="flex items-center space-x-1">
           <HiOutlineUsers className="text-dark" />
-          <Text size={"description"} weight={"bold"}>{maxMembers} MAX</Text>
+          <Text size={"description"} weight={"bold"}>
+            {maxMembers} MAX
+          </Text>
         </div>
         <Button
           additionals={"py-2"}
-          // onClick={isAdmin ? handleCLickButton : handleViewDetailCompetition}
-          onClick={handleViewDetailCompetition}
+          onClick={isAdmin ? handleCLickButton : handleViewDetailCompetition}
           size={"sm"}
           color={"dark"}
         >
@@ -73,11 +77,13 @@ const CompetitonCard = ({
         </Button>
       </div>
 
-      {isPopup && <div className="absolute z-50 left-0 top-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center text-white text-lg font-medium">
-        <div className="bg-orange-500 px-2 py-1 rounded-lg">Lomba Belum Aktif</div>
-      </div>}
-
-
+      {isPopup && (
+        <div className="absolute z-50 left-0 top-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center text-white text-lg font-medium">
+          <div className="bg-orange-500 px-2 py-1 rounded-lg">
+            Lomba Belum Aktif
+          </div>
+        </div>
+      )}
 
       {/* <div className="px-4 py-2 flex flex-col space-y-2">
         {category.map((item, index) =>
