@@ -65,7 +65,6 @@ export default function Teams() {
   useEffect(() => {
     filterTeams();
   }, [selectedSubmission, teams]);
-  // console.log(filteredTeams);
   return (
     <>
       <Head>
@@ -98,7 +97,7 @@ export default function Teams() {
             <div className="flex gap-3">
               <p>
                 total tim:
-                <span className="font-bold">{filteredTeams.length}</span>
+                <span className="font-bold">{filteredTeams? filteredTeams.length: 0}</span>
               </p>
               <button
                 onClick={() => exportToExcel("dataTim", exportData)}

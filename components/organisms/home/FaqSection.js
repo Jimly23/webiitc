@@ -11,6 +11,34 @@ import { RiWhatsappFill } from "react-icons/ri";
 const FaqSection = () => {
   const faqs = [
     {
+      q: "Apa itu IITC?",
+      a: "IIT (Intermedia Information Technology) Competition 2024 adalah program kerja UKM INTERMEDIA Universitas Amikom Purwokerto yang melibatkan peserta dari seluruh Indonesia, termasuk siswa SMA/SMK/MA, mahasiswa, dan masyarakat umum. Kompetisi ini mencakup perlombaan UI/UX, Web Design, dan Poster Digital, serta webinar dan penjurian yang dilaksanakan secara daring. Tujuannya adalah untuk menambah wawasan, mengasah keterampilan digital, serta mendorong inovasi dan kreativitas peserta dalam bidang teknologi informasi, sehingga dapat memperdalam pengetahuan dan membangun ekosistem teknologi yang lebih dinamis dan inovatif.",
+    },
+    {
+      q: "Siapa yang dapat mengikuti lomba?",
+      a: "Peserta dari perlombaan dapat diikuti oleh seluruh masyarakat indonesia",
+    },
+    {
+      q: "Apakah peserta boleh mengikuti lebih dari satu lomba?",
+      a: "Peserta boleh mengikuti lebih dari satu lomba pada jenis perlombaan yang berbeda",
+    },
+    {
+      q: "Bagaimana mekanisme pengumpulan hasil karya?",
+      a: "-> Pembuatan Akun dan Input Karya  -> Format Karya -> Isi Berkas yang Dikumpulkan -> Pengunggahan dan Pengumpulan Karya -> Persyaratan Tambahan",
+    },
+    {
+      q: "Apa format file untuk pengumpulan hasil karya?",
+      a: "Format pengumpulan hasil karya ada yang berupa file .ZIP dan ada yang berupa folder Google Drive",
+    },
+    {
+      q: "Siapa juri lomba ini?",
+      a: "Pada lomba IITC ini dewan juri berasal dari divisi keilmuan Intermedia dan beberapa pihak yang mungkin nantinya akan ditugaskan oleh UKM Intermedia sebagai dewan juri tambahan",
+    },
+    {
+      q: "Bagaimana cara juri menilai hasil karya?",
+      a: "Juri menilai hasil karya berdasarkan kriteria yang telah ditetapkan dan Mereka menggunakan rubrik penilaian untuk memberikan skor yang objektif dan konsisten.",
+    },
+    {
       q: "Bagaimana cara membayar biaya pendaftarannya?",
       a: "Pembayaran dapat dilakukan melalui transfer ke rekening bank atau e-wallet yang akan diinformasikan setelah kamu mendaftar.",
     },
