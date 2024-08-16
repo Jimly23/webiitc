@@ -1,112 +1,108 @@
 import GetAllCategoryApi from "@/api/admin/categories/GetAll";
-import CreateCompetitionApi from "@/api/admin/competition/Create";
 import EditCompetitionApi from "@/api/admin/competition/Edit";
 import GetDetailCompetitionsApi from "@/api/homepage/GetDetailCompetitionApi";
 import { Button } from "@/components";
 import Alert from "@/components/atoms/Alert";
 import DashboardCard from "@/components/atoms/DashboardCard";
-import Dropdown from "@/components/atoms/Dropdown";
 import FileInput from "@/components/atoms/FilePond";
-import Text from "@/components/atoms/Text";
 import InputTitle from "@/components/molecules/InputTitle";
 import DynamicInput from "@/components/organisms/admin/DynamicInput";
 import PromptStyle from "@/components/organisms/admin/PromptStyle";
 import DashboardAdminTemplate from "@/components/pagetemplate/DashboardAdmin";
-import getPlusDate, { getBinaryByBoolean } from "@/utils/utils";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   AiOutlineCheckCircle,
   AiOutlineEdit,
   AiOutlineLoading3Quarters,
 } from "react-icons/ai";
 import { BiHomeAlt } from "react-icons/bi";
-import { FiPlus, FiXCircle } from "react-icons/fi";
+import { FiXCircle } from "react-icons/fi";
 import { IoIosStats } from "react-icons/io";
 import { MdArrowForwardIos } from "react-icons/md";
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
+  const { cmpt } = context.query;
+
   try {
-    const res = await GetAllCategoryApi();
-    if (res.status == 1) {
-      const categories = res.data?.categories;
-      return {
-        props: {
-          categories,
-        },
-      };
-    } else if (res.status == 0) {
-      return {
-        props: {
-          categories: [],
-        },
-      };
-    }
+    const [categoriesRes, competitionRes] = await Promise.all([
+      GetAllCategoryApi(),
+      GetDetailCompetitionsApi({ slug: cmpt }),
+    ]);
+
+    const categories =
+      categoriesRes?.status === 1 ? categoriesRes.data?.categories || [] : [];
+    const competition =
+      competitionRes?.status === 1 && competitionRes?.data?.competition
+        ? competitionRes.data.competition
+        : null;
+
+    return {
+      props: {
+        categories,
+        competition,
+      },
+    };
   } catch (error) {
     console.error(error);
     return {
       props: {
-        competitions: [],
+        categories: [],
+        competition: null,
       },
     };
   }
 }
 
-const EditCompetition = ({ categories }) => {
+const EditCompetition = ({ categories, competition }) => {
   const router = useRouter();
-  const [stacks, setStacks] = useState([]);
-  const [juknis, setJuknis] = useState([]);
-  const [isIndividu, setIsIndividu] = useState(false);
-  const [cover, setCover] = useState(null);
-  const [resCover, setResCover] = useState("");
-  const [name, setName] = useState("");
-  const [htm, setHtm] = useState("");
-  const [deadline, setDeadline] = useState("");
-  const [guidebook, setGuidebook] = useState("");
-  const [maxMembers, setMaxMembers] = useState("");
-  const [description, setDescription] = useState("");
-  const [selectedCategories, setSelectedCategories] = useState([]);
-  const [resCategories, setResCategories] = useState([]);
+
+  const [stacks, setStacks] = useState(competition?.techStacks || []);
+  const [juknis, setJuknis] = useState(competition?.criteria || []);
+  const [isIndividu, setIsIndividu] = useState(competition?.maxMembers === 1);
+  const [cover, setCover] = useState(competition?.cover || null);
+  const [name, setName] = useState(competition?.name || "");
+  const [htm, setHtm] = useState(competition?.competitionPrice || "");
+  const [deadline, setDeadline] = useState(competition?.deadlineDate || "");
+  const [guidebook, setGuidebook] = useState(competition?.guideBookLink || "");
+  const [maxMembers, setMaxMembers] = useState(
+    `${competition?.maxMembers || ""}`
+  );
+  const [description, setDescription] = useState(
+    competition?.description || ""
+  );
+  const [selectedCategories, setSelectedCategories] = useState(
+    competition?.categories?.map((item) => item.id) || []
+  );
+  const [resCategories, setResCategories] = useState(
+    competition?.categories?.map((item) => item.name) || []
+  );
   const [isHitApi, setIsHitApi] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isWrong, setIsWrong] = useState(false);
   const [message, setMessage] = useState("");
-  useEffect(() => {
-    GetDetailCompetitionsApi({ slug: router?.query?.cmpt }).then((res) => {
-      // console.log(res);
-      const compt = res?.data.competition;
-      setDeadline(compt.deadlineDate);
-      setName(compt.name);
-      setResCategories(compt.categories.map((item) => item.name));
-      setHtm(compt.competitionPrice);
-      setMaxMembers(`${compt.maxMembers}`);
-      setIsIndividu(compt.maxMembers == 1);
-      setStacks(compt.techStacks);
-      setDescription(compt.description);
-      setGuidebook(compt.guideBookLink);
-      setCover(compt.cover);
-      setJuknis(compt.criteria);
-    });
-  }, [router.isReady]);
+
   const handleAddCategory = (e, id) => {
     if (e) {
-      if (selectedCategories.includes(id)) return;
-      setSelectedCategories([...selectedCategories, id]);
+      if (!selectedCategories.includes(id)) {
+        setSelectedCategories([...selectedCategories, id]);
+      }
     } else {
       setSelectedCategories(
-        selectedCategories.filter((category) => category != id)
+        selectedCategories.filter((category) => category !== id)
       );
     }
-    //console.log(selectedCategories);
   };
+
   const handleEditCompetition = () => {
     setIsHitApi(true);
-    const coverSend = typeof cover == 'string' ? null : cover
+    const coverSend = typeof cover === "string" ? null : cover;
+
     EditCompetitionApi({
       slug: router.query.cmpt,
       cover: coverSend,
       name,
-      isIndividu: getBinaryByBoolean({ isIndividu }),
+      isIndividu: isIndividu ? 1 : 0,
       selectedCategories,
       deadline,
       maxMembers: parseInt(maxMembers),
@@ -116,8 +112,8 @@ const EditCompetition = ({ categories }) => {
       guideBookLink: guidebook,
       criteria: juknis,
     }).then((res) => {
-      //console.log(res);
-      if (res.status == 1) {
+      if (res.status === 1) {
+        // Reset form states after success
         setCover(null);
         setName("");
         setIsIndividu(false);
@@ -129,14 +125,17 @@ const EditCompetition = ({ categories }) => {
         setDescription("");
         setGuidebook("");
         setJuknis([]);
-        setMessage(res?.message);
+        setMessage(res.message);
         setIsHitApi(false);
-      } else if (res.status == 0) {
+        setIsSuccess(true);
+      } else {
         setIsHitApi(false);
-        setMessage(res?.message);
+        setMessage(res.message);
+        setIsWrong(true);
       }
     });
   };
+
   const handleClickIndividu = (e) => {
     const isChecked = e.target.checked;
     setIsIndividu(isChecked);
@@ -146,14 +145,15 @@ const EditCompetition = ({ categories }) => {
       setMaxMembers("");
     }
   };
+
   return (
     <div className="overflow-hidden">
       <Alert onClose={() => setIsSuccess(false)} isOpen={isSuccess}>
-        <AiOutlineCheckCircle className="text-green-400 text-xl " />
+        <AiOutlineCheckCircle className="text-green-400 text-xl" />
         <p>{message}</p>
       </Alert>
       <Alert onClose={() => setIsWrong(false)} isOpen={isWrong}>
-        <FiXCircle className="text-red text-xl " />
+        <FiXCircle className="text-red text-xl" />
         <p>{message}</p>
       </Alert>
       <DashboardAdminTemplate>
@@ -172,12 +172,12 @@ const EditCompetition = ({ categories }) => {
             <p className="text-blue-600 text-sm">Edit</p>
           </ul>
           <div className="flex justify-between items-center mt-2">
-            <h1 className="text-2xl fomt-semibold">Edit Lomba</h1>
+            <h1 className="text-2xl font-semibold">Edit Lomba</h1>
             <Button
               onClick={() => handleEditCompetition()}
               isSquare
-              color={"blue"}
-              additionals={"flex items-center gap-2"}
+              color="blue"
+              additionals="flex items-center gap-2"
             >
               <p>
                 {isHitApi ? (
@@ -198,8 +198,8 @@ const EditCompetition = ({ categories }) => {
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
-              placeholder={"Nama lomba"}
-              title={"Nama Lomba"}
+              placeholder="Nama lomba"
+              title="Nama Lomba"
             />
             <div className="text-dark">
               <p>Pilih kategori lomba</p>
@@ -224,29 +224,30 @@ const EditCompetition = ({ categories }) => {
               value={htm}
               onChange={(e) => setHtm(e.target.value)}
               required
-              placeholder={"Harga lomba"}
-              title={"HTM"}
+              placeholder="Harga lomba"
+              title="HTM"
             />
             <InputTitle
               value={maxMembers}
               onChange={(e) => setMaxMembers(e.target.value)}
               required
               disabled={isIndividu}
-              placeholder={"Masukan jumlah anggota"}
-              title={"Total Anggota Per Tim"}
+              placeholder="Masukan jumlah anggota"
+              title="Total Anggota Per Tim"
             />
             <label className="flex text-xs text-dark space-x-2">
               <p>Lomba bersifat individu</p>
-              <input type="checkbox" onChange={(e) => handleClickIndividu(e)} />
+              <input
+                type="checkbox"
+                checked={isIndividu}
+                onChange={(e) => handleClickIndividu(e)}
+              />
             </label>
             <label className=" text-dark">
               <p>Deadline</p>
               <input
                 value={deadline}
-                onChange={(e) => {
-                  setDeadline(e.target.value);
-                  console.log(e.target.value);
-                }}
+                onChange={(e) => setDeadline(e.target.value)}
                 type="date"
                 className="w-full px-4 py-2 border rounded-md mt-1 focus:ring-0 focus:outline-none"
                 placeholder="Tanggal"
@@ -256,6 +257,7 @@ const EditCompetition = ({ categories }) => {
               <p className="mb-1">Tech Stack</p>
               <PromptStyle keywords={stacks} setKeywords={setStacks} />
             </label>
+
             <label className="text-dark">
               <p className="mb-1">Deskripsi</p>
               <textarea
@@ -271,7 +273,7 @@ const EditCompetition = ({ categories }) => {
               onChange={(e) => setGuidebook(e.target.value)}
               required
               placeholder="Masukan link guidebook"
-              title={"Guidebook"}
+              title="Guidebook"
             />
           </DashboardCard>
           {/* RIGHT */}
