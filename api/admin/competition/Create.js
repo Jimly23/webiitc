@@ -2,38 +2,19 @@ import axios from "axios";
 import GetToken from "@/api/utils/GetToken";
 import { urlGetCompetitions } from "@/api/routes/homepage/GetCompetitions";
 
-const CreateCompetitionApi = async ({
-  cover,
-  name,
-  isIndividu,
-  selectedCategories,
-  deadline,
-  maxMembers,
-  price,
-  techStack,
-  description,
-  guideBookLink,
-  criteria,
-}) => {
+const CreateCompetitionApi = async (competitionData) => {
+  const formData = new FormData();
+
+  Object.entries(competitionData).forEach(([key, value]) => {
+    const formattedValue =
+      typeof value === "object" && value !== null
+        ? JSON.stringify(value)
+        : value;
+    formData.append(key, formattedValue);
+  });
+
   try {
-    const formData = new FormData();
-    formData.append("cover", cover);
-    formData.append("name", name);
-    formData.append("isIndividu", isIndividu);
-    formData.append("categories", JSON.stringify(selectedCategories));
-    formData.append("deadline", deadline);
-    formData.append("maxMembers", maxMembers);
-    formData.append("price", price);
-    formData.append("techStacks", JSON.stringify(techStack));
-    formData.append("description", description);
-    formData.append("guideBookLink", guideBookLink);
-    formData.append("criteria", JSON.stringify(criteria));
-    // Menggunakan metode forEach()
-    formData.forEach((value, key) => {});
-    const res = await axios({
-      method: "POST",
-      baseURL: urlGetCompetitions,
-      data: formData,
+    const { data } = await axios.post(urlGetCompetitions, formData, {
       headers: {
         Authorization: GetToken({ isAdmin: true }),
         "Content-Type": "multipart/form-data",
@@ -42,12 +23,12 @@ const CreateCompetitionApi = async ({
       timeoutErrorMessage: "Request time out, coba lagi",
     });
 
-    return res.data;
+    return data;
   } catch (error) {
     if (error.code === "ECONNABORTED") {
-      console.log(error.message);
+      console.error(error.message);
     } else {
-      return error.response.data;
+      return error.response?.data || error.message;
     }
   }
 };

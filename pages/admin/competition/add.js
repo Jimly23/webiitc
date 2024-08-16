@@ -1,17 +1,7 @@
+import React, { useState, useEffect } from "react";
 import GetAllCategoryApi from "@/api/admin/categories/GetAll";
 import CreateCompetitionApi from "@/api/admin/competition/Create";
-import { Button } from "@/components";
-import Alert from "@/components/atoms/Alert";
-import DashboardCard from "@/components/atoms/DashboardCard";
-import Dropdown from "@/components/atoms/Dropdown";
-import FileInput from "@/components/atoms/FilePond";
-import Text from "@/components/atoms/Text";
-import InputTitle from "@/components/molecules/InputTitle";
-import DynamicInput from "@/components/organisms/admin/DynamicInput";
-import PromptStyle from "@/components/organisms/admin/PromptStyle";
-import DashboardAdminTemplate from "@/components/pagetemplate/DashboardAdmin";
-import { getBinaryByBoolean } from "@/utils/utils";
-import React, { useState } from "react";
+
 import {
   AiOutlineCheckCircle,
   AiOutlineEdit,
@@ -21,159 +11,192 @@ import { BiHomeAlt } from "react-icons/bi";
 import { FiPlus, FiXCircle } from "react-icons/fi";
 import { IoIosStats } from "react-icons/io";
 import { MdArrowForwardIos } from "react-icons/md";
+import Alert from "@/components/atoms/Alert";
+import DashboardAdminTemplate from "@/components/pagetemplate/DashboardAdmin";
+import DashboardCard from "@/components/atoms/DashboardCard";
+import InputTitle from "@/components/molecules/InputTitle";
+import PromptStyle from "@/components/organisms/admin/PromptStyle";
+import DynamicInput from "@/components/organisms/admin/DynamicInput";
+import FileInput from "@/components/atoms/FilePond";
+import { Button } from "@/components";
 
-export async function getServerSideProps() {
-  try {
-    const res = await GetAllCategoryApi();
-    if (res.status == 1) {
-      const categories = res.data?.categories;
-      return {
-        props: {
-          categories,
-        },
-      };
-    } else if (res.status == 0) {
-      return {
-        props: {
-          categories: [],
-        },
-      };
-    }
-  } catch (error) {
-    console.error(error);
-    return {
-      props: {
-        competitions: [],
-      },
-    };
-  }
-}
-const AddCompetition = ({ categories }) => {
-  const [stacks, setStacks] = useState([]);
-  const [juknis, setJuknis] = useState([]);
-  const [isIndividu, setIsIndividu] = useState(false);
-  const [cover, setCover] = useState(null);
-  const [name, setName] = useState("");
-  const [htm, setHtm] = useState("");
-  const [deadline, setDeadline] = useState("");
-  const [guidebook, setGuidebook] = useState("");
-  const [maxMembers, setMaxMembers] = useState("");
-  const [description, setDescription] = useState("");
-  const [selectedCategories, setSelectedCategories] = useState([]);
-  const [isHitApi, setIsHitApi] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [isWrong, setIsWrong] = useState(false);
-  const [message, setMessage] = useState("");
-  const handleAddCategory = (e, id) => {
-    if (e) {
-      if (selectedCategories.includes(id)) return;
-      setSelectedCategories([...selectedCategories, id]);
-    } else {
-      setSelectedCategories(
-        selectedCategories.filter((category) => category != id)
-      );
-    }
-    //console.log(selectedCategories);
-  };
-  const handleAddCompetition = () => {
-    setIsHitApi(true);
-    const data = {
-      cover,
-      name,
-      isIndividu: getBinaryByBoolean({ isIndividu }),
-      selectedCategories,
-      deadline,
-      maxMembers: parseInt(maxMembers),
-      price: htm,
-      techStack: stacks,
-      description,
-      guideBookLink: guidebook,
-      criteria: juknis,
-    };
-    //console.log(data);
-    CreateCompetitionApi({
-      cover,
-      name,
-      isIndividu: getBinaryByBoolean({ isIndividu }),
-      selectedCategories,
-      deadline,
-      maxMembers: parseInt(maxMembers),
-      price: htm,
-      techStack: stacks,
-      description,
-      guideBookLink: guidebook,
-      criteria: juknis,
-    }).then((res) => {
-      //console.log(res);
-      if (res.status == 1) {
-        setCover(null);
-        setName("");
-        setIsIndividu(false);
-        setSelectedCategories([]);
-        setDeadline("");
-        setMaxMembers("");
-        setHtm("");
-        setStacks([]);
-        setDescription("");
-        setGuidebook("");
-        setJuknis([]);
-        setMessage(res?.message);
-        setIsHitApi(false);
-      } else if (res.status == 0) {
-        setIsHitApi(false);
-        setMessage(res?.message);
+const AddCompetition = () => {
+  const [categories, setCategories] = useState([]);
+  const [competitionData, setCompetitionData] = useState({
+    cover: null,
+    name: "",
+    htm: "",
+    deadline: "",
+    guideBookLink: "",
+    maxMembers: "",
+    description: "",
+    selectedCategories: [],
+    isIndividu: false,
+    stacks: [],
+    criteria: [],
+  });
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [alert, setAlert] = useState({
+    message: "",
+    isSuccess: false,
+    isVisible: false,
+  });
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const res = await GetAllCategoryApi();
+        setCategories(res?.data?.categories || []);
+      } catch (error) {
+        console.error("Failed to load categories", error);
       }
-    });
+    };
+    fetchCategories();
+  }, []);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setCompetitionData((prev) => ({ ...prev, [name]: value }));
   };
+
+  const handleCheckboxChange = (e, id) => {
+    if (!id) return; // Add this check
+
+    const { checked } = e.target;
+    setCompetitionData((prev) => ({
+      ...prev,
+      selectedCategories: checked
+        ? [...prev.selectedCategories, id]
+        : prev.selectedCategories.filter((categoryId) => categoryId !== id),
+    }));
+  };
+
   const handleClickIndividu = (e) => {
     const isChecked = e.target.checked;
-    setIsIndividu(isChecked);
-    if (isChecked) {
-      setMaxMembers("1");
-    } else {
-      setMaxMembers("");
+    setCompetitionData((prev) => ({
+      ...prev,
+      isIndividu: isChecked,
+      maxMembers: isChecked ? "1" : "",
+    }));
+  };
+
+  // valid url
+  const isValidURL = (url) => {
+    const pattern = /^(https?:\/\/)?[\w\-]+(\.[\w\-]+)+[/#?]?.*$/i;
+    return pattern.test(url);
+  };
+
+  const handleSubmit = async () => {
+    // Convert price to a number and ensure it's valid
+    const parsedPrice = parseFloat(competitionData.htm);
+    const isValidPrice = !isNaN(parsedPrice);
+
+    // Validate the guideBookLink URL format
+    const isValidguideBookLinkLink = isValidURL(competitionData.guideBookLink);
+
+    // Check validation before proceeding
+    if (!isValidPrice) {
+      setAlert({
+        message: "Harga harus berupa angka.",
+        isSuccess: false,
+        isVisible: true,
+      });
+      return;
+    }
+
+    if (!isValidguideBookLinkLink) {
+      setAlert({
+        message: "Format guide book link tidak valid.",
+        isSuccess: false,
+        isVisible: true,
+      });
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      const res = await CreateCompetitionApi({
+        ...competitionData,
+
+        price: parsedPrice,
+        isIndividu: competitionData.isIndividu ? 1 : 0,
+        maxMembers: parseInt(competitionData.maxMembers),
+      });
+
+      // Display the message from backend in the Alert
+      setAlert({
+        message: res.message,
+        isSuccess: res.status === 1,
+        isVisible: true,
+      });
+
+      // If success, reset the form
+      if (res.status === 1) {
+        setCompetitionData({
+          cover: null,
+          name: "",
+          htm: "",
+          deadline: "",
+          guideBookLink: "",
+          maxMembers: "",
+          description: "",
+          selectedCategories: [],
+          isIndividu: false,
+          stacks: [],
+          juknis: [],
+        });
+      }
+    } catch (error) {
+      // Display error message from backend
+      setAlert({
+        message:
+          error.response?.data?.message ||
+          "Terjadi kesalahan saat membuat kompetisi",
+        isSuccess: false,
+        isVisible: true,
+      });
+    } finally {
+      setIsLoading(false);
     }
   };
+
   return (
     <div className="overflow-hidden">
-      <Alert onClose={() => setIsSuccess(false)} isOpen={isSuccess}>
-        <AiOutlineCheckCircle className="text-green-400 text-xl " />
-        <p>{message}</p>
-      </Alert>
-      <Alert onClose={() => setIsWrong(false)} isOpen={isWrong}>
-        <FiXCircle className="text-red text-xl " />
-        <p>{message}</p>
+      <Alert
+        isOpen={alert.isVisible}
+        onClose={() => setAlert({ ...alert, isVisible: false })}
+        className={alert.isSuccess ? "text-green-400" : "text-red"}
+      >
+        {alert.isSuccess ? (
+          <AiOutlineCheckCircle className="text-xl text-green-500" />
+        ) : (
+          <FiXCircle className="text-xl text-rose-500" />
+        )}
+        <p>{alert.message}</p>
       </Alert>
       <DashboardAdminTemplate>
         <DashboardCard>
           <ul className="flex items-center gap-2">
-            <p>
-              <BiHomeAlt className="text-gray-400" />
-            </p>
-            <p>
-              <MdArrowForwardIos className="text-xs text-gray-400" />
-            </p>
+            <BiHomeAlt className="text-gray-400" />
+            <MdArrowForwardIos className="text-xs text-gray-400" />
             <p className="text-blue-600 text-sm">Lomba</p>
-            <p>
-              <MdArrowForwardIos className="text-xs text-gray-400" />
-            </p>
+            <MdArrowForwardIos className="text-xs text-gray-400" />
             <p className="text-blue-600 text-sm">Buat</p>
           </ul>
           <div className="flex justify-between items-center mt-2">
-            <h1 className="text-2xl fomt-semibold">Buat Lomba</h1>
+            <h1 className="text-2xl font-semibold">Buat Lomba</h1>
             <Button
-              onClick={() => handleAddCompetition()}
+              onClick={handleSubmit}
               isSquare
-              color={"blue"}
-              additionals={"flex items-center gap-2"}
+              color="blue"
+              additionals="flex items-center gap-2"
             >
-              <p>
-                {isHitApi ? (
-                  <AiOutlineLoading3Quarters className="text-white animate-spin" />
-                ) : (
-                  "Publish"
-                )}
-              </p>
+              {isLoading ? (
+                <AiOutlineLoading3Quarters className="text-white animate-spin" />
+              ) : (
+                "Publish"
+              )}
             </Button>
           </div>
         </DashboardCard>
@@ -183,54 +206,61 @@ const AddCompetition = ({ categories }) => {
               <AiOutlineEdit className="text-xl" />
             </div>
             <InputTitle
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={competitionData.name}
+              onChange={handleInputChange}
+              name="name"
               required
-              placeholder={"Nama lomba"}
-              title={"Nama Lomba"}
+              placeholder="Nama lomba"
+              title="Nama Lomba"
             />
             <div className="text-dark">
               <p>Pilih kategori lomba</p>
               <ul className="flex w-full flex-wrap gap-4 mt-1">
-                {categories?.map((category, index) => (
+                {categories.map((category, index) => (
                   <li key={index}>
                     <label className="flex space-x-1">
                       <input
                         type="checkbox"
-                        onChange={(e) =>
-                          handleAddCategory(e.target.checked, category?.id)
-                        }
+                        onChange={(e) => handleCheckboxChange(e, category.id)}
                       />
-                      <p>{category?.name}</p>
+                      <p>{category.name}</p>
                     </label>
                   </li>
                 ))}
               </ul>
             </div>
             <InputTitle
-              value={htm}
-              onChange={(e) => setHtm(e.target.value)}
+              type="number"
+              value={competitionData.htm}
+              onChange={handleInputChange}
+              name="htm"
               required
-              placeholder={"Harga lomba"}
-              title={"HTM"}
+              placeholder="Harga lomba"
+              title="HTM"
             />
             <InputTitle
-              value={maxMembers}
-              onChange={(e) => setMaxMembers(e.target.value)}
+              value={competitionData.maxMembers}
+              onChange={handleInputChange}
+              name="maxMembers"
               required
-              disabled={isIndividu}
-              placeholder={"Masukan jumlah anggota"}
-              title={"Total Anggota Per Tim"}
+              disabled={competitionData.isIndividu}
+              placeholder="Masukan jumlah anggota"
+              title="Total Anggota Per Tim"
             />
             <label className="flex text-xs text-dark space-x-2">
               <p>Lomba bersifat individu</p>
-              <input type="checkbox" onChange={(e) => handleClickIndividu(e)} />
+              <input
+                type="checkbox"
+                checked={competitionData.isIndividu}
+                onChange={handleClickIndividu}
+              />
             </label>
-            <label className=" text-dark">
+            <label className="text-dark">
               <p>Deadline</p>
               <input
-                value={deadline}
-                onChange={(e) => setDeadline(e.target.value)}
+                value={competitionData.deadline}
+                onChange={handleInputChange}
+                name="deadline"
                 type="date"
                 className="w-full px-4 py-2 border rounded-md mt-1 focus:ring-0 focus:outline-none"
                 placeholder="Tanggal"
@@ -238,35 +268,51 @@ const AddCompetition = ({ categories }) => {
             </label>
             <label className="text-dark">
               <p className="mb-1">Tech Stack</p>
-              <PromptStyle keywords={stacks} setKeywords={setStacks} />
+              <PromptStyle
+                keywords={competitionData.stacks}
+                setKeywords={(stacks) =>
+                  setCompetitionData((prev) => ({ ...prev, stacks }))
+                }
+              />
             </label>
             <label className="text-dark">
               <p className="mb-1">Deskripsi</p>
               <textarea
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
+                value={competitionData.description}
+                onChange={handleInputChange}
+                name="description"
                 required
                 placeholder="Masukan Deskripsi"
                 className="border focus:outline-none rounded-md w-full  px-4 py-2"
               ></textarea>
             </label>
             <InputTitle
-              value={guidebook}
-              onChange={(e) => setGuidebook(e.target.value)}
-              required
-              placeholder="Masukan link guidebook"
-              title={"Guidebook"}
+              value={competitionData.guideBookLink}
+              onChange={handleInputChange}
+              name="guideBookLink"
+              type="url"
+              placeholder="Masukan link guideBookLink"
+              title="guideBookLink"
             />
           </DashboardCard>
-          {/* RIGHT */}
           <div className="w-11/12 mx-auto">
             <p>Cover</p>
-            <FileInput image={cover} setImage={setCover} />
+            <FileInput
+              image={competitionData.cover}
+              setImage={(cover) =>
+                setCompetitionData((prev) => ({ ...prev, cover }))
+              }
+            />
             <DashboardCard className="w-full">
               <div className="p-1 bg-slate-200 rounded-md w-fit">
                 <IoIosStats className="text-xl" />
               </div>
-              <DynamicInput array={juknis} setArray={setJuknis} />
+              <DynamicInput
+                array={competitionData.criteria}
+                setArray={(criteria) =>
+                  setCompetitionData((prev) => ({ ...prev, criteria }))
+                }
+              />
             </DashboardCard>
           </div>
         </div>

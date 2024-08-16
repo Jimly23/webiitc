@@ -1,10 +1,8 @@
-import ErrorPage from '@/components/pagetemplate/ErrorPage'
-import React from 'react'
+import ErrorPage from "@/components/pagetemplate/ErrorPage";
+import React from "react";
 
 const notFound = () => {
-  return (
-    <ErrorPage statusCode={404} message={"Page Not Found"}/>
-  )
-}
+  return <ErrorPage statusCode={404} message={"Page Not Found"} />;
+};
 
-export default notFound
+export default notFound;
