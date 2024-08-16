@@ -74,7 +74,7 @@ const DashboardAdminTemplate = ({ title, children, props }) => {
     <>
       <main className="bg-slate-200 w-full min-h-screen flex lg:flex-row flex-col">
         <div className="lg:min-w-[240px] h-20 lg:h-0">
-          <div className="bg-white lg:bg-transparent w-full   p-5    fixed  lg:hidden visible z-50">
+          <div className="bg-white lg:bg-transparent w-full   p-5    fixed  lg:hidden visible ">
             <button onClick={() => setIsOpen(!isOpen)} className="">
               {isOpen ? (
                 <FiX className="text-2xl text-red" />

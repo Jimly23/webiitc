@@ -23,7 +23,7 @@ const LoginApi = async ({ email, password }) => {
     if (error.code === "ECONNABORTED") {
       console.log(error.message);
     } else {
-      return error.response.data;
+      return error?.response?.data;
     }
     // return error.response.data;
   }

@@ -1,17 +1,38 @@
 import * as Sentry from "@sentry/nextjs";
-import Error from "next/error";
+import ErrorPage from "@/components/pagetemplate/ErrorPage";
 
-const CustomErrorComponent = (props) => {
-  return <Error statusCode={props.statusCode} />;
-};
+function CustomErrorComponent({ statusCode, message }) {
+  if (statusCode >= 500) {
+    Sentry.captureMessage(
+      `Server error occurred with status code ${statusCode}`,
+      "error"
+    );
+  }
+
+  return <ErrorPage statusCode={statusCode} message={message} />;
+}
 
 CustomErrorComponent.getInitialProps = async (contextData) => {
-  // In case this is running in a serverless function, await this in order to give Sentry
-  // time to send the error before the lambda exits
-  await Sentry.captureUnderscoreErrorException(contextData);
+  const { res, err, asPath } = contextData;
+  const statusCode = res ? res.statusCode : err.statusCode;
 
-  // This will contain the status code of the response
-  return Error.getInitialProps(contextData);
+  if (err) {
+    Sentry.captureException(err, {
+      contexts: {
+        page: {
+          url: asPath, // Capture the URL where the error occurred
+        },
+      },
+    });
+
+    // Ensure Sentry sends the error before continuing
+    await Sentry.flush(2000);
+  }
+
+  // Custom error message
+  const message = err ? err.message : `An error ${statusCode} occurred`;
+
+  return { statusCode, message };
 };
 
 export default CustomErrorComponent;
