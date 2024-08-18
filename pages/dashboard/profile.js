@@ -99,7 +99,7 @@ function Profile() {
 
   const handleSave = async () => {
     setSimpan(true);
-    if (!name || !email || !phone || !grade || !gender || !institution) {
+    if (!name || !email || !phone || !grade || !gender) {
       console.error("Some fields must be filled");
       setMessage("Some fields must be filled");
       setIsWrong(true);
