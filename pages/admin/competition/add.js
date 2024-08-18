@@ -25,14 +25,14 @@ const AddCompetition = () => {
   const [competitionData, setCompetitionData] = useState({
     cover: null,
     name: "",
-    htm: "",
+    price: "",
     deadline: "",
     guideBookLink: "",
     maxMembers: "",
     description: "",
-    selectedCategories: [],
+    categories: [],
     isIndividu: false,
-    stacks: [],
+    techStack: [],
     criteria: [],
   });
 
@@ -66,9 +66,9 @@ const AddCompetition = () => {
     const { checked } = e.target;
     setCompetitionData((prev) => ({
       ...prev,
-      selectedCategories: checked
-        ? [...prev.selectedCategories, id]
-        : prev.selectedCategories.filter((categoryId) => categoryId !== id),
+      categories: checked
+        ? [...prev.categories, id]
+        : prev.categories.filter((categoryId) => categoryId !== id),
     }));
   };
 
@@ -87,7 +87,7 @@ const AddCompetition = () => {
     return pattern.test(url);
   };
   const handleSubmit = async () => {
-    const parsedPrice = parseFloat(competitionData.htm);
+    const parsedPrice = parseFloat(competitionData.price);
     const isValidPrice = !isNaN(parsedPrice);
     const isValidguideBookLinkLink = isValidURL(competitionData.guideBookLink);
 
@@ -128,14 +128,14 @@ const AddCompetition = () => {
         setCompetitionData({
           cover: null,
           name: "",
-          htm: "",
+          price: "",
           deadline: "",
           guideBookLink: "",
           maxMembers: "",
           description: "",
-          selectedCategories: [],
+          categories: [],
           isIndividu: false,
-          stacks: [],
+          techStack: [],
           criteria: [],
         });
       }
@@ -222,9 +222,9 @@ const AddCompetition = () => {
             </div>
             <InputTitle
               type="number"
-              value={competitionData.htm}
+              value={competitionData.price}
               onChange={handleInputChange}
-              name="htm"
+              name="price"
               required
               placeholder="Harga lomba"
               title="HTM"
@@ -260,9 +260,9 @@ const AddCompetition = () => {
             <label className="text-dark">
               <p className="mb-1">Tech Stack</p>
               <PromptStyle
-                keywords={competitionData.stacks}
-                setKeywords={(stacks) =>
-                  setCompetitionData((prev) => ({ ...prev, stacks }))
+                keywords={competitionData.techStack}
+                setKeywords={(techStack) =>
+                  setCompetitionData((prev) => ({ ...prev, techStack }))
                 }
               />
             </label>

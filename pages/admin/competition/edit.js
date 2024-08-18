@@ -103,7 +103,7 @@ const EditCompetition = ({ categories, competition }) => {
       cover: coverSend,
       name,
       isIndividu: isIndividu ? 1 : 0,
-      selectedCategories,
+      categories: selectedCategories,
       deadline,
       maxMembers: parseInt(maxMembers),
       price: htm,
