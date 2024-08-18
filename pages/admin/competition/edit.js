@@ -56,7 +56,7 @@ export async function getServerSideProps(context) {
 
 const EditCompetition = ({ categories, competition }) => {
   const router = useRouter();
-
+  console.log(categories);
   const [stacks, setStacks] = useState(competition?.techStacks || []);
   const [juknis, setJuknis] = useState(competition?.criteria || []);
   const [isIndividu, setIsIndividu] = useState(competition?.maxMembers === 1);
@@ -97,6 +97,13 @@ const EditCompetition = ({ categories, competition }) => {
   const handleEditCompetition = () => {
     setIsHitApi(true);
     const coverSend = typeof cover === "string" ? null : cover;
+
+    // Ensure selectedCategories contains the previous values
+    if (selectedCategories.length === 0) {
+      setSelectedCategories(
+        competition?.categories?.map((item) => item.id) || []
+      );
+    }
 
     EditCompetitionApi({
       slug: router.query.cmpt,

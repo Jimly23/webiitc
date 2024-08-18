@@ -1,14 +1,14 @@
 import React from "react";
 import Text from "./Text";
 
-function InputOptions({ options, grade, setGrade }) {
+function InputOptions({ options, grade, setGrade, label }) {
   const handleChange = (event) => {
     setGrade(event.target.value);
   };
 
   return (
     <div>
-      <Text>Jenjang Pendidikan</Text>
+      <Text>{label}</Text>
       <select
         value={grade}
         onChange={handleChange}
