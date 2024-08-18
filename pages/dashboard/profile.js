@@ -99,17 +99,9 @@ function Profile() {
 
   const handleSave = async () => {
     setSimpan(true);
-    if (
-      !name ||
-      !email ||
-      !phone ||
-      !grade ||
-      !gender ||
-      !studentId ||
-      !institution
-    ) {
-      console.error("All fields must be filled");
-      setMessage("All fields must be filled");
+    if (!name || !email || !phone || !grade || !gender || !institution) {
+      console.error("Some fields must be filled");
+      setMessage("Some fields must be filled");
       setIsWrong(true);
       setSimpan(false);
       return;
@@ -236,22 +228,23 @@ function Profile() {
                 onChange={(e) => setPhone(e.target.value)}
               />
               <InputOptions
-                options={["Pilih jenjang pendidikan", "pelajar", "mahasiswa"]}
+                label="Pilih Status"
+                options={["Pilih Status", "pelajar", "mahasiswa", "umum"]}
                 grade={grade}
                 setGrade={setGrade}
               />
               <InputTitle
                 required={false}
-                title={"Nama Jenjang Pendidikan / Instansi"}
+                title={"Nama Jenjang Pendidikan / Instansi "}
                 type="text"
-                placeholder={"Nama Instansi Pendidikan"}
+                placeholder={"Instansi, organisasi, umum"}
                 value={institution}
                 onChange={(e) => setInstitution(e.target.value)}
               />
 
               <InputTitle
                 required={false}
-                title={"NIM/NISN"}
+                title={"NIM/NISN - Optional"}
                 type="text"
                 placeholder={"Masukan NIM/NISN"}
                 value={studentId}
@@ -270,7 +263,7 @@ function Profile() {
                 initialPhotoUrl={avatar}
               />
 
-              <Text>
+              {/* <Text>
                 Foto Identitas <span className="text-rose-600">*</span>
                 <span className="text-xs italic font-thin">
                   (JPG,PNG,JPEG)
@@ -281,7 +274,7 @@ function Profile() {
                 photo={photoIdentity}
                 setPhoto={setPhotoIdentity}
                 initialPhotoUrl={photoIdentity}
-              />
+              /> */}
 
               <Text>
                 Twibbon <span className="text-rose-600">*</span>

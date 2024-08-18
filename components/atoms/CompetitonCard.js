@@ -18,7 +18,7 @@ const CompetitonCard = ({
   handleCLickButton,
 }) => {
   const [isPopup, setIsPopup] = useState(false);
-
+  // console.log(imgSrc);
   const handleViewDetailCompetition = () => {
     if (slug === "dummy") {
       setIsPopup(true);
