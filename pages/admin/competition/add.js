@@ -32,7 +32,7 @@ const AddCompetition = () => {
     description: "",
     categories: [],
     isIndividu: false,
-    techStack: [],
+    techStacks: [],
     criteria: [],
   });
 
@@ -135,7 +135,7 @@ const AddCompetition = () => {
           description: "",
           categories: [],
           isIndividu: false,
-          techStack: [],
+          techStacks: [],
           criteria: [],
         });
       }
@@ -260,9 +260,9 @@ const AddCompetition = () => {
             <label className="text-dark">
               <p className="mb-1">Tech Stack</p>
               <PromptStyle
-                keywords={competitionData.techStack}
-                setKeywords={(techStack) =>
-                  setCompetitionData((prev) => ({ ...prev, techStack }))
+                keywords={competitionData.techStacks}
+                setKeywords={(techStacks) =>
+                  setCompetitionData((prev) => ({ ...prev, techStacks }))
                 }
               />
             </label>

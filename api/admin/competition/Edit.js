@@ -6,11 +6,11 @@ const EditCompetitionApi = async ({
   cover,
   name,
   isIndividu,
-  selectedCategories,
+  categories,
   deadline,
   maxMembers,
   price,
-  techStack,
+  techStacks,
   description,
   guideBookLink,
   criteria,
@@ -21,11 +21,11 @@ const EditCompetitionApi = async ({
     cover && formData.append("cover", cover);
     formData.append("name", name);
     formData.append("isIndividu", isIndividu);
-    formData.append("categories", JSON.stringify(selectedCategories));
+    formData.append("categories", JSON.stringify(categories));
     formData.append("deadline", deadline);
     formData.append("maxMembers", maxMembers);
     formData.append("price", price);
-    formData.append("techStacks", JSON.stringify(techStack));
+    formData.append("techStacks", JSON.stringify(techStacks));
     formData.append("description", description);
     formData.append("guideBookLink", guideBookLink);
     formData.append("criteria", JSON.stringify(criteria));
