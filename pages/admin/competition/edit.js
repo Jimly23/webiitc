@@ -107,7 +107,7 @@ const EditCompetition = ({ categories, competition }) => {
       deadline,
       maxMembers: parseInt(maxMembers),
       price: htm,
-      techStack: stacks,
+      techStacks: stacks,
       description,
       guideBookLink: guidebook,
       criteria: juknis,

@@ -8,7 +8,7 @@ const CreateCompetitionApi = async (competitionData) => {
   }
 
   const formData = new FormData();
-  console.log(formData);
+
   if (competitionData.cover) {
     formData.append("cover", competitionData.cover);
   }
@@ -21,8 +21,10 @@ const CreateCompetitionApi = async (competitionData) => {
           ? JSON.stringify(value)
           : value;
       formData.append(key, formattedValue);
+      console.log(formattedValue);
     }
   });
+  console.log(formData);
 
   try {
     const { data } = await axios.post(urlGetCompetitions, formData, {
