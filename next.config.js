@@ -4,17 +4,8 @@ const nextConfig = {
   images: {
     domains: ["via.placeholder.com"],
   },
-  // async rewrites() {
-  //   return [
-  //     {
-  //       source: "/api/:path*",
-  //       destination: "http://localhost:8000/api/:path*",
-  //     },
-  //   ];
-  // },
-
   compiler: {
-    removeConsole: process.env.NODE_ENV === "production", // Hanya aktif di production
+    removeConsole: process.env.NODE_ENV === "production", // Hanya nonaktifkan log di production
   },
 };
 
@@ -34,3 +25,6 @@ module.exports = withSentryConfig(module.exports, {
   disableLogger: true,
   automaticVercelMonitors: true,
 });
+
+// Menambahkan log untuk memastikan environment
+console.log(`Running in ${process.env.NODE_ENV} mode`);
