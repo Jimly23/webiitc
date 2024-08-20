@@ -246,8 +246,8 @@ const TeamPage = () => {
     return team.isActive == null || team.isActive == "INVALID";
   };
   const currentDate = new Date();
-  const startDate = new Date("2023-09-01");
-  const endDate = new Date("2023-09-23");
+  const startDate = new Date("2024-08-19");
+  const endDate = new Date("2024-09-30");
   return (
     <>
       {/* submit */}
