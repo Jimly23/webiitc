@@ -251,8 +251,23 @@ export default Payment;
 
 const paymentMethods = [
   {
-    img: "https://upload.wikimedia.org/wikipedia/commons/a/ad/Bank_Mandiri_logo_2016.svg",
-    value: "1800011997048",
-    an: "an PUTRI OKTAVIANINGSIH",
+    img: "https://upload.wikimedia.org/wikipedia/commons/7/72/Logo_dana_blue.svg",
+    value: "085641446522",
+    an: "an Julia Ningsih",
+  },
+  {
+    img: "https://upload.wikimedia.org/wikipedia/commons/8/86/Gopay_logo.svg",
+    value: "085641446522",
+    an: "an Julia Ningsih",
+  },
+  {
+    img: "https://static.promediateknologi.id/crop/0x0:0x0/0x0/webp/photo/p2/01/2024/02/04/2-shopeepay-rectangle-orange2-1208029004.png",
+    value: "085641446522",
+    an: "an Julia Ningsih",
+  },
+  {
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Bank_Mandiri_logo_2016.svg/213px-Bank_Mandiri_logo_2016.svg.png",
+    value: "1380021420455",
+    an: "an Ani Musarofah",
   },
 ];
