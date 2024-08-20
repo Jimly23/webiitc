@@ -507,39 +507,54 @@ const TeamPage = () => {
                   </ul>
                 </div>
 
-                {team?.isActive === null && (
-                  <Button
-                    onClick={() => handleOpenSubmit()}
-                    isSquare
-                    color={"oren"}
-                    additionals={"w-full mt-3"}
-                  >
-                    Bayar Sekarang
-                  </Button>
-                )}
-                {team?.isActive === "PENDING" && (
-                  <Button
-                    disabled
-                    isSquare
-                    color={"oren"}
-                    additionals={"w-full mt-3"}
-                  >
-                    Pembayaran sedang di proses
-                  </Button>
-                )}
-                {team?.isActive === "VALID" && (
-                  <Button
-                    disabled={team?.isActive == "VALID" && isSubmissionOpen}
-                    onClick={() => handleOpenSubmit()}
-                    isSquare
-                    color={"oren"}
-                    additionals={"w-full mt-3"}
-                  >
-                    {team.isSubmit && !isSubmissionOpen
-                      ? "Submission 15 September"
-                      : "Submit"}
-                  </Button>
-                )}
+                <Button
+                  disabled={
+                    team?.isActive === "PENDING" || // Disable jika status "PENDING"
+                    (team?.isActive === "VALID" &&
+                      new Date() > new Date("2024-09-15") && // Disable jika sudah lewat tanggal 15
+                      !isSubmissionOpen &&
+                      new Date() <= new Date("2024-09-15")) // Disable jika submission belum dibuka sebelum 15 September
+                  }
+                  onClick={() => {
+                    if (
+                      team?.isActive === null ||
+                      team?.isActive === "INVALID"
+                    ) {
+                      handleOpenSubmit(); // Bayar Sekarang
+                    } else if (
+                      team?.isActive === "VALID" &&
+                      isSubmissionOpen &&
+                      !team.isSubmit
+                    ) {
+                      handleOpenSubmit(); // Submit
+                    } else if (
+                      team?.isActive === "VALID" &&
+                      isSubmissionOpen &&
+                      team.isSubmit
+                    ) {
+                      handleEditSubmit(); // Edit Submit
+                    }
+                  }}
+                  isSquare
+                  color={"oren"}
+                  additionals={"w-full mt-3"}
+                >
+                  {team?.isActive === null || team?.isActive === "INVALID"
+                    ? "Bayar Sekarang"
+                    : team?.isActive === "PENDING"
+                    ? "Pembayaran sedang di proses"
+                    : team?.isActive === "VALID" && new Date() > endDate
+                    ? "Submission Ditutup"
+                    : team?.isActive === "VALID" &&
+                      !isSubmissionOpen &&
+                      new Date() <= new Date("2024-09-15")
+                    ? "Submission 15 September"
+                    : team?.isActive === "VALID" &&
+                      isSubmissionOpen &&
+                      team.isSubmit
+                    ? "Edit Submit"
+                    : "Submit"}
+                </Button>
               </div>
             </div>
           )}
