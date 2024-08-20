@@ -23,17 +23,17 @@ const SupportSection = () => {
       <h2 className="flex items-center justify-center my-10 gap-3">
         <AiFillHeart className="text-green-500" /> Support by :{" "}
       </h2>
-      <div className="">
-        <Slider {...settings} className="">
+      <div className="flex items-center justify-center">
           <div className="w-20 flex justify-center items-center py-2">
             <Image
-              src="/images/Sponsor/grab.png"
+              src="/images/Sponsor/Mieayam.jpg"
               alt="sponsorship1"
-              className="h-16 object-contain  w-full"
+              className="h-18 object-contain  w-full"
               width={1600}
               height={1600}
             />
           </div>
+        {/* <Slider {...settings} className="">
           <div className="w-20 flex justify-center items-center py-2">
             <Image
               src="/images/Sponsor/pusko.png"
@@ -70,7 +70,7 @@ const SupportSection = () => {
               height={1600}
             />
           </div>
-        </Slider>
+        </Slider> */}
       </div>
     </div>
   );
