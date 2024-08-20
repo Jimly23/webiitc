@@ -248,6 +248,8 @@ const TeamPage = () => {
   const currentDate = new Date();
   const startDate = new Date("2024-08-19");
   const endDate = new Date("2024-09-30");
+  const submissionOpenDate = new Date("2024-09-15");
+  const isSubmissionOpen = currentDate >= submissionOpenDate;
   return (
     <>
       {/* submit */}
@@ -505,18 +507,39 @@ const TeamPage = () => {
                   </ul>
                 </div>
 
-                <Button
-                  disabled={
-                    team?.isActive == "VALID" &&
-                    (currentDate < startDate || currentDate > endDate)
-                  }
-                  onClick={() => handleOpenSubmit()}
-                  isSquare
-                  color={"oren"}
-                  additionals={"w-full mt-3"}
-                >
-                  {team.isSubmit ? "Submission telah di tutup" : "Submit"}
-                </Button>
+                {team?.isActive === null && (
+                  <Button
+                    onClick={() => handleOpenSubmit()}
+                    isSquare
+                    color={"oren"}
+                    additionals={"w-full mt-3"}
+                  >
+                    Bayar Sekarang
+                  </Button>
+                )}
+                {team?.isActive === "PENDING" && (
+                  <Button
+                    disabled
+                    isSquare
+                    color={"oren"}
+                    additionals={"w-full mt-3"}
+                  >
+                    Pembayaran sedang di proses
+                  </Button>
+                )}
+                {team?.isActive === "VALID" && (
+                  <Button
+                    disabled={team?.isActive == "VALID" && isSubmissionOpen}
+                    onClick={() => handleOpenSubmit()}
+                    isSquare
+                    color={"oren"}
+                    additionals={"w-full mt-3"}
+                  >
+                    {team.isSubmit && !isSubmissionOpen
+                      ? "Submission 15 September"
+                      : "Submit"}
+                  </Button>
+                )}
               </div>
             </div>
           )}

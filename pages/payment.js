@@ -262,7 +262,7 @@ const paymentMethods = [
   },
   {
     img: "https://static.promediateknologi.id/crop/0x0:0x0/0x0/webp/photo/p2/01/2024/02/04/2-shopeepay-rectangle-orange2-1208029004.png",
-    value: "085641446522",
+    value: "085647706584",
     an: "an Julia Ningsih",
   },
   {
