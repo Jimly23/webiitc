@@ -53,7 +53,7 @@ const CompetitonCard = ({
       <div className="absolute left-5 top-5 rounded-full bg-white px-4 pt-2 pb-1">
         <Text
           size={"smalltitle"}
-          additionals={"text-orange-400"}
+          additionals={"text-slate-800"}
           weight={"semi"}
         >
           {title}
