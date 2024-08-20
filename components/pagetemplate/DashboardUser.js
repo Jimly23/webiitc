@@ -14,14 +14,31 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { FiX } from "react-icons/fi";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
+
 const DashboardUserTemplate = ({ title, children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const router = useRouter();
+  const pathname = router.pathname;
+
   const handleLogout = () => {
     Cookies.remove("token");
     router.replace("/login");
   };
+
+  const NAV = [
+    {
+      url: "/dashboard",
+      label: "Lomba",
+      icon: CgEditBlackPoint,
+    },
+    {
+      url: "/dashboard/profile",
+      label: "Profile",
+      icon: BiUserCircle,
+    },
+  ];
+
   return (
     <>
       <main className="bg-slate-200 w-full min-h-screen flex lg:flex-row flex-col">
@@ -51,23 +68,24 @@ const DashboardUserTemplate = ({ title, children }) => {
           />
           <hr className="border border-gray-400/10 w-full my-7" />
           <ul className="gap-3 flex flex-col w-full h-full">
-            <li className="w-full text-slate-600">
-              <Link href={"/dashboard"} className="flex items-center gap-3">
-                <CgEditBlackPoint /> <p>Lomba</p>
-              </Link>
-            </li>
-            <li className="w-full text-slate-600">
-              <Link
-                href={"/dashboard/profile"}
-                className="flex items-center gap-3"
-              >
-                <BiUserCircle /> <p>Profil</p>
-              </Link>
-            </li>
+            {NAV.map((item, index) => (
+              <li key={index} className="w-full text-slate-600">
+                <Link
+                  href={item.url}
+                  className={`${
+                    item.url === pathname
+                      ? "text-orange-500 bg-orange-100 p-2 rounded-md"
+                      : "p-2"
+                  } flex items-center gap-3`}
+                >
+                  <item.icon /> <p>{item.label}</p>
+                </Link>
+              </li>
+            ))}
             <hr className="border border-gray-400/10 w-full my-4" />
             <button
               onClick={handleLogout}
-              className="flex text-slate-600 items-center gap-3"
+              className="flex text-slate-600 items-center gap-3 hover:text-rose-500 px-3 hover:bg-rose-100 hover:border-rose-500 py-2 rounded-lg border border-slate-200 transition-all duration-200 ease-out"
             >
               <BiLogOutCircle />
               <p>Keluar</p>
