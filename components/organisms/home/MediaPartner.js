@@ -3,30 +3,30 @@ import React from "react";
 
 function MediaPartner() {
   const mediaPartnerLogo = [
-    {
-      logo : "/images/mediapartner/mediapt1.png",
-      alt : "medpart1"
-    },
-    {
-      logo : "/images/mediapartner/mediapt2.png",
-      alt : "medpart2"
-    },
-    {
-      logo : "/images/mediapartner/mediapt3.png",
-      alt : "medpart3"
-    },
-    {
-      logo : "/images/mediapartner/mediapt4.png",
-      alt : "medpart4"
-    },
+    // {
+    //   logo : "/images/mediapartner/mediapt1.png",
+    //   alt : "medpart1"
+    // },
+    // {
+    //   logo : "/images/mediapartner/mediapt2.png",
+    //   alt : "medpart2"
+    // },
+    // {
+    //   logo : "/images/mediapartner/mediapt3.png",
+    //   alt : "medpart3"
+    // },
+    // {
+    //   logo : "/images/mediapartner/mediapt4.png",
+    //   alt : "medpart4"
+    // },
     {
       logo : "/images/mediapartner/mediapt5.png",
       alt : "medpart5"
     },
-    {
-      logo : "/images/mediapartner/mediapt6.jpg",
-      alt : "medpart6"
-    },
+    // {
+    //   logo : "/images/mediapartner/mediapt6.jpg",
+    //   alt : "medpart6"
+    // },
     {
       logo : "/images/mediapartner/mediapt7.jpeg",
       alt : "medpart7"
