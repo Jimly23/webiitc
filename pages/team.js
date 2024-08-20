@@ -527,12 +527,6 @@ const TeamPage = () => {
                       !team.isSubmit
                     ) {
                       handleOpenSubmit(); // Submit
-                    } else if (
-                      team?.isActive === "VALID" &&
-                      isSubmissionOpen &&
-                      team.isSubmit
-                    ) {
-                      handleEditSubmit(); // Edit Submit
                     }
                   }}
                   isSquare
@@ -547,7 +541,7 @@ const TeamPage = () => {
                     ? "Submission Ditutup"
                     : team?.isActive === "VALID" &&
                       !isSubmissionOpen &&
-                      new Date() <= new Date("2024-09-15")
+                      new Date() <= isSubmissionOpen
                     ? "Submission 15 September"
                     : team?.isActive === "VALID" &&
                       isSubmissionOpen &&
