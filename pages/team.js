@@ -541,7 +541,7 @@ const TeamPage = () => {
                     ? "Submission Ditutup"
                     : team?.isActive === "VALID" &&
                       !isSubmissionOpen &&
-                      new Date() <= isSubmissionOpen
+                      new Date() <= new Date("2024-09-15")
                     ? "Submission 15 September"
                     : team?.isActive === "VALID" &&
                       isSubmissionOpen &&
@@ -622,13 +622,12 @@ const TeamPage = () => {
                   text={team.code}
                   onCopy={() => setCopied(true)}
                 >
-                  <Button className="relative group inline-flex justify-center items-center gap-x-3.5 text-center bg-white border hover:border-gray-300 shadow-sm font-mono text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition p-2 pl-4 dark:bg-slate-900 dark:border-gray-800 dark:hover:border-gray-600 dark:shadow-slate-700/[.7] dark:text-white dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800">
+                  <Button className="relative w-2/12 group inline-flex justify-center items-center gap-x-3.5 text-center bg-white border hover:border-gray-300 shadow-sm font-mono text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition p-2 pl-4 dark:bg-slate-900 dark:border-gray-800 dark:hover:border-gray-600 dark:shadow-slate-700/[.7] dark:text-white dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800">
                     {copied ? (
-                      <>
-                        <BiCheckCircle className="text-xl" />
-
-                        <p>Di Salin</p>
-                      </>
+                      <div className="w-full flex items-center gap-2ru">
+                        <BiCheckCircle />
+                        Di Salin
+                      </div>
                     ) : (
                       <>
                         <IoCopyOutline className="text-xl" />
