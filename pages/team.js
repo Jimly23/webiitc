@@ -86,7 +86,7 @@ const TeamPage = () => {
 
   //submit
   const [teamTitle, setTeamTitle] = useState("-");
-  const [submission, setSubmission] = useState(null);
+  const [submission, setSubmission] = useState("");
 
   useEffect(() => {
     setIsCsr(true);
@@ -109,7 +109,7 @@ const TeamPage = () => {
     GetDetailTeam({ id: teamId })
       .then((res) => {
         //console.log(res);
-        // console.log(res.data);
+        console.log(res.data);
         setTeam(res.data?.team);
         setIsHitTeam(false);
       })
@@ -203,7 +203,7 @@ const TeamPage = () => {
   };
   const handleOpenSubmit = () => {
     if (team.isActive == "VALID") {
-      setIsPaidOf(true);
+      setIsPaidOf(!isPaidOf);
       if (team.title) {
         setTeamTitle(team.title);
       }
@@ -245,6 +245,11 @@ const TeamPage = () => {
   const buttonBayar = () => {
     return team.isActive == null || team.isActive == "INVALID";
   };
+
+  const handlePayment = () => {
+    router.push(`/payment?i=${team.id}&sl=${cSlug}`);
+  };
+
   const currentDate = new Date();
   const startDate = new Date("2024-08-19");
   const endDate = new Date("2024-09-30");
@@ -289,7 +294,6 @@ const TeamPage = () => {
             type="text"
             title={"Link Submission"}
             value={submission}
-            defaultValue={submission}
             required={true}
             placeholder="Masukan link submission"
             onChange={(e) => setSubmission(e.target.value)}
@@ -520,23 +524,31 @@ const TeamPage = () => {
                       team?.isActive === null ||
                       team?.isActive === "INVALID"
                     ) {
-                      handleOpenSubmit(); // Bayar Sekarang
+                      handlePayment(); // Mengarah ke halaman pembayaran
                     } else if (
                       team?.isActive === "VALID" &&
                       isSubmissionOpen &&
                       !team.isSubmit
                     ) {
-                      handleOpenSubmit(); // Submit
+                      handleOpenSubmit(); // Mengarah ke modal submission baru
+                    } else if (
+                      team?.isActive === "VALID" &&
+                      isSubmissionOpen &&
+                      team.isSubmit
+                    ) {
+                      handleOpenSubmit(); // Mengarah ke modal edit submission
                     }
                   }}
                   isSquare
                   color={"oren"}
-                  additionals={"w-full mt-3"}
+                  additionals={`w-full mt-3 ${
+                    team?.isActive === "PENDING" ? "bg-orange-300" : ""
+                  }`}
                 >
                   {team?.isActive === null || team?.isActive === "INVALID"
                     ? "Bayar Sekarang"
                     : team?.isActive === "PENDING"
-                    ? "Pembayaran sedang di proses"
+                    ? "Pembayaran  di proses"
                     : team?.isActive === "VALID" && new Date() > endDate
                     ? "Submission Ditutup"
                     : team?.isActive === "VALID" &&
