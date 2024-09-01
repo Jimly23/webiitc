@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 
 const InputPhotoIdentity = ({ photo, setPhoto, initialPhotoUrl }) => {
@@ -14,9 +14,6 @@ const InputPhotoIdentity = ({ photo, setPhoto, initialPhotoUrl }) => {
         const newFile = new File([acceptedFiles[0]], renameFile, {
           type: acceptedFiles[0].type,
         });
-        // console.log(`Original file name: ${originalFileName}`);
-        // console.log(`Sanitized file name: ${renameFile}`);
-        // console.log(`initialPhotoUrl  : ${initialPhotoUrl}`);
         setPhoto(
           Object.assign(newFile, {
             preview: URL.createObjectURL(newFile),
@@ -29,12 +26,13 @@ const InputPhotoIdentity = ({ photo, setPhoto, initialPhotoUrl }) => {
   });
 
   useEffect(() => {
-    if (photo) {
-      URL.revokeObjectURL(photo.preview);
-    }
-  }, [initialPhotoUrl, photo, setPhoto]);
+    return () => {
+      if (photo && photo.preview) {
+        URL.revokeObjectURL(photo.preview);
+      }
+    };
+  }, [photo]);
 
-  // If photo is not set but initialPhotoUrl is available, set the initialPhotoUrl as photo
   useEffect(() => {
     if (!photo && initialPhotoUrl) {
       setPhoto({ preview: initialPhotoUrl });
@@ -48,14 +46,15 @@ const InputPhotoIdentity = ({ photo, setPhoto, initialPhotoUrl }) => {
     >
       <input {...getInputProps()} />
       <p className="text-start">
-        {isDragActive ? <span>Letakan disini</span> : <span>Pilih File</span>}
+        {isDragActive
+          ? "Drop the files here..."
+          : "Drag & drop an image or click to select one"}
       </p>
-      {photo && (
+      {photo && photo.preview && (
         <img
-          src={photo.preview ? photo.preview : initialPhotoUrl}
-          onLoad={() => photo.preview && URL.revokeObjectURL(photo.preview)}
-          className="h-24 w-auto"
-          alt="New Preview"
+          src={photo.preview}
+          alt="Preview"
+          className="w-32 h-32 object-cover rounded-full"
         />
       )}
     </div>

@@ -34,9 +34,6 @@ export async function getServerSideProps(context) {
     };
   }
 
-  // Lanjutkan eksekusi jika token tersedia
-  // ...
-
   return {
     props: {},
   };
@@ -164,11 +161,6 @@ function Profile() {
         <p>{message}</p>
       </Alert>
       <Alert onClose={() => setIsWrong(false)} isOpen={isWrong}>
-        {/* {isWrong ? (
-          <AiOutlineCloseCircle className="text-red text-xl" />
-        ) : (
-          <AiOutlineLoading3Quarters className="text-red text-xl animate-spin" />
-        )} */}
         {isWrong ? (
           errorMessage ? (
             <p className="text-red text-xl">{errorMessage}</p>
@@ -195,7 +187,7 @@ function Profile() {
             <h1 className="text-2xl font-semibold">Profile</h1>
           </div>
         </DashboardCard>
-        <div className="px-10 rounded-lg bg-white p-5 w-11/12 flex flex-col gap-2 mx-auto">
+        <div className="px-10 rounded-lg bg-white p-2 pb-5 w-11/12 flex flex-col gap-2 mx-auto">
           {loading ? (
             <div className="flex justify-center items-center w-full h-full">
               <p>Loading...</p>
@@ -263,19 +255,6 @@ function Profile() {
                 initialPhotoUrl={avatar}
               />
 
-              {/* <Text>
-                Foto Identitas <span className="text-rose-600">*</span>
-                <span className="text-xs italic font-thin">
-                  (JPG,PNG,JPEG)
-                </span>{" "}
-                <span className="text-xs">- KTM/Kartu Pelajar</span>
-              </Text>
-              <InputPhotoIdentity
-                photo={photoIdentity}
-                setPhoto={setPhotoIdentity}
-                initialPhotoUrl={photoIdentity}
-              /> */}
-
               <Text>
                 Twibbon <span className="text-rose-600">*</span>
                 <span className="text-xs italic font-thin">
@@ -290,7 +269,13 @@ function Profile() {
                 setPhoto={setTwibbon}
                 initialPhotoUrl={twibbon}
               />
-
+              <div className="p-3 border rounded-lg my-3 flex items-center border-orange-500 bg-orange-50 text-orange-500 font-medium ">
+                kolom dengan tanda
+                <span className="text-rose-600 mx-1 font-bold  bg-orange-100 rounded w-1 p-1 flex items-center justify-center h-1">
+                  *
+                </span>
+                wajib di isi
+              </div>
               <div className="flex gap-4">
                 <button
                   onClick={handleCancel}
