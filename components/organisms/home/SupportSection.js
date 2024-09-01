@@ -23,63 +23,54 @@ const SupportSection = () => {
       <h2 className="flex items-center justify-center my-10 gap-3">
         <AiFillHeart className="text-green-500" /> Support by :{" "}
       </h2>
-      <div className="flex items-center justify-center gap-x-20">
-          <div className="w-20 flex justify-center items-center py-2">
-            <Image
-              src="/images/Sponsor/Mieayam.jpg"
-              alt="sponsorship1"
-              className="h-18 object-contain  w-full"
-              width={1600}
-              height={1600}
-            />
-          </div>
-          <div className="w-40 flex justify-center items-center py-2">
-            <Image
-              src="/images/Sponsor/pusko.png"
-              alt="sponsorship1"
-              className="h-18 object-contain  w-full"
-              width={1600}
-              height={1600}
-            />
-          </div>
-        {/* <Slider {...settings} className="">
-          <div className="w-20 flex justify-center items-center py-2">
-            <Image
-              src="/images/Sponsor/pusko.png"
-              alt="sponsorship2"
-              className="h-16 object-contain w-full"
-              width={1600}
-              height={1600}
-            />
-          </div>
+      <div className="">
+        <Slider {...settings} className="">
           <div className="w-20 flex justify-center items-center py-2 ">
             <Image
-              src="/images/Sponsor/endra.png"
+              src="/images/Sponsor/Mieayam.jpg"
               alt="sponsorship3"
               className="h-16 object-contain   w-full "
               width={1600}
               height={1600}
             />
           </div>
-          <div className="w-20 flex justify-center items-center py-2 mx-auto">
+          <div className="w-14 flex justify-center items-center py-2 mx-auto">
             <Image
-              src="/images/Sponsor/owb.png"
+              src="/images/Sponsor/rumahweb.png"
               alt="sponsorship4"
-              className="h-16 object-contain   w-full"
+              className="h-12 object-contain   w-full"
+              width={1600}
+              height={1600}
+            />
+          </div>
+          <div className="w-14 flex justify-center items-center py-2 mx-auto">
+            <Image
+              src="/images/Sponsor/dicoding.png"
+              alt="sponsorship5"
+              className="h-12 object-contain   w-full"
               width={1600}
               height={1600}
             />
           </div>
           <div className="w-20 flex justify-center items-center py-2 mx-auto">
             <Image
-              src="/images/Sponsor/kankuy.svg"
+              src="/images/Sponsor/purbasari.jpeg"
               alt="sponsorship5"
               className="h-16 object-contain   w-full"
               width={1600}
               height={1600}
             />
           </div>
-        </Slider> */}
+          <div className="w-20 flex justify-center items-center py-2 mx-auto">
+            <Image
+              src="/images/Sponsor/sanggaluri.png"
+              alt="sponsorship5"
+              className="h-16 object-contain   w-full"
+              width={1600}
+              height={1600}
+            />
+          </div>
+        </Slider>
       </div>
     </div>
   );
