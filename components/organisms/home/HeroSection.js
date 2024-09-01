@@ -11,26 +11,13 @@ import NavLink from "@/components/molecules/NavLink";
 import NavItem from "@/components/molecules/NavItem";
 const HeroSection = () => {
   return (
-    <section id="hero" className="relative overflow-hidden h-screen mt-20">
-      <div className="absolute inset-0 -z-10">
+    <section id="hero" className="relative overflow-hidden ">
+      <div className="absolute inset-0 -z-10 opacity-40 md:opacity-50  lg:hidden">
         <HeroBackground />
       </div>
-
-      <div className="pattern-mobile block md:hidden absolute -z-10 -left-[200px] ">
-        <Image
-          height={1080}
-          src={"/images/Website/patternMobile.png"}
-          width={1920}
-          alt="Hero Background"
-          priority
-          className=" w-[2000px] object-cover object-no-repeat h-screen max-h-screen mt-20 object-left  lg:object-center  "
-        />
-      </div>
-
       <Container className="flex flex-col-reverse lg:flex-row h-[90vh] items-center justify-center z-10">
         <Navbar />
-
-        <div className="w-11/12 mx-auto my-20 mt-[200px] sm:mt-[200px] md:mt-[300px] flex flex-col xl:mt-20  md:flex-row  md:items-center ">
+        <div className="w-11/12 mx-auto my-20 mt-[200px] sm:mt-[200px] md:mt-[300px] flex flex-col xl:mt-10  md:flex-row  md:items-center ">
           <motion.div
             initial={{ opacity: 0, y: 20 }} // added y here
             animate={{ opacity: 1, y: 0 }} // and here
@@ -77,7 +64,10 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          <div className="flex w-full h-full justify-center max-w-3xl">
+          <div className="flex w-full h-full justify-center max-w-3xl ">
+            <div className="absolute inset-0 -z-10 hidden   right-10 lg:block">
+              <HeroBackground />
+            </div>
             <motion.div
               initial={{ opacity: 0, x: 200 }}
               whileInView={{ opacity: 1, x: 0 }}
