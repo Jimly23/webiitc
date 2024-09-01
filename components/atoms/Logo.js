@@ -4,8 +4,8 @@ import React from "react";
 const Logo = ({ children }) => {
   return (
     <Image
-      className="w-20 p-2"
-      src="/images/LOGO/LOGOFIX2024.png"
+      className="w-24 p-2"
+      src="/images/LOGO/logonew.png"
       width={900}
       height={900}
       alt="Logo IIT Competition"

@@ -5,11 +5,11 @@ const HeroBackground = () => {
   return (
     <Image
       height={1080}
-      src={"/images/Website/patternHero.svg"}
+      src={"/images/pattern.png"}
       width={1920}
       alt="Hero Background"
       priority
-      className="w-full object-cover object-no-repeat h-screen max-h-screen  object-left  lg:object-center  "
+      className="w-full object-cover object-no-repeat h-screen max-h-screen lg:object-right lg:object-contain  "
     />
   );
 };
