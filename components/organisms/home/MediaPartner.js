@@ -43,6 +43,10 @@ function MediaPartner() {
       logo : "/images/mediapartner/mediapt10.png",
       alt : "medpart10"
     },
+    {
+      logo : "/images/mediapartner/mediapt12.png",
+      alt : "medpart12"
+    },
   ]
   return (
     <div>
