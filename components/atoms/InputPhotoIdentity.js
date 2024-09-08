@@ -44,7 +44,7 @@ const InputPhotoIdentity = ({ photo, setPhoto, initialPhotoUrl }) => {
   return (
     <div
       {...getRootProps()}
-      className=" p-2 border rounded-2xl md:w-52 flex flex-col items-center gap-2 cursor-pointer hover:bg-gray-100"
+      className=" p-2 border rounded-2xl w-full my-3 flex flex-col items-center gap-2 cursor-pointer hover:bg-gray-100"
     >
       <input {...getInputProps()} />
       {/* hide when no photo */}
@@ -59,7 +59,7 @@ const InputPhotoIdentity = ({ photo, setPhoto, initialPhotoUrl }) => {
         <img
           src={photo.preview || photo} // Display preview or the direct URL
           alt="Preview"
-          className="md:h-52 h-full md:w-52 w-full object-cover rounded-xl"
+          className="h-52  w-52 object-cover rounded-xl"
         />
       )}
     </div>

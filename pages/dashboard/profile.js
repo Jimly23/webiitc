@@ -278,41 +278,34 @@ function Profile() {
               />
 
               <InputRadio gender={gender} setGender={setGender} />
-              <div className="flex flex-col md:flex-row gap-3 items-start mt-5">
-                <div>
-                  <Text>
-                    Avatar <span className="text-rose-600">*</span>
-                    <span className="text-xs italic font-thin">
-                      (JPG,PNG,JPEG)
-                    </span>
-                  </Text>
-                  <InputPhotoIdentity
-                    photo={avatar}
-                    setPhoto={setAvatar}
-                    initialPhotoUrl={avatar}
-                  />
-                  <Text additionals={"mb-3 md:max-w-[200px] flex flex-col"}>
-                    <span className="text-xs"> Bebas sopan</span>
-                  </Text>
-                </div>
-                <div>
-                  <Text>
-                    Twibbon <span className="text-rose-600">*</span>
-                    <span className="text-xs italic font-thin">
-                      (JPG,PNG,JPEG)
-                    </span>{" "}
-                  </Text>
-                  <InputPhotoIdentity
-                    photo={twibbon}
-                    setPhoto={setTwibbon}
-                    initialPhotoUrl={twibbon}
-                  />
-                  <Text additionals={"mb-3 flex flex-col md:max-w-[200px]"}>
-                    <span className="text-xs">
-                      hasil screenshot setelah upload di social media
-                    </span>
-                  </Text>
-                </div>
+              <div>
+                <Text>
+                  Avatar <span className="text-rose-600">*</span>{" "}
+                  <span className="text-xs italic font-thin">
+                    (JPG,PNG,JPEG)
+                  </span>
+                  <span className="text-xs">- Bebas sopan</span>
+                </Text>
+                <InputPhotoIdentity
+                  photo={avatar}
+                  setPhoto={setAvatar}
+                  initialPhotoUrl={avatar}
+                />
+
+                <Text>
+                  Twibbon <span className="text-rose-600">*</span>
+                  <span className="text-xs italic font-thin">
+                    (JPG,PNG,JPEG)
+                  </span>{" "}
+                  <span className="text-xs">
+                    - hasil screenshot setelah upload di social media
+                  </span>
+                </Text>
+                <InputPhotoIdentity
+                  photo={twibbon}
+                  setPhoto={setTwibbon}
+                  initialPhotoUrl={twibbon}
+                />
               </div>
               <div className="p-3 border rounded-lg my-3 flex items-center border-orange-500 bg-orange-50 text-orange-500 font-medium ">
                 kolom dengan tanda
