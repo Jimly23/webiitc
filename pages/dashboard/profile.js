@@ -62,6 +62,7 @@ function Profile() {
   useEffect(() => {
     GetDetailUser()
       .then(async (res) => {
+        console.log("data user : ", res.data);
         const user = res.data.user;
         setUserData(user || "");
         setName(user.name || "");
@@ -88,7 +89,7 @@ function Profile() {
 
       .catch((err) => {
         if (err.message) {
-          setErrorMessage(err.message);
+          console.log(err.message);
         }
         console.log(err);
       });
@@ -96,13 +97,46 @@ function Profile() {
 
   const handleSave = async () => {
     setSimpan(true);
-    if (!name || !email || !phone || !grade || !gender) {
-      console.error("Some fields must be filled");
-      setMessage("Some fields must be filled");
+    // Reset previous error states
+    setIsWrong(false);
+    setMessage("");
+
+    if (!grade.trim()) {
+      setMessage("Status harus dipilih.");
       setIsWrong(true);
       setSimpan(false);
       return;
     }
+
+    if (!gender.trim()) {
+      setMessage("Jenis kelamin harus dipilih.");
+      setIsWrong(true);
+      setSimpan(false);
+      return;
+    }
+
+    if (!institution.trim()) {
+      setMessage("Instansi atau nama jenjang pendidikan harus diisi.");
+      setIsWrong(true);
+      setSimpan(false);
+      return;
+    }
+
+    if (avatar && avatar.size > 3 * 1024 * 1024) {
+      setMessage("Ukuran file avatar tidak boleh lebih dari 3MB.");
+      setIsWrong(true);
+      setSimpan(false);
+      return;
+    }
+
+    if (twibbon && twibbon.size > 3 * 1024 * 1024) {
+      setMessage("Ukuran file twibbon tidak boleh lebih dari 3MB.");
+      setIsWrong(true);
+      setSimpan(false);
+      return;
+    }
+
+    // Jika semua validasi berhasil, lakukan permintaan API ke backend
     try {
       const data = {
         fullName: name,
@@ -111,26 +145,25 @@ function Profile() {
         grade: grade,
         gender: gender,
         avatar: avatar,
-        studentId: studentId,
+        studentId: studentId || "-",
         institution: institution,
         photoIdentity: photoIdentity,
         twibbon: twibbon,
       };
 
       const response = await EditUser(data);
-      // console.log(response.message);
       if (response.status == 1) {
         setIsSucces(true);
-        setMessage(response.message);
+        setMessage("Profil berhasil diperbarui.");
       } else if (response.status == 0) {
         setIsWrong(true);
-        setMessage(response.message);
+        setMessage("Terjadi kesalahan saat menyimpan data.");
       }
-    } catch (response) {
-      console.error(error);
+    } catch (error) {
       setIsWrong(true);
-      setMessage(error.message);
+      setMessage("Terjadi kesalahan pada server.");
     }
+
     setSimpan(false);
   };
 
@@ -226,7 +259,7 @@ function Profile() {
                 setGrade={setGrade}
               />
               <InputTitle
-                required={false}
+                required={true}
                 title={"Nama Jenjang Pendidikan / Instansi "}
                 type="text"
                 placeholder={"Instansi, organisasi, umum"}
