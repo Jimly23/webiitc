@@ -25,6 +25,7 @@ const InputPhotoIdentity = ({ photo, setPhoto, initialPhotoUrl }) => {
     },
   });
 
+  // Clean up the URL.createObjectURL when the component unmounts
   useEffect(() => {
     return () => {
       if (photo && photo.preview) {
@@ -33,8 +34,9 @@ const InputPhotoIdentity = ({ photo, setPhoto, initialPhotoUrl }) => {
     };
   }, [photo]);
 
+  // Set the initial photo URL if available
   useEffect(() => {
-    if (!photo && initialPhotoUrl) {
+    if (initialPhotoUrl && !photo) {
       setPhoto({ preview: initialPhotoUrl });
     }
   }, [initialPhotoUrl, photo, setPhoto]);
@@ -42,19 +44,22 @@ const InputPhotoIdentity = ({ photo, setPhoto, initialPhotoUrl }) => {
   return (
     <div
       {...getRootProps()}
-      className="px-3 py-2 border rounded-lg w-full flex flex-col  items-center gap-2 cursor-pointer hover:bg-gray-100"
+      className=" p-2 border rounded-2xl md:w-52 flex flex-col items-center gap-2 cursor-pointer hover:bg-gray-100"
     >
       <input {...getInputProps()} />
-      <p className="text-start">
-        {isDragActive
-          ? "Drop the files here..."
-          : "Drag & drop an image or click to select one"}
-      </p>
-      {photo && photo.preview && (
+      {/* hide when no photo */}
+      {!photo && (
+        <p className="text-start">
+          {isDragActive
+            ? "Drop the files here..."
+            : "Drag & drop an image or click to select one"}
+        </p>
+      )}
+      {photo && (
         <img
-          src={photo.preview}
+          src={photo.preview || photo} // Display preview or the direct URL
           alt="Preview"
-          className="w-32 h-32 object-cover rounded-full"
+          className="md:h-52 h-full md:w-52 w-full object-cover rounded-xl"
         />
       )}
     </div>
