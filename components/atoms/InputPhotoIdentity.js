@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 
-const InputPhotoIdentity = ({ photo, setPhoto, initialPhotoUrl }) => {
+const InputPhotoIdentity = ({ photo, setPhoto, initialPhotoUrl, onError }) => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     accept: "image/*",
     onDrop: (acceptedFiles) => {
@@ -20,12 +20,14 @@ const InputPhotoIdentity = ({ photo, setPhoto, initialPhotoUrl }) => {
           })
         );
       } else {
-        console.warn("Invalid file type. Please upload an image file.");
+        // Call onError prop if file type is invalid
+        if (onError) {
+          onError("Invalid file type. Please upload an image file.");
+        }
       }
     },
   });
 
-  // Clean up the URL.createObjectURL when the component unmounts
   useEffect(() => {
     return () => {
       if (photo && photo.preview) {
@@ -34,7 +36,6 @@ const InputPhotoIdentity = ({ photo, setPhoto, initialPhotoUrl }) => {
     };
   }, [photo]);
 
-  // Set the initial photo URL if available
   useEffect(() => {
     if (initialPhotoUrl && !photo) {
       setPhoto({ preview: initialPhotoUrl });
@@ -44,10 +45,9 @@ const InputPhotoIdentity = ({ photo, setPhoto, initialPhotoUrl }) => {
   return (
     <div
       {...getRootProps()}
-      className=" p-2 border rounded-2xl w-full my-3 flex flex-col items-center gap-2 cursor-pointer hover:bg-gray-100"
+      className="p-2 border rounded-2xl w-full my-3 flex flex-col items-center gap-2 cursor-pointer hover:bg-gray-100"
     >
       <input {...getInputProps()} />
-      {/* hide when no photo */}
       {!photo && (
         <p className="text-start">
           {isDragActive
@@ -59,7 +59,7 @@ const InputPhotoIdentity = ({ photo, setPhoto, initialPhotoUrl }) => {
         <img
           src={photo.preview || photo} // Display preview or the direct URL
           alt="Preview"
-          className="h-52  w-52 object-cover rounded-xl"
+          className="h-52 w-52 object-cover rounded-xl"
         />
       )}
     </div>

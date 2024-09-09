@@ -102,6 +102,7 @@ function Profile() {
     setIsWrong(false);
     setMessage("");
 
+    // Validate input fields
     if (!grade.trim()) {
       setMessage("Status harus dipilih.");
       setIsWrong(true);
@@ -123,6 +124,7 @@ function Profile() {
       return;
     }
 
+    // Validate file sizes
     if (avatar && avatar.size > 3 * 1024 * 1024) {
       setMessage("Ukuran file avatar tidak boleh lebih dari 3MB.");
       setIsWrong(true);
@@ -137,21 +139,22 @@ function Profile() {
       return;
     }
 
-    // Jika semua validasi berhasil, lakukan permintaan API ke backend
-    try {
-      const data = {
-        fullName: name,
-        email: email,
-        phone: phone,
-        grade: grade,
-        gender: gender,
-        avatar: avatar,
-        studentId: studentId || "-",
-        institution: institution,
-        photoIdentity: photoIdentity,
-        twibbon: twibbon,
-      };
+    // Prepare data for submission
+    const data = {
+      fullName: name,
+      email: email,
+      phone: phone,
+      grade: grade,
+      gender: gender,
+      avatar: avatar || null, // Allow null if not provided
+      studentId: studentId || "-",
+      institution: institution,
+      photoIdentity: photoIdentity || null, // Allow null if not provided
+      twibbon: twibbon || null, // Allow null if not provided
+    };
 
+    // Submit data to the backend
+    try {
       const response = await EditUser(data);
       if (response.status == 1) {
         setIsSucces(true);
@@ -178,6 +181,11 @@ function Profile() {
   }, [isSucces, isWrong]);
   const handleCancel = () => {
     router.push("/dashboard"); // Redirect ke halaman dashboard
+  };
+
+  const handleFileError = (errorMessage) => {
+    setErrorMessage(errorMessage);
+    setIsWrong(true);
   };
 
   return (
@@ -290,6 +298,7 @@ function Profile() {
                   photo={avatar}
                   setPhoto={setAvatar}
                   initialPhotoUrl={avatar}
+                  onError={handleFileError}
                 />
 
                 <Text>
@@ -305,9 +314,10 @@ function Profile() {
                   photo={twibbon}
                   setPhoto={setTwibbon}
                   initialPhotoUrl={twibbon}
+                  onError={handleFileError}
                 />
               </div>
-              <div className="p-3 border rounded-lg my-3 flex items-center border-orange-500 bg-orange-50 text-orange-500 font-medium ">
+              <div className="p-3 border rounded-lg my-3 flex justify-start items-center border-orange-500 bg-orange-50 text-orange-500 font-medium ">
                 kolom dengan tanda
                 <span className="text-rose-600 mx-1 font-bold  bg-orange-100 rounded w-1 p-1 flex items-center justify-center h-1">
                   *
