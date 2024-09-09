@@ -11,13 +11,13 @@ import NavLink from "@/components/molecules/NavLink";
 import NavItem from "@/components/molecules/NavItem";
 const HeroSection = () => {
   return (
-    <section id="hero" className="relative overflow-hidden ">
+    <section id="hero" className="relative overflow-hidden lg:mt-24">
       <div className="absolute inset-0 -z-10 opacity-40 md:opacity-50  lg:hidden">
         <HeroBackground />
       </div>
       <Container className="flex flex-col-reverse lg:flex-row h-[90vh] items-center justify-center z-10">
         <Navbar />
-        <div className="w-11/12 mx-auto my-20 mt-[200px] sm:mt-[200px] md:mt-[300px] flex flex-col xl:mt-10  md:flex-row  md:items-center ">
+        <div className="w-11/12 mx-auto my-20 mt-[200px] sm:mt-[200px] md:mt-[300px] flex flex-col lg:mt-20  md:flex-row  md:items-center ">
           <motion.div
             initial={{ opacity: 0, y: 20 }} // added y here
             animate={{ opacity: 1, y: 0 }} // and here
@@ -29,12 +29,9 @@ const HeroSection = () => {
             }}
             className="font-black sm:min-w-[400px] text-center md:text-start text-slate-800 z-10 text-4xl md:text-3xl lg:text-5xl leading-10 w-11/12  md:w-6/12"
           >
-            <Text
-              color={"dark"}
-              additionals="hidden md:block mb-5 text-center w-[250px] border border-orange-500 py-1 rounded-full text-orange-500 bg-orange-100"
-            >
+            <div className=" text-center text-xs mx-auto md:mx-0 mb-5  w-fit px-3 border border-orange-500 py-1 rounded-full text-orange-500 bg-orange-100">
               National IT Competition
-            </Text>
+            </div>
             Tunjukan pada{" "}
             <p className="md:my-5">
               Dunia{" "}
