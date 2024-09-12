@@ -251,9 +251,9 @@ const TeamPage = () => {
   };
 
   const currentDate = new Date();
-  const startDate = new Date("2024-08-19");
-  const endDate = new Date("2024-09-30");
-  const submissionOpenDate = new Date("2024-09-15");
+
+  const endDate = new Date(process.env.END_DATE);
+  const submissionOpenDate = new Date(process.env.SUBMISSION_DATE);
   const isSubmissionOpen = currentDate >= submissionOpenDate;
   return (
     <>
@@ -515,9 +515,9 @@ const TeamPage = () => {
                   disabled={
                     team?.isActive === "PENDING" || // Disable jika status "PENDING"
                     (team?.isActive === "VALID" &&
-                      new Date() > new Date("2024-09-15") && // Disable jika sudah lewat tanggal 15
+                      new Date() > new Date(process.env.SUBMISSION_DATE) && // Disable jika sudah lewat tanggal 15
                       !isSubmissionOpen &&
-                      new Date() <= new Date("2024-09-15")) // Disable jika submission belum dibuka sebelum 15 September
+                      new Date() <= new Date(process.env.SUBMISSION_DATE)) // Disable jika submission belum dibuka sebelum 15 September
                   }
                   onClick={() => {
                     if (
