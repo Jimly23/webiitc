@@ -87,14 +87,13 @@ const TeamPage = () => {
   //submit
   const [teamTitle, setTeamTitle] = useState("-");
   const [submission, setSubmission] = useState("");
-
+  console.log(submission);
   useEffect(() => {
     setIsCsr(true);
     if (teamId) {
       getDetailTeam();
       setEmail(Cookies.get("email"));
     }
-
     if (cSlug) {
       setIsHitCompetition(true);
       GetDetailCompetitionsApi({ slug: cSlug }).then((res) => {
@@ -108,7 +107,7 @@ const TeamPage = () => {
     setIsHitTeam(true);
     GetDetailTeam({ id: teamId })
       .then((res) => {
-        //console.log(res);
+        console.log(res);
         console.log(res.data);
         setTeam(res.data?.team);
         setIsHitTeam(false);
@@ -207,8 +206,8 @@ const TeamPage = () => {
       if (team.title) {
         setTeamTitle(team.title);
       }
-      if (team.submission) {
-        setSubmission(team.submission);
+      if (team.submissionLink) {
+        setSubmission(team.submissionLink);
       }
     } else {
       setIsAlert(true);
@@ -252,8 +251,8 @@ const TeamPage = () => {
 
   const currentDate = new Date();
 
-  const endDate = new Date(process.env.END_DATE);
-  const submissionOpenDate = new Date(process.env.SUBMISSION_DATE);
+  const endDate = new Date("2024-09-30");
+  const submissionOpenDate = new Date("2024-09-14");
   const isSubmissionOpen = currentDate >= submissionOpenDate;
   return (
     <>
@@ -515,9 +514,9 @@ const TeamPage = () => {
                   disabled={
                     team?.isActive === "PENDING" || // Disable jika status "PENDING"
                     (team?.isActive === "VALID" &&
-                      new Date() > new Date(process.env.SUBMISSION_DATE) && // Disable jika sudah lewat tanggal 15
+                      new Date() > new Date("2024-09-14") && // Disable jika sudah lewat tanggal 14
                       !isSubmissionOpen &&
-                      new Date() <= new Date(process.env.SUBMISSION_DATE)) // Disable jika submission belum dibuka sebelum 15 September
+                      new Date() <= new Date("2024-09-14")) // Disable jika submission belum dibuka sebelum 14 September
                   }
                   onClick={() => {
                     if (
@@ -553,8 +552,8 @@ const TeamPage = () => {
                     ? "Submission Ditutup"
                     : team?.isActive === "VALID" &&
                       !isSubmissionOpen &&
-                      new Date() <= new Date("2024-09-15")
-                    ? "Submission 15 September"
+                      new Date() <= new Date("2024-09-14")
+                    ? "Submission 14 September"
                     : team?.isActive === "VALID" &&
                       isSubmissionOpen &&
                       team.isSubmit
