@@ -29,7 +29,7 @@ const Signup = () => {
   const [isSucces, setIsSucces] = useState(false);
   const [Message, setMessage] = useState("");
   const [isUsed, setIsUsed] = useState(false);
-  const [isPopUp, setIsPopUp] = useState(false);
+  const [isPopUp, setIsPopUp] = useState(true);
   const router = useRouter();
   useEffect(() => {
     const token = Cookies.get("token");
@@ -95,7 +95,7 @@ const Signup = () => {
       <PopUp isModal={isPopUp} onClose={() => setIsPopUp(false)}>
         <div className="w-full flex flex-col items-center">
           <Image
-            src={"/images/LOGO/LOGOFIX.svg"}
+            src={"/images/LOGO/LOGOFIX2024.png"}
             alt="logo iitc"
             width={1080}
             height={1080}
