@@ -11,9 +11,10 @@ import { BiHomeAlt } from "react-icons/bi";
 import { BsFillPeopleFill } from "react-icons/bs";
 import { FiLock, FiPlus } from "react-icons/fi";
 import { MdArrowForwardIos } from "react-icons/md";
-import { getTwoChar } from "../team";
+import { getTwoChar, PopUp } from "../team";
 import Head from "next/head";
 import AlertGroup from "@/components/atoms/AlertGroup";
+import Image from "next/image";
 
 export async function getServerSideProps(context) {
   const token = context.req.cookies.token;
@@ -35,6 +36,7 @@ const DashboardUser = () => {
   const [teams, setTeams] = useState([]);
   const [email, setEmail] = useState("");
   const [isGrupShowing, setIsGrupShowing] = useState(false);
+  const [isPopUp, setIsPopUp] = useState(false);
   console.log(teams);
   const valid = Cookies.get("valid");
   useEffect(() => {
@@ -49,12 +51,37 @@ const DashboardUser = () => {
 
     setEmail(Cookies.get("email"));
   }, []);
+  const handleIsPopUp = (data) => {
+    setIsPopUp(data)
+  }
   return (
     <>
       <Head>
         <title>IITC Dashboard</title>
         <meta name="title" content="IITC Dashboard" />
       </Head>
+      <PopUp isModal={isPopUp} onClose={() => setIsPopUp(false)}>
+        <div className="w-full flex flex-col items-center">
+          <Image
+            src={"/images/LOGO/LOGOFIX2024.png"}
+            alt="logo iitc"
+            width={1080}
+            height={1080}
+            className="w-20"
+          />
+          <Text
+            size={"smalltitle"}
+            additionals={"my-3"}
+            color={"text-black"}
+            weight={"bold"}
+          >
+            Pendaftaran Ditutup
+          </Text>
+          <Text additionals={"text-center"}>
+            Pendaftaran untuk IIT Competition telah ditutup!
+          </Text>
+        </div>
+      </PopUp>
       <DashboardUserTemplate>
         {/* {valid == "false" && (
           <div className="w-full h-screen z-50 bg-black/40 fixed top-0 left-0 backdrop-blur-md flex justify-center items-center">
@@ -92,7 +119,7 @@ const DashboardUser = () => {
         </DashboardCard>
         <ul className="flex flex-col space-y-4">
           {teams?.length == 0 ? (
-            <EmptyTeam />
+            <EmptyTeam isPopUp={handleIsPopUp} />
           ) : (
             teams?.map((item, idx) => (
               <TeamCard
@@ -202,7 +229,7 @@ export const TeamCard = (props) => {
   );
 };
 
-export const EmptyTeam = () => {
+export const EmptyTeam = ({isPopUp}) => {
   return (
     <DashboardCard>
       <div className="w-full flex justify-center items-center  flex-col py-20">
@@ -213,9 +240,12 @@ export const EmptyTeam = () => {
           Kamu belum mengikuti lomba, segera daftarkan tim kamu dan jadilah
           juara!
         </p>
-        <Link href={"/#lomba"}>
+        <div onClick={()=>isPopUp(true)}>
           <Button>Daftar lomba</Button>
-        </Link>
+        </div>
+        {/* <Link href={"/#lomba"}>
+          <Button>Daftar lomba</Button>
+        </Link> */}
       </div>
     </DashboardCard>
   );
