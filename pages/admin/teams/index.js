@@ -52,7 +52,7 @@ export default function Teams() {
           namaKetua: item.leader?.name,
           emailKetua: item.leader?.email,
           linkSubmission: item.submission,
-          lomba: item?.cName,
+          lomba: item?.competitionName,
         };
         return d;
       });
