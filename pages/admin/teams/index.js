@@ -11,6 +11,7 @@ import Head from "next/head";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { BiHomeAlt } from "react-icons/bi";
+import { CgGlobeAlt } from "react-icons/cg";
 import { MdArrowForwardIos } from "react-icons/md";
 
 export default function Teams() {
@@ -37,26 +38,33 @@ export default function Teams() {
     // .catch((err) => //console.log(err));
     setEmail(Cookies.get("email"));
     GetAllTeamAdminApi().then((res) => {
-      console.log(res);
       setTeams(res.data?.teams);
       setFilteredTeams(res.data?.teams);
     });
   }, []);
   const filterTeams = () => {
-    if (selectedSubmission !== "all") {
-      let filter = teams.filter((team) => team.isSubmit === selectedSubmission);
-      setFilteredTeams(filter);
-      const dataa = filter.map((item) => {
+    const dataSubmission = (team) => {
+      const data = team.map((item) => {
         const d = {
           tim: item?.teamName,
           namaKetua: item.leader?.name,
           emailKetua: item.leader?.email,
-          linkSubmission: item.submission,
+          linkSubmission: item.submission ? item.submission : null,
           lomba: item?.competitionName,
         };
         return d;
-      });
-      setExportData(dataa);
+      })
+      setExportData(data)
+    }
+
+    if (selectedSubmission !== "all") {
+      let filter = teams.filter((team) => team.isSubmit === selectedSubmission);
+      setFilteredTeams(filter);
+      dataSubmission(filter)
+    } else if (selectedSubmission === "all") {
+      let allTeams = teams.map((team) => team)
+      setFilteredTeams(allTeams);
+      dataSubmission(allTeams)
     } else {
       setFilteredTeams(teams);
     }
