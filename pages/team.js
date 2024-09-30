@@ -30,6 +30,7 @@ import Link from "next/link";
 import StackCard from "@/components/atoms/StackCard";
 import LeftRightText from "@/components/molecules/LeftRightText";
 import InputTitle from "@/components/molecules/InputTitle";
+import confetti from "canvas-confetti";
 const userMail = Cookies.get("email");
 export async function getServerSideProps(context) {
   const token = context.req.cookies.token;
@@ -87,6 +88,43 @@ const TeamPage = () => {
   //submit
   const [teamTitle, setTeamTitle] = useState("-");
   const [submission, setSubmission] = useState("");
+
+  const handleConfetti = () => {
+    var duration = 5 * 1000;
+    var animationEnd = Date.now() + duration;
+    var skew = 1;
+
+    function randomInRange(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    (function frame() {
+      var timeLeft = animationEnd - Date.now();
+      var ticks = Math.max(200, 500 * (timeLeft / duration));
+      skew = Math.max(0.8, skew - 0.001);
+
+      confetti({
+        particleCount: 1,
+        startVelocity: 0,
+        ticks: ticks,
+        origin: {
+          x: Math.random(),
+          // since particles fall down, skew start toward the top
+          y: Math.random() * skew - 0.2,
+        },
+        colors: ["#FFA500", "#FFFF00"], // Oranye dan kuning
+        shapes: ["circle"],
+        gravity: randomInRange(0.4, 0.6),
+        scalar: randomInRange(0.4, 1),
+        drift: randomInRange(-0.4, 0.4),
+      });
+
+      if (timeLeft > 0) {
+        requestAnimationFrame(frame);
+      }
+    })();
+  };
+
   console.log(submission);
   useEffect(() => {
     setIsCsr(true);
@@ -510,7 +548,7 @@ const TeamPage = () => {
                   </ul>
                 </div>
 
-                <Button
+                {/* <Button
                   disabled={
                     team?.isActive === "PENDING" || // Disable jika status "PENDING"
                     (team?.isActive === "VALID" &&
@@ -559,6 +597,14 @@ const TeamPage = () => {
                       team.isSubmit
                     ? "Edit Submit"
                     : "Submit"}
+                </Button> */}
+                <Button
+                  onClick={handleConfetti}
+                  isSquare
+                  color={"oren"}
+                  additionals={"w-full mt-3"}
+                >
+                  Submission Ditutup 🎉
                 </Button>
               </div>
             </div>
