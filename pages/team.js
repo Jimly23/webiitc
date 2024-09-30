@@ -251,7 +251,7 @@ const TeamPage = () => {
 
   const currentDate = new Date();
 
-  const endDate = new Date("2024-09-30");
+  const endDate = new Date("2024-10-01");
   const submissionOpenDate = new Date("2024-09-14");
   const isSubmissionOpen = currentDate >= submissionOpenDate;
   return (
