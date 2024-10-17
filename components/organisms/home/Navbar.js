@@ -49,7 +49,7 @@ const Navbar = () => {
                 </button>
               </div>
             </nav>
-            <div className="hidden lg:block">
+            <div className="hidden">
               {token ? (
                 <Link href={"/dashboard"}>
                   <Button additionals={"w-full"}>Dashboard</Button>
@@ -77,7 +77,7 @@ const Navbar = () => {
           <NavLink target="#timeline">Timeline</NavLink>
           <NavLink target="#faq">FAQ</NavLink>
         </NavItem>
-        <div className="mt-4 w-full ">
+        <div className="mt-4 w-full hidden">
           {token ? (
             <Link href={"/dashboard"}>
               <Button additionals={"w-full"}>Dashboard</Button>

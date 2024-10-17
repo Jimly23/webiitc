@@ -41,7 +41,7 @@ const AboutSection = () => {
             </Text>
             <Countdown />
             <Link href={"/signup"}>
-              <Button size={"lg"} additionals={"w-60"}>
+              <Button size={"lg"} additionals={"w-60 hidden"}>
                 Daftar Sekarang
               </Button>
             </Link>

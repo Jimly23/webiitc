@@ -16,33 +16,32 @@ import SupportSection from "@/components/organisms/home/SupportSection";
 import MediaPartner from "@/components/organisms/home/MediaPartner";
 import MarqueeSection from "@/components/organisms/home/MarqueeSection";
 
+const competitionsDumy = [
+  {
+    categories: ["a", "b", "c"],
+    cover: "/images/Lomba/uiux.png",
+    maxMembers: 3,
+    name: "UI/UX",
+    slug: "dummy"
+  },
+  {
+    categories: ["a", "b", "c"],
+    cover: "/images/Lomba/html.png",
+    maxMembers: 3,
+    name: "Web Design",
+    slug: "dummy"
+  },
+  {
+    categories: ["a", "b", "c"],
+    cover: "/images/Lomba/astronot.png",
+    maxMembers: 3,
+    name: "Poster Digital",
+    slug: "dummy"
+  }
+]
 export async function getServerSideProps() {
-  const competitionsDumy = [
-    {
-      categories: ["a", "b", "c"],
-      cover: "/images/bannerIitc.png",
-      maxMembers: 3,
-      name: "IITC 2024",
-      slug: "dummy"
-    },
-    {
-      categories: ["a", "b", "c"],
-      cover: "/images/bannerIitc.png",
-      maxMembers: 3,
-      name: "IITC 2024",
-      slug: "dummy"
-    },
-    {
-      categories: ["a", "b", "c"],
-      cover: "/images/bannerIitc.png",
-      maxMembers: 3,
-      name: "IITC 2024",
-      slug: "dummy"
-    }
-  ]
   try {
     const res = await GetCompetitionsApi();
-    console.log(res);
     
     if (res.status == 1) {
       const competitions = res.data?.competitions || [];
@@ -88,7 +87,7 @@ export default function Home({ competitions }) {
       <AboutSection />
       <SkemaSection />
       <CompetitionSection
-        competitions={competitions}
+        competitions={competitionsDumy}
         setCompetitionName={setCompetitionName}
         setIsCompetitionDetails={setIsCompetitionDetail}
       />

@@ -42,16 +42,16 @@ const Countdown = () => {
       {isMounted && (
         <>
           <div className="bg-silver/30 md:text-2xl font-bold px-3 py-4 rounded-xl text-dark">
-            {countdown.days}
+            {/* {countdown.days} */}0
           </div>
           <div className="bg-silver/30 md:text-2xl font-bold px-3 py-4 rounded-xl text-dark">
-            {countdown.hours}
+            {/* {countdown.hours} */}0
           </div>
           <div className="bg-silver/30 md:text-2xl font-bold px-3 py-4 rounded-xl text-dark">
-            {countdown.minutes}
+            {/* {countdown.minutes} */}0
           </div>
           <div className="bg-silver/30 md:text-2xl font-bold px-3 py-4 rounded-xl text-dark">
-            {countdown.seconds}
+            {/* {countdown.seconds} */}0
           </div>
         </>
       )}
