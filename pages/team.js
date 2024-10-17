@@ -30,7 +30,7 @@ import Link from "next/link";
 import StackCard from "@/components/atoms/StackCard";
 import LeftRightText from "@/components/molecules/LeftRightText";
 import InputTitle from "@/components/molecules/InputTitle";
-import confetti from "canvas-confetti";
+// import confetti from "canvas-confetti";
 const userMail = Cookies.get("email");
 export async function getServerSideProps(context) {
   const token = context.req.cookies.token;
@@ -103,21 +103,21 @@ const TeamPage = () => {
       var ticks = Math.max(200, 500 * (timeLeft / duration));
       skew = Math.max(0.8, skew - 0.001);
 
-      confetti({
-        particleCount: 1,
-        startVelocity: 0,
-        ticks: ticks,
-        origin: {
-          x: Math.random(),
-          // since particles fall down, skew start toward the top
-          y: Math.random() * skew - 0.2,
-        },
-        colors: ["#FFA500", "#FFFF00"], // Oranye dan kuning
-        shapes: ["circle"],
-        gravity: randomInRange(0.4, 0.6),
-        scalar: randomInRange(0.4, 1),
-        drift: randomInRange(-0.4, 0.4),
-      });
+      // confetti({
+      //   particleCount: 1,
+      //   startVelocity: 0,
+      //   ticks: ticks,
+      //   origin: {
+      //     x: Math.random(),
+      //     // since particles fall down, skew start toward the top
+      //     y: Math.random() * skew - 0.2,
+      //   },
+      //   colors: ["#FFA500", "#FFFF00"], // Oranye dan kuning
+      //   shapes: ["circle"],
+      //   gravity: randomInRange(0.4, 0.6),
+      //   scalar: randomInRange(0.4, 1),
+      //   drift: randomInRange(-0.4, 0.4),
+      // });
 
       if (timeLeft > 0) {
         requestAnimationFrame(frame);
