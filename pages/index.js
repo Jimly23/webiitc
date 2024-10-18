@@ -10,6 +10,7 @@ import {
 import Head from "next/head";
 import { useState } from "react";
 
+import competitionsStatic from "@/api/admin/competition/competitions.json";
 import GetCompetitionsApi from "@/api/homepage/GetCompetitionsApi";
 import Timeline from "@/components/organisms/home/Timeline";
 import SupportSection from "@/components/organisms/home/SupportSection";
@@ -41,7 +42,8 @@ const competitionsDumy = [
 ]
 export async function getServerSideProps() {
   try {
-    const res = await GetCompetitionsApi();
+    // const res = await GetCompetitionsApi();
+    const res = await competitionsStatic;
     
     if (res.status == 1) {
       const competitions = res.data?.competitions || [];
