@@ -1,0 +1,41 @@
+{
+  "status": 1,
+  "message": "Succeed get all competition",
+  "data": {
+    "competitions": [
+      {
+        "slug": "ui-ux",
+        "name": "UI/UX",
+        "cover": "https://api-iitc.intermediaamikom.org/competition/avatar/7jPWxifgxfrhg72khbMc5fLaueXdgu9Znjkj7hHl.png",
+        "maxMembers": 3,
+        "categories": [
+          {
+            "name": "Umum"
+          }
+        ]
+      },
+      {
+        "slug": "web-design",
+        "name": "Web Design",
+        "cover": "https://api-iitc.intermediaamikom.org/competition/avatar/XVYTP4GURfZ8wgzuS6naZwprFmJaRaPHBQi0FdEK.png",
+        "maxMembers": 3,
+        "categories": [
+          {
+            "name": "Umum"
+          }
+        ]
+      },
+      {
+        "slug": "poster-digital",
+        "name": "Poster Digital",
+        "cover": "https://api-iitc.intermediaamikom.org/competition/avatar/0nmcAUoBIbaZMORwlwCil1CaLVPmpreSLRHHkfUE.png",
+        "maxMembers": 1,
+        "categories": [
+          {
+            "name": "Umum"
+          }
+        ]
+      }
+    ]
+  }
+}
