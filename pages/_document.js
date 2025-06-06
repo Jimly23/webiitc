@@ -43,7 +43,7 @@ export default function Document() {
         />
 
         <link rel="icon" href="/logoicon.svg" type="image/svg" />
-        <meta name="description" content="IIT Competition 2023" key="desc" />
+        <meta name="description" content="IIT Competition 2025" key="desc" />
       </Head>
       <body className="font-poppins scroll-smooth scrollbar">
         <Main />

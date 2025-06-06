@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { BsHourglassSplit } from "react-icons/bs";
 
 const Countdown = () => {
-  const targetDate = new Date("September 14, 2024 23:59:59").getTime();
+  const targetDate = new Date("September 14, 2025 23:59:59").getTime();
   const [countdown, setCountdown] = useState({
     days: "",
     hours: "",
@@ -42,16 +42,16 @@ const Countdown = () => {
       {isMounted && (
         <>
           <div className="bg-silver/30 md:text-2xl font-bold px-3 py-4 rounded-xl text-dark">
-            {/* {countdown.days} */}0
+            {countdown.days}
           </div>
           <div className="bg-silver/30 md:text-2xl font-bold px-3 py-4 rounded-xl text-dark">
-            {/* {countdown.hours} */}0
+            {countdown.hours}
           </div>
           <div className="bg-silver/30 md:text-2xl font-bold px-3 py-4 rounded-xl text-dark">
-            {/* {countdown.minutes} */}0
+            {countdown.minutes}
           </div>
           <div className="bg-silver/30 md:text-2xl font-bold px-3 py-4 rounded-xl text-dark">
-            {/* {countdown.seconds} */}0
+            {countdown.seconds}
           </div>
         </>
       )}

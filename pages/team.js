@@ -30,6 +30,10 @@ import Link from "next/link";
 import StackCard from "@/components/atoms/StackCard";
 import LeftRightText from "@/components/molecules/LeftRightText";
 import InputTitle from "@/components/molecules/InputTitle";
+import Certificate from "@/components/molecules/Certificate";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+import { createRoot } from 'react-dom/client';
 // import confetti from "canvas-confetti";
 const userMail = Cookies.get("email");
 export async function getServerSideProps(context) {
@@ -88,6 +92,36 @@ const TeamPage = () => {
   //submit
   const [teamTitle, setTeamTitle] = useState("-");
   const [submission, setSubmission] = useState("");
+
+  // certificate
+  const handleDownloadCertificate = async (nama) => {
+    const container = document.createElement("div");
+    container.style.width = "1117px";
+    container.style.height = "790px";
+    // container.style.padding = "10px";
+    container.style.fontFamily = "serif";
+    container.style.background = "#fff";
+    container.style.position = "absolute";
+    container.style.top = "-9999px";
+    container.style.left = "-9999px";
+
+    document.body.appendChild(container);
+
+    const root = createRoot(container);
+    root.render(<Certificate name={nama} event="IITC 2025" />);
+
+    // Tunggu render selesai dengan sedikit delay
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
+    const canvas = await html2canvas(container);
+    const imgData = canvas.toDataURL("image/png");
+
+    const pdf = new jsPDF("landscape", "pt", [canvas.width, canvas.height]);
+    pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
+    pdf.save(`Sertifikat-${nama}.pdf`);
+
+    document.body.removeChild(container);
+  };
 
   const handleConfetti = () => {
     var duration = 5 * 1000;
@@ -289,7 +323,7 @@ const TeamPage = () => {
 
   const currentDate = new Date();
 
-  const endDate = new Date("2024-10-01");
+  const endDate = new Date("2025-10-01");
   const submissionOpenDate = new Date("2024-09-14");
   const isSubmissionOpen = currentDate >= submissionOpenDate;
   return (
@@ -548,7 +582,7 @@ const TeamPage = () => {
                   </ul>
                 </div>
 
-                {/* <Button
+                <Button
                   disabled={
                     team?.isActive === "PENDING" || // Disable jika status "PENDING"
                     (team?.isActive === "VALID" &&
@@ -578,34 +612,33 @@ const TeamPage = () => {
                   }}
                   isSquare
                   color={"oren"}
-                  additionals={`w-full mt-3 ${
-                    team?.isActive === "PENDING" ? "bg-orange-300" : ""
-                  }`}
+                  additionals={`w-full mt-3 ${team?.isActive === "PENDING" ? "bg-orange-300" : ""
+                    }`}
                 >
                   {team?.isActive === null || team?.isActive === "INVALID"
                     ? "Bayar Sekarang"
                     : team?.isActive === "PENDING"
-                    ? "Pembayaran  di proses"
-                    : team?.isActive === "VALID" && new Date() > endDate
-                    ? "Submission Ditutup"
-                    : team?.isActive === "VALID" &&
-                      !isSubmissionOpen &&
-                      new Date() <= new Date("2024-09-14")
-                    ? "Submission 14 September"
-                    : team?.isActive === "VALID" &&
-                      isSubmissionOpen &&
-                      team.isSubmit
-                    ? "Edit Submit"
-                    : "Submit"}
-                </Button> */}
-                <Button
+                      ? "Pembayaran  di proses"
+                      : team?.isActive === "VALID" && new Date() > endDate
+                        ? "Submission Ditutup"
+                        : team?.isActive === "VALID" &&
+                          !isSubmissionOpen &&
+                          new Date() <= new Date("2025-09-14")
+                          ? "Submission 14 September"
+                          : team?.isActive === "VALID" &&
+                            isSubmissionOpen &&
+                            team.isSubmit
+                            ? "Edit Submit"
+                            : "Submit"}
+                </Button>
+                {/* <Button
                   onClick={handleConfetti}
                   isSquare
                   color={"oren"}
                   additionals={"w-full mt-3"}
                 >
                   Submission Ditutup 🎉
-                </Button>
+                </Button> */}
               </div>
             </div>
           )}
@@ -660,11 +693,10 @@ const TeamPage = () => {
                             color={"dark"}
                             size={"sm"}
                             isSquare
-                            additionals={`flex items-center space-x-1 ${
-                              team.isActive == "VALID" &&
+                            additionals={`flex items-center space-x-1 ${team.isActive == "VALID" &&
                               team.isSubmit &&
                               "hidden"
-                            }`}
+                              }`}
                             onClick={() => setIsDelete(true)}
                           >
                             <p>Hapus</p>
@@ -704,6 +736,7 @@ const TeamPage = () => {
                     onKick={() =>
                       openKick({ name: team?.leader.name, id: team?.leader.id })
                     }
+                    onCert={() => handleDownloadCertificate(team?.leader.name)}
                     avatar={team?.leader?.participant?.avatar}
                   />
                 )}
@@ -715,6 +748,7 @@ const TeamPage = () => {
                       email={item.email}
                       leaderEmail={team.leader?.email}
                       onKick={() => openKick({ name: item.name, id: item.id })}
+                      onCert={() => handleDownloadCertificate(item.name)}
                       avatar={item?.participant?.avatar}
                     />
                   ))
@@ -735,9 +769,8 @@ export default TeamPage;
 export const PopUp = ({ onClose, isModal, children }) => {
   return (
     <div
-      className={`${
-        isModal ? "visible opacity-100" : "invisible opacity-0"
-      } transition-all duration-300 p-5 bg-dark/10 backdrop-blur-md w-full fixed h-screen z-50 flex justify-center items-center`}
+      className={`${isModal ? "visible opacity-100" : "invisible opacity-0"
+        } transition-all duration-300 p-5 bg-dark/10 backdrop-blur-md w-full fixed h-screen z-50 flex justify-center items-center`}
     >
       <div className="w-full max-w-[450px] p-4 bg-white rounded-md flex flex-col justify-start items-center relative">
         <button
@@ -789,7 +822,7 @@ export const StatusPayment = (status) => {
   }
 };
 
-const MemberItem = ({ avatar, name, email, leaderEmail, onKick }) => {
+const MemberItem = ({ avatar, name, email, leaderEmail, onKick, onCert }) => {
   return (
     <li className="flex justify-between items-center lg:flex-row flex-col my-3">
       <div className="flex items-start lg:items-center justify-start lg:space-x-3 space-y-2 lg:space-y-0 lg:flex-row flex-col w-full">
@@ -811,6 +844,16 @@ const MemberItem = ({ avatar, name, email, leaderEmail, onKick }) => {
           <Text>{email}</Text>
         </div>
       </div>
+
+      {email == userMail && (
+        <Button
+          additionals={"lg:w-[220px] max-lg:w-full max-lg:mt-3"}
+          onClick={onCert}
+          color={"red"}
+        >
+          Cetak Sertifikat
+        </Button>
+      )}
       {leaderEmail == userMail && email != leaderEmail && (
         <Button
           additionals={"max-lg:w-full max-lg:mt-3"}

@@ -51,7 +51,7 @@ const HeroSection = () => {
             </Text>
             <div className="flex items-center justify-center md:justify-start gap-x-3">
               <Link href={"/signup"}>
-                <Button color={"oren"} additionals={"text-[20px] lg:py-3 hidden"}>
+                <Button color={"oren"} additionals={"text-[20px] lg:py-3"}>
                   Daftar Sekarang
                 </Button>
               </Link>

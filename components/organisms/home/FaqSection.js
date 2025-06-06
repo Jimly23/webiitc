@@ -12,7 +12,7 @@ const FaqSection = () => {
   const faqs = [
     {
       q: "Apa itu IITC?",
-      a: "IIT (Intermedia Information Technology) Competition 2024 adalah program kerja UKM INTERMEDIA Universitas Amikom Purwokerto yang melibatkan peserta dari seluruh Indonesia, termasuk siswa SMA/SMK/MA, mahasiswa, dan masyarakat umum. Kompetisi ini mencakup perlombaan UI/UX, Web Design, dan Poster Digital, serta webinar dan penjurian yang dilaksanakan secara daring. Tujuannya adalah untuk menambah wawasan, mengasah keterampilan digital, serta mendorong inovasi dan kreativitas peserta dalam bidang teknologi informasi, sehingga dapat memperdalam pengetahuan dan membangun ekosistem teknologi yang lebih dinamis dan inovatif.",
+      a: "IIT (Intermedia Information Technology) Competition 2025 adalah program kerja UKM INTERMEDIA Universitas Amikom Purwokerto yang melibatkan peserta dari seluruh Indonesia, termasuk siswa SMA/SMK/MA, mahasiswa, dan masyarakat umum. Kompetisi ini mencakup perlombaan UI/UX, Web Design, dan Poster Digital, serta webinar dan penjurian yang dilaksanakan secara daring. Tujuannya adalah untuk menambah wawasan, mengasah keterampilan digital, serta mendorong inovasi dan kreativitas peserta dalam bidang teknologi informasi, sehingga dapat memperdalam pengetahuan dan membangun ekosistem teknologi yang lebih dinamis dan inovatif.",
     },
     {
       q: "Siapa yang dapat mengikuti lomba?",

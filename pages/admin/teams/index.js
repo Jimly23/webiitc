@@ -38,6 +38,7 @@ export default function Teams() {
     // .catch((err) => //console.log(err));
     setEmail(Cookies.get("email"));
     GetAllTeamAdminApi().then((res) => {
+      console.log(res.data?.teams);
       setTeams(res.data?.teams);
       setFilteredTeams(res.data?.teams);
     });
@@ -48,6 +49,7 @@ export default function Teams() {
         const d = {
           tim: item?.teamName,
           namaKetua: item.leader?.name,
+          teleponKetua: `0${item.leader?.phone}`,
           emailKetua: item.leader?.email,
           linkSubmission: item.submission ? item.submission : null,
           lomba: item?.competitionName,

@@ -29,7 +29,7 @@ const SupportSection = () => {
             <Image
               src="/images/Sponsor/Mieayam.jpg"
               alt="sponsorship3"
-              className="h-16 object-contain   w-full "
+              className="h-16 object-contain w-full "
               width={1600}
               height={1600}
             />

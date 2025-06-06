@@ -27,7 +27,7 @@ const LoginAdmin = () => {
     setIsHitApi(true);
     LoginApi({ email, password }).then((res) => {
       setIsHitApi(false);
-      //console.log(res);
+      console.log(res);
       if (res.status == 1) {
         setIsSucces(true);
         setMessage(res.message);

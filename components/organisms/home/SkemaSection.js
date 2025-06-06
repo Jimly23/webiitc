@@ -38,7 +38,8 @@ const SkemaSection = () => {
               >
                 <SkemaCard
                   buttonHref={
-                    "https://scribehow.com/shared/Step-by-step_guide_Signing_up_and_joining_a_competition_on_IITC__rrJ9DfysTWe-A0Se9oppIA"
+                    // "https://scribehow.com/shared/Step-by-step_guide_Signing_up_and_joining_a_competition_on_IITC__rrJ9DfysTWe-A0Se9oppIA"
+                    "https://drive.google.com/drive/folders/1nAXTJhm7FcRA0m4nnwJEV-03FfUdWw_O?usp=sharing"
                   }
                   buttonValue={"Cek info"}
                   imgUrl={"/images/chaticon.png"}

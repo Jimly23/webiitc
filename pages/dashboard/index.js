@@ -240,12 +240,12 @@ export const EmptyTeam = ({isPopUp}) => {
           Kamu belum mengikuti lomba, segera daftarkan tim kamu dan jadilah
           juara!
         </p>
-        <div onClick={()=>isPopUp(true)}>
+        {/* <div onClick={()=>isPopUp(true)}>
           <Button>Daftar lomba</Button>
-        </div>
-        {/* <Link href={"/#lomba"}>
+        </div> */}
+        <Link href={"/#lomba"}>
           <Button>Daftar lomba</Button>
-        </Link> */}
+        </Link>
       </div>
     </DashboardCard>
   );

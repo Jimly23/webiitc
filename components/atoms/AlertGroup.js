@@ -39,7 +39,7 @@ function AlertGroup({}) {
 
               <div className="mt-4 flex gap-2">
                 <a
-                  href="https://chat.whatsapp.com/GHD5xQcApG2EIB0EZ5c51n"
+                  href="https://chat.whatsapp.com/DNnbAqHiD7uJPRmHZUL4ad"
                   target="_blank"
                   className="inline-flex items-center gap-2 rounded-lg bg-green-600 px-4 py-2 text-white hover:bg-green-700"
                 >

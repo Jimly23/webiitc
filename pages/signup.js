@@ -29,7 +29,7 @@ const Signup = () => {
   const [isSucces, setIsSucces] = useState(false);
   const [Message, setMessage] = useState("");
   const [isUsed, setIsUsed] = useState(false);
-  const [isPopUp, setIsPopUp] = useState(true);
+  const [isPopUp, setIsPopUp] = useState(false);
   const router = useRouter();
   useEffect(() => {
     const token = Cookies.get("token");

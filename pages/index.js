@@ -42,8 +42,9 @@ const competitionsDumy = [
 ]
 export async function getServerSideProps() {
   try {
-    // const res = await GetCompetitionsApi();
-    const res = await competitionsStatic;
+    const res = await GetCompetitionsApi();
+    // const res = await competitionsStatic;
+    console.log(res)
     
     if (res.status == 1) {
       const competitions = res.data?.competitions || [];
@@ -72,6 +73,7 @@ export async function getServerSideProps() {
 export default function Home({ competitions }) {
   const [isCompetitionDetail, setIsCompetitionDetail] = useState(false);
   const [competitionName, setCompetitionName] = useState("");
+
   return isCompetitionDetail ? (
     <CompetitionDetails
       competitionSlug={competitionName}
@@ -89,7 +91,7 @@ export default function Home({ competitions }) {
       <AboutSection />
       <SkemaSection />
       <CompetitionSection
-        competitions={competitionsDumy}
+        competitions={competitions}
         setCompetitionName={setCompetitionName}
         setIsCompetitionDetails={setIsCompetitionDetail}
       />
