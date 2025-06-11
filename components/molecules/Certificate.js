@@ -1,5 +1,5 @@
 // components/Certificate.js
-export default function Certificate({ name, event }) {
+export default function Certificate({ name, competitionName }) {
   return (
     <div style={{
       width: "1117px", // ukuran A4
@@ -12,6 +12,7 @@ export default function Certificate({ name, event }) {
       color: "#000"
     }}>
       <h2 className="text-5xl pt-[300px]">{name}</h2>
+      <h2 className="text-lg pt-[300px]">{competitionName}</h2>
       {/* <p>Atas partisipasi dalam {event}</p>
       <p><i>{new Date().toLocaleDateString()}</i></p> */}
     </div>

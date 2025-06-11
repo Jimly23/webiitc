@@ -94,7 +94,7 @@ const TeamPage = () => {
   const [submission, setSubmission] = useState("");
 
   // certificate
-  const handleDownloadCertificate = async (nama) => {
+  const handleDownloadCertificate = async (name, competitionName) => {
     const container = document.createElement("div");
     container.style.width = "1117px";
     container.style.height = "790px";
@@ -108,7 +108,7 @@ const TeamPage = () => {
     document.body.appendChild(container);
 
     const root = createRoot(container);
-    root.render(<Certificate name={nama} event="IITC 2025" />);
+    root.render(<Certificate name={name} competitionName={competitionName} />);
 
     // Tunggu render selesai dengan sedikit delay
     await new Promise((resolve) => setTimeout(resolve, 500));
@@ -118,7 +118,7 @@ const TeamPage = () => {
 
     const pdf = new jsPDF("landscape", "pt", [canvas.width, canvas.height]);
     pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
-    pdf.save(`Sertifikat-${nama}.pdf`);
+    pdf.save(`Sertifikat-${name}.pdf`);
 
     document.body.removeChild(container);
   };
@@ -736,7 +736,7 @@ const TeamPage = () => {
                     onKick={() =>
                       openKick({ name: team?.leader.name, id: team?.leader.id })
                     }
-                    onCert={() => handleDownloadCertificate(team?.leader.name)}
+                    onCert={() => handleDownloadCertificate(team?.leader.name, competition?.name)}
                     avatar={team?.leader?.participant?.avatar}
                   />
                 )}
@@ -748,7 +748,7 @@ const TeamPage = () => {
                       email={item.email}
                       leaderEmail={team.leader?.email}
                       onKick={() => openKick({ name: item.name, id: item.id })}
-                      onCert={() => handleDownloadCertificate(item.name)}
+                      onCert={() => handleDownloadCertificate(item.name, competition?.name)}
                       avatar={item?.participant?.avatar}
                     />
                   ))
