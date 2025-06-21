@@ -86,8 +86,8 @@ export default function Home({ competitions }) {
         <meta name="title" content="IITC" />
       </Head>
       <HeroSection />
-      <SupportSection />
-      {/* <MarqueeSection /> */}
+      {/* <SupportSection /> */}
+      <MarqueeSection />
       <AboutSection />
       <SkemaSection />
       <CompetitionSection
