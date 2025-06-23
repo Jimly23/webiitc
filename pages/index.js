@@ -22,21 +22,21 @@ const competitionsDumy = [
     categories: ["a", "b", "c"],
     cover: "/images/Lomba/uiux.png",
     maxMembers: 3,
-    name: "UI/UX",
+    name: "Web Development",
     slug: "dummy"
   },
   {
     categories: ["a", "b", "c"],
     cover: "/images/Lomba/html.png",
     maxMembers: 3,
-    name: "Web Design",
+    name: "Animatioin",
     slug: "dummy"
   },
   {
     categories: ["a", "b", "c"],
     cover: "/images/Lomba/astronot.png",
-    maxMembers: 3,
-    name: "Poster Digital",
+    maxMembers: 5,
+    name: "Short Film",
     slug: "dummy"
   }
 ]
