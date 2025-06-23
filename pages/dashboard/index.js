@@ -63,7 +63,7 @@ const DashboardUser = () => {
       <PopUp isModal={isPopUp} onClose={() => setIsPopUp(false)}>
         <div className="w-full flex flex-col items-center">
           <Image
-            src={"/images/LOGO/LOGOFIX2024.png"}
+            src={"/images/LOGO/logofix2025.png"}
             alt="logo iitc"
             width={1080}
             height={1080}
