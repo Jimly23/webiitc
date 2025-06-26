@@ -1,17 +1,17 @@
 const timelineData = {
   importantDates: [
     // date hari penting
-    new Date("2025-08-19"),
-    new Date("2025-09-01"),
+    new Date("2025-08-01"),
+    new Date("2025-08-14"),
+    new Date("2025-08-25"),
+    new Date("2025-08-31"),
+    new Date("2025-09-07"),
     new Date("2025-09-08"),
-    new Date("2025-09-15"),
-    new Date("2025-09-30"),
-    new Date("2025-10-01"),
-    new Date("2025-10-05"),
+    new Date("2025-09-27"),
   ],
   modalContent: {
-    "2025-08-19": {
-      date: new Date("2025-08-19").toLocaleString("id-ID", {
+    "2025-08-01": {
+      date: new Date("2025-08-01").toLocaleString("id-ID", {
         weekday: "long",
         day: "numeric",
         month: "long",
@@ -20,8 +20,8 @@ const timelineData = {
       title: "Pendaftaran",
       description: "Pendaftaran gelombang 1",
     },
-    "2025-09-01": {
-      date: new Date("2025-09-01").toLocaleString("id-ID", {
+    "2025-08-14": {
+      date: new Date("2025-08-14").toLocaleString("id-ID", {
         weekday: "long",
         day: "numeric",
         month: "long",
@@ -30,18 +30,18 @@ const timelineData = {
       title: "Pendafataran",
       description: "Pendaftaran gelombang 2",
     },
-    "2025-09-08": {
-      date: new Date("2025-09-08").toLocaleString("id-ID", {
+    "2025-08-25": {
+      date: new Date("2025-08-25").toLocaleString("id-ID", {
         weekday: "long",
         day: "numeric",
         month: "long",
         year: "numeric",
       }),
-      title: "Webinar",
-      description: "Pelaksanaan webinar",
+      title: "Pendaftaran",
+      description: "Extra Time Pendaftaran",
     },
-    "2025-09-15": {
-      date: new Date("2025-09-15").toLocaleString("id-ID", {
+    "2025-08-31": {
+      date: new Date("2025-08-31").toLocaleString("id-ID", {
         weekday: "long",
         day: "numeric",
         month: "long",
@@ -50,8 +50,8 @@ const timelineData = {
       title: "Awal pengumpulan",
       description: "Teknikal meeting & Awal pengumpulan submission",
     },
-    "2025-09-30": {
-      date: new Date("2025-09-30").toLocaleString("id-ID", {
+    "2025-09-07": {
+      date: new Date("2025-09-07").toLocaleString("id-ID", {
         weekday: "long",
         day: "numeric",
         month: "long",
@@ -60,8 +60,8 @@ const timelineData = {
       title: "Akhir pengumpulan",
       description: "Tahap akhir pengumpulan submission",
     },
-    "2025-10-01": {
-      date: new Date("2025-10-01").toLocaleString("id-ID", {
+    "2025-09-08": {
+      date: new Date("2025-09-08").toLocaleString("id-ID", {
         weekday: "long",
         day: "numeric",
         month: "long",
@@ -70,14 +70,14 @@ const timelineData = {
       title: "Penjurian",
       description: "",
     },
-    "2025-10-05": {
-      date: new Date("2025-10-05").toLocaleString("id-ID", {
+    "2025-09-27": {
+      date: new Date("2025-09-27").toLocaleString("id-ID", {
         weekday: "long",
         day: "numeric",
         month: "long",
         year: "numeric",
       }),
-      title: "Awarding",
+      title: "Seminar & Awarding",
       description: "Pengumuman pemenang",
     },
   },
@@ -85,7 +85,7 @@ const timelineData = {
 
 // start day & finish
 
-export const startDate = new Date("2025-08-05");
+export const startDate = new Date("2025-07-25");
 export const endDate = new Date("2025-10-05");
 
 export default timelineData;

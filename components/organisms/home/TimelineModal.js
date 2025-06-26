@@ -10,7 +10,7 @@ function TimelineModal({
 }) {
   return (
     <div className={`${className}`} onClick={click}>
-      <div className="flex  flex-col items-center justify-start bg-oren border-b-8 border-slate-800 w-56 rounded-md overflow-hidden shadow-lg">
+      <div className="flex  flex-col items-center justify-start bg-[#E9A319] border-b-8 border-slate-800 w-56 rounded-md overflow-hidden shadow-lg">
         <div className="flex p-2 text-white gap-3">
           <div className="p-2 bg-slate-800 rounded-md h-fit">
             <BiGitBranch size={35} />

@@ -74,7 +74,7 @@ const DashboardUserTemplate = ({ title, children }) => {
                   href={item.url}
                   className={`${
                     item.url === pathname
-                      ? "text-orange-500 bg-orange-100 p-2 rounded-md"
+                      ? "text-brown bg-orange-100 p-2 rounded-md"
                       : "p-2"
                   } flex items-center gap-3`}
                 >
