@@ -7,6 +7,8 @@ import { MdArrowForwardIos } from "react-icons/md";
 import Link from "next/link";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { StatusPayment } from "../team";
+import Cookies from "js-cookie";
+import { useRouter } from "next/router";
 
 const DashboardAdmin = () => {
   const paymentStatusFilters = [
@@ -17,6 +19,7 @@ const DashboardAdmin = () => {
     { label: "Gagal Bayar", value: "INVALID" },
   ];
 
+  const router = useRouter();
   const [teams, setTeams] = useState([]);
   const [originalTeams, setOriginalTeams] = useState([]);
   const [selectedCompetitionNames, setSelectedCompetitionNames] = useState([]);
@@ -24,6 +27,13 @@ const DashboardAdmin = () => {
     paymentStatusFilters[0].value
   );
   const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const token = Cookies.get("adminKey");
+    if(!token){
+      router.push("/admin");
+    }
+  }, [])
 
   useEffect(() => {
     fetchTeams();
