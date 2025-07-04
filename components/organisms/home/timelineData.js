@@ -3,10 +3,13 @@ const timelineData = {
     // date hari penting
     new Date("2025-08-01"),
     new Date("2025-08-14"),
+    new Date("2025-08-23"),
     new Date("2025-08-25"),
-    new Date("2025-08-31"),
+    new Date("2025-08-30"),
     new Date("2025-09-07"),
     new Date("2025-09-08"),
+    new Date("2025-09-15"),
+    new Date("2025-09-25"),
     new Date("2025-09-27"),
   ],
   modalContent: {
@@ -18,7 +21,7 @@ const timelineData = {
         year: "numeric",
       }),
       title: "Pendaftaran",
-      description: "Pendaftaran gelombang 1",
+      description: "Pendaftaran gelombang 1 & pendaftaran webinar",
     },
     "2025-08-14": {
       date: new Date("2025-08-14").toLocaleString("id-ID", {
@@ -27,8 +30,18 @@ const timelineData = {
         month: "long",
         year: "numeric",
       }),
-      title: "Pendafataran",
+      title: "Pendaftaran",
       description: "Pendaftaran gelombang 2",
+    },
+    "2025-08-23": {
+      date: new Date("2025-08-23").toLocaleString("id-ID", {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      }),
+      title: "Teknikal Meeting",
+      description: "Menjelaskan rubrik penilaian dan S&K (per divisi lomba)",
     },
     "2025-08-25": {
       date: new Date("2025-08-25").toLocaleString("id-ID", {
@@ -37,18 +50,18 @@ const timelineData = {
         month: "long",
         year: "numeric",
       }),
-      title: "Pendaftaran",
-      description: "Extra Time Pendaftaran",
+      title: "Pendaftaran & Submit",
+      description: "Extra time daftar & awal pengumpulan submission",
     },
-    "2025-08-31": {
-      date: new Date("2025-08-31").toLocaleString("id-ID", {
+    "2025-08-30": {
+      date: new Date("2025-08-30").toLocaleString("id-ID", {
         weekday: "long",
         day: "numeric",
         month: "long",
         year: "numeric",
       }),
-      title: "Awal pengumpulan",
-      description: "Teknikal meeting & Awal pengumpulan submission",
+      title: "Penutupan Terakhir Pendaftaran",
+      description: "Tahap akhir pendaftaran",
     },
     "2025-09-07": {
       date: new Date("2025-09-07").toLocaleString("id-ID", {
@@ -57,7 +70,7 @@ const timelineData = {
         month: "long",
         year: "numeric",
       }),
-      title: "Akhir pengumpulan",
+      title: "Pengumpulan Terakhir",
       description: "Tahap akhir pengumpulan submission",
     },
     "2025-09-08": {
@@ -68,7 +81,27 @@ const timelineData = {
         year: "numeric",
       }),
       title: "Penjurian",
-      description: "",
+      description: "Penjurian setiap divisi lomba",
+    },
+    "2025-09-15": {
+      date: new Date("2025-09-15").toLocaleString("id-ID", {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      }),
+      title: "Pengumuman 3 Besar Pemenang",
+      description: "Setiap divisi lomba",
+    },
+    "2025-09-25": {
+      date: new Date("2025-09-25").toLocaleString("id-ID", {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      }),
+      title: "Teknikal Meeting",
+      description: "Bagi pemenang 3 besar setiap divisi lomba",
     },
     "2025-09-27": {
       date: new Date("2025-09-27").toLocaleString("id-ID", {
@@ -78,7 +111,7 @@ const timelineData = {
         year: "numeric",
       }),
       title: "Seminar & Awarding",
-      description: "Pengumuman pemenang",
+      description: "Pengumuman pemenang & seminar",
     },
   },
 };

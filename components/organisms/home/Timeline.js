@@ -52,7 +52,7 @@ const Timeline = () => {
         </div>
       </div>
       <div
-        className={`w-full h-[300px] -mt-20 flex items-center overflow-x-scroll relative scroll-smooth scrollbar-hide `}
+        className={`w-full h-[300px] -mt-32 flex items-center overflow-x-scroll relative scroll-smooth scrollbar-hide `}
         ref={timelineRef}
       >
         <div className="w-[2500px]  bg-slate-800 h-1 absolute p-1"></div>
