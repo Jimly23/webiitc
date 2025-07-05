@@ -21,7 +21,7 @@ const timelineData = {
         year: "numeric",
       }),
       title: "Pendaftaran",
-      description: "Pendaftaran gelombang 1 & pendaftaran webinar",
+      description: "Pendaftaran gelombang 1 IITC & pendaftaran webinar",
     },
     "2025-08-14": {
       date: new Date("2025-08-14").toLocaleString("id-ID", {
@@ -31,7 +31,7 @@ const timelineData = {
         year: "numeric",
       }),
       title: "Pendaftaran",
-      description: "Pendaftaran gelombang 2",
+      description: "Pendaftaran gelombang 2 IITC",
     },
     "2025-08-23": {
       date: new Date("2025-08-23").toLocaleString("id-ID", {
@@ -41,8 +41,18 @@ const timelineData = {
         year: "numeric",
       }),
       title: "Teknikal Meeting",
-      description: "Menjelaskan rubrik penilaian dan S&K (per divisi lomba)",
+      description: "Menjelaskan rubrik penilaian dan S&K",
     },
+    // "2025-08-25": {
+    //   date: new Date("2025-08-25").toLocaleString("id-ID", {
+    //     weekday: "long",
+    //     day: "numeric",
+    //     month: "long",
+    //     year: "numeric",
+    //   }),
+    //   title: "Pendaftaran & Submit",
+    //   description: "Extra time daftar & awal pengumpulan submission",
+    // },
     "2025-08-25": {
       date: new Date("2025-08-25").toLocaleString("id-ID", {
         weekday: "long",
@@ -50,8 +60,8 @@ const timelineData = {
         month: "long",
         year: "numeric",
       }),
-      title: "Pendaftaran & Submit",
-      description: "Extra time daftar & awal pengumpulan submission",
+      title: "Pengumpulan Submit",
+      description: "Awal pengumpulan submission",
     },
     "2025-08-30": {
       date: new Date("2025-08-30").toLocaleString("id-ID", {
@@ -60,8 +70,8 @@ const timelineData = {
         month: "long",
         year: "numeric",
       }),
-      title: "Penutupan Terakhir Pendaftaran",
-      description: "Tahap akhir pendaftaran",
+      title: "Penutupan Pendaftaran",
+      description: "Tahap akhir pendaftaran IITC",
     },
     "2025-09-07": {
       date: new Date("2025-09-07").toLocaleString("id-ID", {
