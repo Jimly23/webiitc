@@ -4,7 +4,7 @@ export default function Certificate({ name, competitionName }) {
     <div style={{
       width: "1117px", // ukuran A4
       height: "790px",
-      backgroundImage: "url('/images/sertifikat.jpeg')",
+      backgroundImage: "url('/images/sertifikat-cover.png')",
       backgroundSize: "cover",
       // padding: "100px",
       textAlign: "center",
