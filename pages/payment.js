@@ -203,7 +203,7 @@ const Payment = () => {
                   </Text>
                   <Text size={"small"}>{!copied && `${item.an}`}</Text>
                 </div>
-                <CopyToClipboard
+                {/* <CopyToClipboard
                   text={item.value}
                   onCopy={() => setCopied(true)}
                 >
@@ -214,7 +214,7 @@ const Payment = () => {
                       <IoCopyOutline className="text-xl" />
                     )}
                   </div>
-                </CopyToClipboard>
+                </CopyToClipboard> */}
               </div>
             </li>
           ))}
@@ -252,22 +252,17 @@ export default Payment;
 const paymentMethods = [
   {
     img: "https://upload.wikimedia.org/wikipedia/commons/7/72/Logo_dana_blue.svg",
-    value: "085641446522",
-    an: "an Julia Ningsih",
+    value: "088232049206",
+    an: "an Dwi Rizkia Ashari",
   },
   {
-    img: "https://upload.wikimedia.org/wikipedia/commons/8/86/Gopay_logo.svg",
-    value: "085641446522",
-    an: "an Julia Ningsih",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/BANK_BRI_logo.svg/1280px-BANK_BRI_logo.svg.png",
+    value: "660701031336533",
+    an: "an Dwi Rizkia Ashari",
   },
   {
-    img: "https://static.promediateknologi.id/crop/0x0:0x0/0x0/webp/photo/p2/01/2024/02/04/2-shopeepay-rectangle-orange2-1208029004.png",
-    value: "085647706584",
-    an: "an Julia Ningsih",
-  },
-  {
-    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Bank_Mandiri_logo_2016.svg/213px-Bank_Mandiri_logo_2016.svg.png",
-    value: "1380021420455",
-    an: "an Ani Musarofah",
+    img: "https://upload.wikimedia.org/wikipedia/id/thumb/5/55/BNI_logo.svg/1280px-BNI_logo.svg.png",
+    value: "1854657263",
+    an: "an Ida Feriani",
   },
 ];

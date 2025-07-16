@@ -37,7 +37,7 @@ const DashboardUser = () => {
   const [email, setEmail] = useState("");
   const [isGrupShowing, setIsGrupShowing] = useState(false);
   const [isPopUp, setIsPopUp] = useState(false);
-  console.log(teams);
+  console.log(teams[0]);
   const valid = Cookies.get("valid");
   useEffect(() => {
     GetMineTeam().then((res) => {
@@ -95,7 +95,9 @@ const DashboardUser = () => {
         )} */}
         {isGrupShowing && (
           <div className="px-6 md:px-10 lg:px-12 mx-auto w-full">
-            <AlertGroup />
+            {teams[0].competitionName == 'Web Development' && <AlertGroup name={'Web Development'} link={'https://chat.whatsapp.com/DNnbAqHiD7uJPRmHZUL4ad'}/>}
+            {teams[0].competitionName == 'Animation' && <AlertGroup name={'Animation'} link={'https://chat.whatsapp.com/DNnbAqHiD7uJPRmHZUL4ad'}/>}
+            {teams[0].competitionName == 'Short Movie' && <AlertGroup name={'Short Movie'} link={'https://chat.whatsapp.com/DNnbAqHiD7uJPRmHZUL4ad'}/>}
           </div>
         )}
         <DashboardCard>

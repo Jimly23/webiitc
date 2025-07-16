@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { AiOutlineWhatsApp } from "react-icons/ai";
 
-function AlertGroup({}) {
+function AlertGroup({name, link}) {
   const [isOpen, setIsOpen] = useState(true);
 
   const variants = {
@@ -30,7 +30,7 @@ function AlertGroup({}) {
             <div className="flex-1">
               <strong className="block font-medium text-gray-900">
                 {" "}
-                Join Whatsapp Group{" "}
+                Join Whatsapp Group{" "} {name}
               </strong>
 
               <p className="mt-1 text-sm text-gray-700">
@@ -39,7 +39,7 @@ function AlertGroup({}) {
 
               <div className="mt-4 flex gap-2">
                 <a
-                  href="https://chat.whatsapp.com/DNnbAqHiD7uJPRmHZUL4ad"
+                  href={link}
                   target="_blank"
                   className="inline-flex items-center gap-2 rounded-lg bg-green-600 px-4 py-2 text-white hover:bg-green-700"
                 >

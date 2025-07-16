@@ -20,7 +20,7 @@ const FaqSection = () => {
     },
     {
       q: "Apakah peserta boleh mengikuti lebih dari satu lomba?",
-      a: "Peserta boleh mengikuti lebih dari satu lomba pada jenis perlombaan yang berbeda",
+      a: "Tidak, Peserta tidak boleh mengikuti lebih dari satu lomba",
     },
     {
       q: "Bagaimana mekanisme pengumpulan hasil karya?",
@@ -28,7 +28,7 @@ const FaqSection = () => {
     },
     {
       q: "Apa format file untuk pengumpulan hasil karya?",
-      a: "Format pengumpulan hasil karya ada yang berupa file .ZIP dan ada yang berupa folder Google Drive",
+      a: "Format pengumpulan hasil karya berupa file proposal yang berada di dalam Google Drive",
     },
     {
       q: "Siapa juri lomba ini?",
