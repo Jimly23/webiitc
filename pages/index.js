@@ -29,7 +29,7 @@ const competitionsDumy = [
     categories: ["a", "b", "c"],
     cover: "/images/Lomba/html.png",
     maxMembers: 3,
-    name: "Animatioin",
+    name: "Animation",
     slug: "dummy"
   },
   {
@@ -86,8 +86,8 @@ export default function Home({ competitions }) {
         <meta name="title" content="IITC" />
       </Head>
       <HeroSection />
-      {/* <SupportSection /> */}
-      <MarqueeSection />
+      <SupportSection />
+      {/* <MarqueeSection /> */}
       <AboutSection />
       <SkemaSection />
       <CompetitionSection
