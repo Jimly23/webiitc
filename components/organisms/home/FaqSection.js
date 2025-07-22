@@ -12,7 +12,7 @@ const FaqSection = () => {
   const faqs = [
     {
       q: "Apa itu IITC?",
-      a: "IIT (Intermedia Information Technology) Competition 2025 adalah program kerja UKM INTERMEDIA Universitas Amikom Purwokerto yang melibatkan peserta dari seluruh Indonesia, termasuk siswa SMA/SMK/MA, mahasiswa, dan masyarakat umum. Kompetisi ini mencakup perlombaan UI/UX, Web Design, dan Poster Digital, serta webinar dan penjurian yang dilaksanakan secara daring. Tujuannya adalah untuk menambah wawasan, mengasah keterampilan digital, serta mendorong inovasi dan kreativitas peserta dalam bidang teknologi informasi, sehingga dapat memperdalam pengetahuan dan membangun ekosistem teknologi yang lebih dinamis dan inovatif.",
+      a: "IIT (Intermedia Information Technology) Competition 2025 adalah program kerja UKM INTERMEDIA Universitas Amikom Purwokerto yang melibatkan peserta dari seluruh Indonesia, termasuk siswa SMA/SMK/MA, mahasiswa, dan masyarakat umum. Kompetisi ini mencakup perlombaan Web Development, Animatioin, dan Short Film, serta webinar. Tujuannya adalah untuk menambah wawasan, mengasah keterampilan digital, serta mendorong inovasi dan kreativitas peserta dalam bidang teknologi informasi, sehingga dapat memperdalam pengetahuan dan membangun ekosistem teknologi yang lebih dinamis dan inovatif.",
     },
     {
       q: "Siapa yang dapat mengikuti lomba?",
@@ -61,8 +61,7 @@ const FaqSection = () => {
               className="font-semibold flex items-center gap-2 text-blue-500 cursor-default lg:cursor-pointer"
             >
               <RiWhatsappFill />
-              +62 851-3371-1082
-              (CP)
+              +62 851-3371-1082 (CP)
             </a>
             {/* <a
               href="https://wa.me/6285133711082 "
