@@ -69,10 +69,10 @@ const HeroSection = () => {
               initial={{ opacity: 0, x: 200 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, ease: "easeIn" }}
-              className="hidden md:block md:w-7/12 md:bg-contain  self-start w-full object-cover bg-red-500 -ml-5 lg:-ml-0 lg:-mr-44"
+              className="hidden md:block md:w-10/12 md:bg-contain  self-start w-full object-cover bg-red-500 -ml-5 lg:-ml-0 lg:-mr-44"
             >
               <Image
-                src={"/images/bannerIitc.png"}
+                src={"/images/LOGO/logofix2025.png"}
                 alt="Gambar Tunjukan Skill"
                 width={1080}
                 height={1080}

@@ -57,21 +57,21 @@ const FaqSection = () => {
               iitc_intermedia
             </a>
             <a
-              href="https://wa.me/6285133711081"
+              href="https://wa.me/6285133711082"
               className="font-semibold flex items-center gap-2 text-blue-500 cursor-default lg:cursor-pointer"
             >
               <RiWhatsappFill />
-              +62-851-3371-1081 
-              (Humas 1)
+              +62 851-3371-1082
+              (CP)
             </a>
-            <a
+            {/* <a
               href="https://wa.me/6285133711082 "
               className="font-semibold flex items-center gap-2 text-blue-500 cursor-default lg:cursor-pointer"
             >
               <RiWhatsappFill />
               +62-851-3371-1082 
               (Humas 2)
-            </a>
+            </a> */}
           </div>
         </div>
       ),
@@ -94,18 +94,18 @@ const FaqSection = () => {
         </div>
       ),
     },
-    {
-      q: "Apakah bisa mendaftar lebih dari satu lomba?",
-      a: "Tentu saja bisa.",
-    },
+    // {
+    //   q: "Apakah bisa mendaftar lebih dari satu lomba?",
+    //   a: "Tentu saja bisa.",
+    // },
     {
       q: "Siapa saja yang dapat mengikuti lomba?",
       a: "Siapa saja boleh.",
     },
-    {
-      q: "Apakah lomba Web Design harus terhubung ke database dan memiliki sistem backend?",
-      a: "Lomba ini fokus pada desain antarmuka pengguna (UI) dan pengalaman pengguna (UX). Tidak diperlukan koneksi ke database atau implementasi sistem backend. Namun, peserta diharapkan untuk menerapkan logika frontend yang mencakup interaksi pengguna, navigasi, dan elemen visual lainnya yang mendukung desain dan fungsi dari website yang dibuat.",
-    },
+    // {
+    //   q: "Apakah lomba Web Design harus terhubung ke database dan memiliki sistem backend?",
+    //   a: "Lomba ini fokus pada desain antarmuka pengguna (UI) dan pengalaman pengguna (UX). Tidak diperlukan koneksi ke database atau implementasi sistem backend. Namun, peserta diharapkan untuk menerapkan logika frontend yang mencakup interaksi pengguna, navigasi, dan elemen visual lainnya yang mendukung desain dan fungsi dari website yang dibuat.",
+    // },
     {
       q: "Apakah wajib melengkapi data profile pada dashboard?",
       a: (
