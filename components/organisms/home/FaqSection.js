@@ -12,7 +12,7 @@ const FaqSection = () => {
   const faqs = [
     {
       q: "Apa itu IITC?",
-      a: "IIT (Intermedia Information Technology) Competition 2025 adalah program kerja UKM INTERMEDIA Universitas Amikom Purwokerto yang melibatkan peserta dari seluruh Indonesia, termasuk siswa SMA/SMK/MA, mahasiswa, dan masyarakat umum. Kompetisi ini mencakup perlombaan Web Development, Animatioin, dan Short Film, serta webinar. Tujuannya adalah untuk menambah wawasan, mengasah keterampilan digital, serta mendorong inovasi dan kreativitas peserta dalam bidang teknologi informasi, sehingga dapat memperdalam pengetahuan dan membangun ekosistem teknologi yang lebih dinamis dan inovatif.",
+      a: "IIT (Intermedia Information Technology) Competition 2025 adalah program kerja UKM INTERMEDIA Universitas Amikom Purwokerto yang melibatkan peserta dari seluruh Indonesia, termasuk siswa SMA/SMK/MA, mahasiswa, dan masyarakat umum. Kompetisi ini mencakup perlombaan Web Development, Animatioin, dan Short Film, serta Seminar. Tujuannya adalah untuk menambah wawasan, mengasah keterampilan digital, serta mendorong inovasi dan kreativitas peserta dalam bidang teknologi informasi, sehingga dapat memperdalam pengetahuan dan membangun ekosistem teknologi yang lebih dinamis dan inovatif.",
     },
     {
       q: "Siapa yang dapat mengikuti lomba?",
@@ -30,14 +30,14 @@ const FaqSection = () => {
       q: "Apa format file untuk pengumpulan hasil karya?",
       a: "Format pengumpulan hasil karya berupa file proposal yang berada di dalam Google Drive",
     },
-    {
-      q: "Siapa juri lomba ini?",
-      a: "Pada lomba IITC ini dewan juri berasal dari divisi keilmuan Intermedia dan beberapa pihak yang mungkin nantinya akan ditugaskan oleh UKM Intermedia sebagai dewan juri tambahan",
-    },
-    {
-      q: "Bagaimana cara juri menilai hasil karya?",
-      a: "Juri menilai hasil karya berdasarkan kriteria yang telah ditetapkan dan Mereka menggunakan rubrik penilaian untuk memberikan skor yang objektif dan konsisten.",
-    },
+    // {
+    //   q: "Siapa juri lomba ini?",
+    //   a: "Pada lomba IITC ini dewan juri berasal dari divisi keilmuan Intermedia dan beberapa pihak yang mungkin nantinya akan ditugaskan oleh UKM Intermedia sebagai dewan juri tambahan",
+    // },
+    // {
+    //   q: "Bagaimana cara juri menilai hasil karya?",
+    //   a: "Juri menilai hasil karya berdasarkan kriteria yang telah ditetapkan dan Mereka menggunakan rubrik penilaian untuk memberikan skor yang objektif dan konsisten.",
+    // },
     {
       q: "Bagaimana cara membayar biaya pendaftarannya?",
       a: "Pembayaran dapat dilakukan melalui transfer ke rekening bank atau e-wallet yang akan diinformasikan setelah kamu mendaftar.",
@@ -61,7 +61,14 @@ const FaqSection = () => {
               className="font-semibold flex items-center gap-2 text-blue-500 cursor-default lg:cursor-pointer"
             >
               <RiWhatsappFill />
-              +62 851-3371-1082 (CP)
+              +62 851-3371-1082 (CP 1)
+            </a>
+            <a
+              href="https://wa.me/6285133711081"
+              className="font-semibold flex items-center gap-2 text-blue-500 cursor-default lg:cursor-pointer"
+            >
+              <RiWhatsappFill />
+              +62 851-3371-1081 (CP 2)
             </a>
             {/* <a
               href="https://wa.me/6285133711082 "
@@ -99,7 +106,7 @@ const FaqSection = () => {
     // },
     {
       q: "Siapa saja yang dapat mengikuti lomba?",
-      a: "Siapa saja boleh.",
+      a: "Partisipasi terbuka bagi seluruh peserta yang berminat dan memenuhi kriteria yang telah ditetapkan.",
     },
     // {
     //   q: "Apakah lomba Web Design harus terhubung ke database dan memiliki sistem backend?",
