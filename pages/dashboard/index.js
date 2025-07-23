@@ -95,9 +95,9 @@ const DashboardUser = () => {
         )} */}
         {isGrupShowing && (
           <div className="px-6 md:px-10 lg:px-12 mx-auto w-full">
-            {teams[0].competitionName == 'Web Development' && <AlertGroup name={'Web Development'} link={'https://chat.whatsapp.com/DNnbAqHiD7uJPRmHZUL4ad'}/>}
-            {teams[0].competitionName == 'Animation' && <AlertGroup name={'Animation'} link={'https://chat.whatsapp.com/DNnbAqHiD7uJPRmHZUL4ad'}/>}
-            {teams[0].competitionName == 'Short Movie' && <AlertGroup name={'Short Movie'} link={'https://chat.whatsapp.com/DNnbAqHiD7uJPRmHZUL4ad'}/>}
+            {teams[0].competitionName == 'Web Development' && <AlertGroup name={'Web Development'} link={'https://chat.whatsapp.com/ClsNElT0gTI4JTkabdr6ZV'}/>}
+            {teams[0].competitionName == 'Animation' && <AlertGroup name={'Animation'} link={'https://chat.whatsapp.com/HKe2brGP1VHFmUnvDYX68B'}/>}
+            {teams[0].competitionName == 'Short Movie' && <AlertGroup name={'Short Movie'} link={'https://chat.whatsapp.com/KfNVBz7GiXjFAPUM8ZSZX6'}/>}
           </div>
         )}
         <DashboardCard>

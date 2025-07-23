@@ -43,6 +43,7 @@ export default function Teams() {
       setFilteredTeams(res.data?.teams);
     });
   }, []);
+  console.log(teams);
   const filterTeams = () => {
     const dataSubmission = (team) => {
       const data = team.map((item) => {
@@ -51,6 +52,7 @@ export default function Teams() {
           namaKetua: item.leader?.name,
           teleponKetua: `0${item.leader?.phone}`,
           emailKetua: item.leader?.email,
+          asal: item.leader?.address,
           linkSubmission: item.submission ? item.submission : null,
           lomba: item?.competitionName,
         };

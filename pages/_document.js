@@ -42,7 +42,8 @@ export default function Document() {
           rel="stylesheet"
         />
 
-        <link rel="icon" href="/logoicon.svg" type="image/svg" />
+        {/* <link rel="icon" href="images/LOGO/logofix2025.png" type="image/svg" /> */}
+        <link rel="icon" href="/logofix2025.svg" type="image/svg" />
         <meta name="description" content="IIT Competition 2025" key="desc" />
       </Head>
       <body className="font-poppins scroll-smooth scrollbar">

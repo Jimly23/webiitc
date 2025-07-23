@@ -50,7 +50,7 @@ const AboutSection = () => {
             initial={{ opacity: 0, x: 200 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, ease: "easeIn" }}
-            className="md:w-[40%] md:ps-28 lg:ps-42 lg:max-w-[30%] md:bg-contain self-start w-full object-cover bg-red-500 lg:-ml-0"
+            className="md:w-[40%] md:ps-28 lg:ms-[150px] md:bg-contain self-start w-full object-cover bg-red-500 lg:-ml-0"
           >
             <Image
               src={"/images/kala.png"}
