@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @layer base {
   .inhrit {
     display: inline-block;
@@ -8,6 +9,7 @@
     max-width: inherit;
   }
 }
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
@@ -16,7 +18,9 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
 @layer utilities {
+
   /* Hide scrollbar for Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
     display: none;
@@ -24,10 +28,13 @@
 
   /* Hide scrollbar for IE, Edge and Firefox */
   .no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
   }
 }
+
 .scrollbar::-webkit-scrollbar {
   width: 8px;
   height: 20px;
@@ -44,4 +51,18 @@
 
 .scrollbar::-webkit-scrollbar-thumb:hover {
   background: #c0a0b9;
+}
+
+/* font */
+@font-face {
+  font-family: 'UTHonsagh';
+  src: url('/fonts/UtHonsagh-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+
+}
+
+.sertificate {
+  font-family: 'UTHonsagh', sans-serif;
 }

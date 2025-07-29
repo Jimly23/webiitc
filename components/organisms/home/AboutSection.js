@@ -4,10 +4,26 @@ import FlashParagraph from "@/components/atoms/FlashParagraph";
 import { Container } from "../../../components";
 import Text from "@/components/atoms/Text";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 const AboutSection = () => {
+  const images = [
+    "/images/kala.png",
+    "/images/kala2.png",
+    "/images/kala3.png"
+  ];
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section id="about" className="w-full mb-10 min-h-screen  overflow-hidden">
       <Container>
@@ -46,7 +62,7 @@ const AboutSection = () => {
               </Button>
             </Link>
           </motion.article>
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, x: 200 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, ease: "easeIn" }}
@@ -58,6 +74,34 @@ const AboutSection = () => {
               width={1080}
               height={1080}
             />
+          </motion.div> */}
+
+          <motion.div
+            initial={{ opacity: 0, x: 200 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, ease: "easeIn" }}
+            className="md:w-[40%] md:ps-28 lg:ms-[150px] md:bg-contain self-start w-full object-cover bg-red-500 lg:-ml-0"
+          >
+            <div className="relative w-full h-auto">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={images[currentImageIndex]}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={images[currentImageIndex]}
+                    alt="Gambar Tunjukan Skill"
+                    width={1080}
+                    height={1080}
+                    className="w-full"
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </motion.div>
         </div>
       </Container>

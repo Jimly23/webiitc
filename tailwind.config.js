@@ -26,6 +26,7 @@ module.exports = {
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
+        honsagh: ['UTHonsagh', 'sans-serif'],
       },
     },
   },
