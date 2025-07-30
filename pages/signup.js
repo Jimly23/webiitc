@@ -30,6 +30,7 @@ const Signup = () => {
   const [Message, setMessage] = useState("");
   const [isUsed, setIsUsed] = useState(false);
   const [isPopUp, setIsPopUp] = useState(false);
+  const [isAgree, setIsAgree] = useState(false);
   const router = useRouter();
   useEffect(() => {
     const token = Cookies.get("token");
@@ -55,6 +56,12 @@ const Signup = () => {
     if (!validateMatchPassword()) {
       setIsNotMatch(true);
       setMessage("Password dan konfirmasi password tidak cocok!");
+      return;
+    }
+    if (!isAgree) {
+      setIsPopUp(true); // menampilkan pop-up
+      setMessage("Silakan setujui syarat dan ketentuan terlebih dahulu!");
+      // alert("Silakan setujui syarat dan ketentuan terlebih dahulu!");
       return;
     }
     setIsHitApi(true);
@@ -95,11 +102,11 @@ const Signup = () => {
       <PopUp isModal={isPopUp} onClose={() => setIsPopUp(false)}>
         <div className="w-full flex flex-col items-center">
           <Image
-            src={"/images/LOGO/LOGOFIX2024.png"}
+            src={"/images/LOGO/logofix2025.png"}
             alt="logo iitc"
             width={1080}
             height={1080}
-            className="w-20"
+            className="w-40"
           />
           <Text
             size={"smalltitle"}
@@ -107,10 +114,10 @@ const Signup = () => {
             color={"text-black"}
             weight={"bold"}
           >
-            Pendaftaran Ditutup
+            Peringatan
           </Text>
           <Text additionals={"text-center"}>
-            Pendaftaran untuk IIT Competition telah ditutup!
+            {Message || "Silakan centang persetujuan terlebih dahulu."}
           </Text>
         </div>
       </PopUp>
@@ -198,17 +205,33 @@ const Signup = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </div>
-        <Button
-          disabled={false}
-          color={"brown"}
-          // additionals={"cursor-no-drop"}
-        >
-          {isHitApi ? (
-            <AiOutlineLoading3Quarters className="text-white text-xl animate-spin" />
-          ) : (
-            "Submit"
-          )}
-        </Button>
+        <div className="flex gap-x-3 items-center">
+          <Button
+            disabled={false}
+            color={"brown"}
+            // additionals={"cursor-no-drop"}
+          >
+            {isHitApi ? (
+              <AiOutlineLoading3Quarters className="text-white text-xl animate-spin" />
+            ) : (
+              "Submit"
+            )}
+          </Button>
+
+          <div className="flex items-center">
+            <input
+              type="checkbox"
+              onChange={(e) => setIsAgree(e.target.checked)}
+              checked={isAgree}
+            />
+            <label className="text-sm ml-2">
+              Saya menyetujui{" "}
+              <p className="text-brown">
+                Syarat dan Ketentuan yang tertera pada guidebook
+              </p>
+            </label>
+          </div>
+        </div>
       </AuthPage>
     </div>
   );

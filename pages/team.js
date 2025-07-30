@@ -847,7 +847,7 @@ const MemberItem = ({ avatar, name, email, leaderEmail, onKick, onCert }) => {
 
       {email == userMail && (
         <Button
-          additionals={"lg:w-[220px] max-lg:w-full max-lg:mt-3"}
+          additionals={"lg:w-[220px] max-lg:w-full max-lg:mt-3 hidden"}
           onClick={onCert}
           color={"brown"}
         >
