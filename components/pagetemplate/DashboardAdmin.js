@@ -11,6 +11,7 @@ import { useRouter, withRouter } from "next/router";
 import { FaUserCircle } from "react-icons/fa";
 import { RiTeamLine } from "react-icons/ri";
 import { MdOutlineEventNote } from "react-icons/md";
+import { BsTicket } from "react-icons/bs";
 const DashboardAdminTemplate = ({ title, children, props }) => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
@@ -61,6 +62,14 @@ const DashboardAdminTemplate = ({ title, children, props }) => {
         </>
       ),
     },
+    // {
+    //   href: "/admin/seminar",
+    //   label: (
+    //     <>
+    //       <BsTicket /> <p>Seminar</p>
+    //     </>
+    //   ),
+    // },
     {
       href: "/admin/event",
       label: (

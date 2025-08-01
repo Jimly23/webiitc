@@ -4,11 +4,11 @@ import { AiFillHeart } from "react-icons/ai";
 import Marquee from "react-fast-marquee";
 
 const sponsors = [
-  { src: "/images/Sponsor/Mieayam.jpg", alt: "Sponsor Mie Ayam" },
-  { src: "/images/Sponsor/rumahweb.png", alt: "Sponsor Rumahweb" },
+  // { src: "/images/Sponsor/Mieayam.jpg", alt: "Sponsor Mie Ayam" },
+  // { src: "/images/Sponsor/rumahweb.png", alt: "Sponsor Rumahweb" },
   { src: "/images/Sponsor/dicoding.png", alt: "Sponsor Dicoding" },
-  { src: "/images/Sponsor/purbasari.jpeg", alt: "Sponsor Purbasari" },
-  { src: "/images/Sponsor/sanggaluri.png", alt: "Sponsor Sanggaluri" },
+  { src: "/images/Sponsor/queen.png", alt: "Sponsor Queen" },
+  // { src: "/images/Sponsor/sanggaluri.png", alt: "Sponsor Sanggaluri" },
 ];
 
 const SupportSection = () => {

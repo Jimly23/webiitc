@@ -14,6 +14,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { FiX } from "react-icons/fi";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
+import { BsFillTicketFill, BsTicket } from "react-icons/bs";
 
 const DashboardUserTemplate = ({ title, children }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,6 +33,11 @@ const DashboardUserTemplate = ({ title, children }) => {
       label: "Lomba",
       icon: CgEditBlackPoint,
     },
+    // {
+    //   url: "/dashboard/seminar",
+    //   label: "Seminar",
+    //   icon: BsTicket,
+    // },
     {
       url: "/dashboard/profile",
       label: "Profile",

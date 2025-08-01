@@ -16,6 +16,7 @@ import Timeline from "@/components/organisms/home/Timeline";
 import SupportSection from "@/components/organisms/home/SupportSection";
 import MediaPartner from "@/components/organisms/home/MediaPartner";
 import MarqueeSection from "@/components/organisms/home/MarqueeSection";
+import SeminarSection from "@/components/organisms/home/SeminarSection";
 
 const competitionsDumy = [
   {
@@ -86,8 +87,8 @@ export default function Home({ competitions }) {
         <meta name="title" content="IITC" />
       </Head>
       <HeroSection />
-      {/* <SupportSection /> */}
-      <MarqueeSection />
+      <SupportSection />
+      {/* <MarqueeSection /> */}
       <AboutSection />
       <SkemaSection />
       <CompetitionSection
@@ -95,10 +96,11 @@ export default function Home({ competitions }) {
         setCompetitionName={setCompetitionName}
         setIsCompetitionDetails={setIsCompetitionDetail}
       />
+      {/* <SeminarSection /> */}
       <Timeline />
       <FaqSection />
-      {/* <MediaPartner /> */}
-      <MarqueeSection />
+      <MediaPartner />
+      {/* <MarqueeSection /> */}
       <Footer />
     </main>
   );
