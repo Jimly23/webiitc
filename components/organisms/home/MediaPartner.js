@@ -8,8 +8,12 @@ const sponsors = [
   { src: "/images/mediapartner/bemswu.png", alt: "Mediapartner" },
   { src: "/images/mediapartner/hmpssi.png", alt: "Mediapartner" },
   { src: "/images/mediapartner/hmpsti.png", alt: "Mediapartner" },
+  { src: "/images/mediapartner/hmpsif.png", alt: "Mediapartner" },
   { src: "/images/mediapartner/srt.png", alt: "Mediapartner" },
   { src: "/images/mediapartner/sunsinema.png", alt: "Mediapartner" },
+  { src: "/images/mediapartner/adaevent.png", alt: "Mediapartner" },
+  { src: "/images/mediapartner/assem.png", alt: "Mediapartner" },
+  { src: "/images/mediapartner/infolomba.jpg", alt: "Mediapartner" },
 ];
 
 const MediaPartner = () => {

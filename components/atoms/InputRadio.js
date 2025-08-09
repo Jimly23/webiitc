@@ -8,7 +8,7 @@ function InputRadio({ gender, setGender }) {
 
   return (
     <div>
-      <Text additionals={"mb-2"}>Jenis Kelamin</Text>
+      <Text additionals={"mb-2"}>Jenis Kelamin *</Text>
       <fieldset className="grid md:grid-cols-2 gap-4">
         <div>
           <input

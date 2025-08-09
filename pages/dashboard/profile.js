@@ -262,14 +262,14 @@ function Profile() {
                 onChange={(e) => setPhone(e.target.value)}
               />
               <InputOptions
-                label="Pilih Status"
+                label="Pilih Status *"
                 options={["Pilih Status", "pelajar", "mahasiswa", "umum"]}
                 grade={grade}
                 setGrade={setGrade}
               />
               <InputTitle
                 required={true}
-                title={"Nama Jenjang Pendidikan / Instansi "}
+                title={"Nama Jenjang Pendidikan / Instansi *"}
                 type="text"
                 placeholder={"Instansi, organisasi, umum"}
                 value={institution}
@@ -288,7 +288,7 @@ function Profile() {
               <InputRadio gender={gender} setGender={setGender} />
               <div>
                 <Text>
-                  Avatar <span className="text-rose-600">*</span>{" "}
+                  Avatar <span className="">*</span>{" "}
                   <span className="text-xs italic font-thin">
                     (JPG,PNG,JPEG)
                   </span>
@@ -302,7 +302,7 @@ function Profile() {
                 />
 
                 <Text>
-                  Twibbon <span className="text-rose-600">*</span>
+                  Twibbon <span className="">*</span>
                   <span className="text-xs italic font-thin">
                     (JPG,PNG,JPEG)
                   </span>{" "}
@@ -319,7 +319,7 @@ function Profile() {
               </div>
               <div className="p-3 border rounded-lg my-3 flex justify-start items-center border-brown bg-orange-50 text-brown font-medium ">
                 kolom dengan tanda
-                <span className="text-rose-600 mx-1 font-bold  bg-orange-100 rounded w-1 p-1 flex items-center justify-center h-1">
+                <span className=" mx-1 font-bold  bg-orange-100 rounded w-1 p-1 flex items-center justify-center h-1">
                   *
                 </span>
                 wajib di isi

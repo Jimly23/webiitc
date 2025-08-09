@@ -1,4 +1,3 @@
-import GetDetailTeamAdminApi from "@/api/admin/teams/Detail";
 import Text from "@/components/atoms/Text";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -9,11 +8,12 @@ import { BiCheckCircle } from "react-icons/bi";
 import PaymentValidationApi from "@/api/payment/PaymentValidation";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import Cookies from "js-cookie";
+import GetDetailSeminarAdminApi from "@/api/admin/seminars/Detail";
 
 
-const TeamDetailAdmin = () => {
+const SeminarDetailAdmin = () => {
   const router = useRouter();
-  const [team, setTeam] = useState({});
+  const [user, setUser] = useState({});
   const [isApprove, setIsApprove] = useState(false);
   const [counter, setCounter] = useState(false);
   const [isHitApi, setisHitApi] = useState(false);
@@ -30,18 +30,19 @@ const TeamDetailAdmin = () => {
   }, []);
 
   useEffect(() => {
-    GetDetailTeamAdminApi({ id }).then((res) => {
-      // console.log(res);
-      setTeam(res?.data?.team);
-      if (res.data?.team?.isActive == "PENDING") {
-        setImage(res?.data?.team?.transferReceipt);
+    GetDetailSeminarAdminApi({ id }).then((res) => {
+      console.log(res?.data);
+      setUser(res?.data);
+      if (res?.data?.isActive == "PENDING") {
+        setImage(res?.data?.transferReceipt);
         setDone(true);
       }
     });
   }, [router.isReady]);
+
   useEffect(() => {
-    console.log(team);
-  }, [team]);
+    //console.log(user);
+  }, [user]);
   const handleSubmit = (e) => {
     e.preventDefault();
     setisHitApi(true);
@@ -67,14 +68,14 @@ const TeamDetailAdmin = () => {
           <li>&gt;</li>
           <li>Approval</li>
           <li>&gt;</li>
-          <li>{team?.name}</li>
+          <li>{user?.name}</li>
         </ul>
 
-        {StatusPayment(team?.isActive)}
+        {StatusPayment(user?.isActive)}
         <div className="flex items-center space-x-3 relative mt-3">
-          {team?.avatar ? (
+          {user?.avatar ? (
             <img
-              src={team?.avatar}
+              src={user?.avatar}
               alt="pembayaran tim"
               width={1080}
               height={1080}
@@ -85,17 +86,17 @@ const TeamDetailAdmin = () => {
           )}
           <div>
             <h1 className="text-xl text-black font-bold">
-              {team?.name ?? team.competition?.name}
+              {user?.name}
             </h1>
-            <p>{team?.leader?.name ?? team.leaderName}</p>
+            <p>{user?.email}</p>
           </div>
         </div>
 
         <div className="mt-8">
           <p className="py-3 border-y text-center">Bukti Pembayaran</p>
-          {team?.transferReceipt ? (
+          {user?.transferReceipt ? (
             <img
-              src={team?.transferReceipt}
+              src={user?.transferReceipt}
               alt="bukti pembayaran"
               width={1080}
               height={1080}
@@ -170,4 +171,4 @@ const TeamDetailAdmin = () => {
   );
 };
 
-export default TeamDetailAdmin;
+export default SeminarDetailAdmin;

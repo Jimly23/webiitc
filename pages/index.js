@@ -100,7 +100,6 @@ export default function Home({ competitions }) {
       <Timeline />
       <FaqSection />
       <MediaPartner />
-      {/* <MarqueeSection /> */}
       <Footer />
     </main>
   );

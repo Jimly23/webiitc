@@ -6,9 +6,10 @@ import { BiHomeAlt } from "react-icons/bi";
 import { MdArrowForwardIos } from "react-icons/md";
 import Link from "next/link";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { StatusPayment } from "../team";
+import { StatusPayment } from "../../admin/teams/detail";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
+import GetAllSeminarApi from "@/api/seminar/GetAllSeminar";
 
 const SeminarAdmin = () => {
   const paymentStatusFilters = [
@@ -20,8 +21,8 @@ const SeminarAdmin = () => {
   ];
 
   const router = useRouter();
-  const [teams, setTeams] = useState([]);
-  const [originalTeams, setOriginalTeams] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [originalUsers, setOriginalUsers] = useState([]);
   const [selectedCompetitionNames, setSelectedCompetitionNames] = useState([]);
   const [currentPaymentStatus, setCurrentPaymentStatus] = useState(
     paymentStatusFilters[0].value
@@ -36,26 +37,20 @@ const SeminarAdmin = () => {
   }, [])
 
   useEffect(() => {
-    fetchTeams();
+    fetchUsers();
   }, []);
 
-  const fetchTeams = () => {
-    GetAllTeamApi().then((res) => {
-      const fetchedTeams = res?.data?.teams?.reverse() ?? [];
-      setOriginalTeams(fetchedTeams);
-      setTeams(fetchedTeams);
+  const fetchUsers = () => {
+    GetAllSeminarApi().then((res) => {
+      const fetchedUsers = res?.data?.users?.reverse() ?? [];
+      setOriginalUsers(fetchedUsers);
+      setUsers(fetchedUsers);
       setIsLoading(false);
     });
   };
 
   const filterTeams = () => {
-    let filteredTeams = originalTeams;
-
-    if (selectedCompetitionNames.length > 0) {
-      filteredTeams = filteredTeams.filter((team) =>
-        selectedCompetitionNames.includes(team.competitionName)
-      );
-    }
+    let filteredTeams = users;
 
     if (currentPaymentStatus !== "ALL") {
       filteredTeams = filteredTeams.filter(
@@ -63,12 +58,14 @@ const SeminarAdmin = () => {
       );
     }
 
-    setTeams(filteredTeams);
+    setUsers(filteredTeams);
   };
 
   useEffect(() => {
     filterTeams();
-  }, [selectedCompetitionNames, currentPaymentStatus]);
+  }, [currentPaymentStatus]);
+
+  console.log(users)
 
   const toggleCompetitionFilter = (competitionName) => {
     if (selectedCompetitionNames.includes(competitionName)) {
@@ -82,9 +79,9 @@ const SeminarAdmin = () => {
       ]);
     }
   };
-  const uniqueCompetitionNames = [
-    ...new Set(originalTeams.map((team) => team.competitionName)),
-  ];
+  // const uniqueCompetitionNames = [
+  //   ...new Set(originalTeams.map((team) => team.competitionName)),
+  // ];
 
   return (
     <DashboardAdminTemplate title={"Dashboard"}>
@@ -140,27 +137,24 @@ const SeminarAdmin = () => {
       </DashboardCard>
 
       <DashboardCard>
-        <p className="w-full text-right pr-5">total peserta: {teams.length}</p>
+        <p className="w-full text-right pr-5">total peserta: {users.length}</p>
         <div
           className={`grid ${
-            teams.length > 1 ? "lg:grid-cols-2" : ""
+            users.length > 1 ? "lg:grid-cols-2" : ""
           }  items-center mt-2`}
         >
           {isLoading ? (
             <AiOutlineLoading3Quarters className="mx-auto text-lg text-black animate-spin" />
           ) : (
-            teams.map((team) => (
-              <li key={team.id} className=" p-4 my-1 list-none">
+            users.map((user) => (
+              <li key={user.id} className=" p-4 my-1 list-none">
                 <ul className="">
-                  <Link href={`/admin/team?i=${team.id}`}>
-                    <TeamCard
-                      label={team.competitionName}
-                      avatar={team.avatar}
-                      name={team.name ?? team.leaderName}
-                      title={team.title}
-                      isActive={team.isActive}
-                      code={team.code}
-                      leaderName={team.leaderName}
+                  <Link href={`/admin/seminarvalidation?i=${user.id}`}>
+                    <SeminarCard
+                      name={user.name}
+                      phone={user.phone}
+                      isActive={user.isActive}
+                      email={user.email}
                     />
                   </Link>
                 </ul>
@@ -175,14 +169,12 @@ const SeminarAdmin = () => {
 
 export default SeminarAdmin;
 
-const TeamCard = ({
-  avatar,
+const SeminarCard = ({
   name,
-  title,
+  phone,
+  avatar,
   isActive,
-  code,
-  label,
-  leaderName,
+  email,
 }) => {
   return (
     <li className="group flex flex-col  bg-white border shadow-sm rounded-xl hover:shadow-md transition">
@@ -200,63 +192,24 @@ const TeamCard = ({
             <div className="w-full h-40 md:w-20 md:h-20 rounded-t-md bg-slate-200 animate-pulse"></div>
           )}
 
-          {/* <div className="mt-3 md:mt-0 w-full md:ml-5">
+          <div className="mt-3 md:mt-0 w-full md:ml-5">
             <div className="flex flex-row items-center gap-5 mb-5  justify-between">
               <h3 className="group-hover:text-blue-600 text-xs items-center font-semibold text-gray-800 dark:group-hover:text-gray-400">
                 {name}{" "}
               </h3>
+              {/* <div className="text-xs">{StatusPayment(isActive)}</div> */}
               <div className="text-xs">{StatusPayment(isActive)}</div>
             </div>
-            <div className="text-sm flex mb-3 text-gray-500">{leaderName}</div>
+            <div className="text-sm flex mb-3 text-gray-500">{email}</div>
             <div className="text-sm flex justify-between text-gray-500">
-              {title ? title : "belum submit"}
+              {/* {title ? title : "belum submit"} */}
               <span className="text-blue-600 font-medium dark:text-blue-500 text-right">
-                {label}
+                {phone}
               </span>
             </div>
-          </div> */}
+          </div>
         </div>
       </div>
     </li>
   );
 };
-
-
-// import * as Sentry from "@sentry/nextjs";
-// import ErrorPage from "@/components/pagetemplate/ErrorPage";
-
-// function CustomErrorComponent({ statusCode, message }) {
-//   if (statusCode >= 500) {
-//     Sentry.captureMessage(
-//       `Server error occurred with status code ${statusCode}`,
-//       "error"
-//     );
-//   }
-
-//   return <ErrorPage statusCode={statusCode} message={message} />;
-// }
-
-// CustomErrorComponent.getInitialProps = async (contextData) => {
-//   const { res, err, asPath } = contextData;
-//   const statusCode = res ? res.statusCode : err.statusCode;
-
-//   if (err) {
-//     Sentry.captureException(err, {
-//       contexts: {
-//         page: {
-//           url: asPath, // Capture the URL where the error occurred
-//         },
-//       },
-//     });
-
-//     // Ensure Sentry sends the error before continuing
-//     await Sentry.flush(2000);
-//   }
-
-//   // Custom error message
-//   const message = err ? err.message : `An error ${statusCode} occurred`;
-
-//   return { statusCode, message };
-// };
-
-// export default CustomErrorComponent;
