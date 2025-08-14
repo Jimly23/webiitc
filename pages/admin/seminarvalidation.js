@@ -97,9 +97,10 @@ const SeminarDetailAdmin = () => {
 
         <div className="mt-8">
           <p className="py-3 border-y text-center">Bukti Pembayaran</p>
-          {user?.transferReceipt && user?.transferReceipt.length != 0 ? user?.transferReceipt.map(image => <img
+          {user?.transferReceipt && user?.transferReceipt.length != 0 ? user?.transferReceipt.map((image, index) => <img
             src={image}
             alt="bukti pembayaran"
+            key={index}
             width={1080}
             height={1080}
             className="w-full rounded-md mt-3"
