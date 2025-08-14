@@ -22,12 +22,13 @@ import { IoCopyOutline } from "react-icons/io5";
 import GetDetailUser from "@/api/user/GetDetailUser";
 import GetAllUserApi from "@/api/user/GetAllUser";
 import GetToken from "@/api/utils/GetToken";
+import FileInputMultiple from "@/components/atoms/FilePondSeminar";
 
 const PaymentSeminar = () => {
   const [isSucces, setIsSucces] = useState(false);
   const [isWrong, setIsWrong] = useState(false);
   const [Message, setMessage] = useState("");
-  const [image, setImage] = useState(null);
+  const [images, setImages] = useState([]);
   const [isHitUser, setIsHitUser] = useState(false);
   const [isHitPay, setIsHitPay] = useState(false);
   const [competition, setCompetition] = useState({});
@@ -88,7 +89,7 @@ const PaymentSeminar = () => {
   const handlePay = (e) => {
     e.preventDefault();
     setIsHitPay(true);
-    PaySeminarApi({ id, proveOfPayment: image }).then((res) => {
+    PaySeminarApi({ id, proveOfPayment: images }).then((res) => {
       //console.log(res);
       setMessage(res.message);
       if (res.status == 1) {
@@ -102,6 +103,7 @@ const PaymentSeminar = () => {
     // .catch((err) => //console.log(err));
   };
   const [copied, setCopied] = useState(false);
+  const sisaBukti = Math.max(0, paymentMethods.length - images.length);
   return (
     <>
       <div
@@ -212,14 +214,20 @@ const PaymentSeminar = () => {
             </li>
           ))}
         </ul>
-        <FileInput
+
+        
+        <div className="py-6">
+          <p className="text-sm text-rose-700 italic">Tersisa {sisaBukti} bukti lagi</p>
+        </div>
+
+        <FileInputMultiple
           placeholder="Upload bukti pembayaran"
-          className="bg-white rounded-xl border border-brown text-center "
-          image={image}
-          setImage={setImage}
+          className="bg-white rounded-xl text-center "
+          images={images}
+          setImages={setImages}
         />
 
-        <Button isSquare additionals={"w-full"} size={"md"} color={"brown"}>
+        <Button isSquare disabled={sisaBukti > 0} additionals={"w-full"} size={"md"} color={"brown"}>
           {isHitPay ? (
             <AiOutlineLoading3Quarters className="text-xl mx-auto text-white animate-spin" />
           ) : (

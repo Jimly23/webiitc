@@ -1,11 +1,12 @@
 import GetToken from "@/api/utils/GetToken";
 import axios from "axios";
-import UrlPaymentSeminar from "../routes/paymentseminar";
+import {UrlPaymentSeminar} from "../routes/paymentseminar";
 
 const PaySeminarApi = async ({ proveOfPayment, id }) => {
-  const data = {
-    proveOfPayment,
-  };
+  const data = new FormData();
+  proveOfPayment.forEach(proof => {
+    data.append('proveOfPayment[]', proof);
+  })
   console.log("Token yang dikirim:", GetToken({ isAdmin: false }));
 
   try {

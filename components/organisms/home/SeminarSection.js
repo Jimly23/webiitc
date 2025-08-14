@@ -7,11 +7,15 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import { MdDataExploration, MdDateRange } from "react-icons/md";
+import { CgLock } from "react-icons/cg";
+import { FaClock } from "react-icons/fa";
+import { IoLocation } from "react-icons/io5";
 const SeminarSection = () => {
   const images = [
-    "/images/kala.png",
-    "/images/kala2.png",
-    "/images/kala3.png"
+    "/images/fuadit.png",
+    // "/images/kala2.png",
+    // "/images/kala3.png"
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -25,9 +29,9 @@ const SeminarSection = () => {
   }, []);
 
   return (
-    <section id="about" className="w-full mb-10 min-h-screen  overflow-hidden">
+    <section id="about" className="w-full mb-10 min-h-screen">
       <Container>
-        <div className="w-11/12 mx-auto my-20  flex flex-col  md:flex-row  md:items-center ">
+        <div className="w-11/12 mx-auto my-20  flex flex-col  md:flex-row  md:items-center pb-[400px] md:pb-0">
           <motion.article
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -37,7 +41,7 @@ const SeminarSection = () => {
             <div className="text-center w-full mt-10 text-xs md:text-md lg:text-lg">
               <FlashParagraph
                 isHorizontal={true}
-                value={"Daftar Seminar"}
+                value={"Must to join this Workshop"}
               />
             </div>
             <Text
@@ -48,13 +52,30 @@ const SeminarSection = () => {
               color={"dark"}
               weight={"bold"}
             >
-              Explore Career Journey
-            </Text>
-            <Text color={"dark"} additionals="text-justify md:text-start ">
               Investasi Skill dan Pengembangan Karier di Dunia Teknologi
             </Text>
+            <div className="pt-5">
+              <div className="md:flex gap-2 mb-2">
+                <MdDateRange size={25} className="text-brown" />
+                <Text color={"dark"} additionals="text-justify md:text-start ">
+                  Sabtu, 27 September 2025
+                </Text>
+              </div>
+              <div className="md:flex gap-2 mb-2">
+                <FaClock size={25} className="text-brown" />
+                <Text color={"dark"} additionals="text-justify md:text-start ">
+                  08.00 - 12.00 WIB
+                </Text>
+              </div>
+              <div className="md:flex gap-2 mb-2">
+                <IoLocation size={28} className="text-brown" />
+                <Text color={"dark"} additionals="text-justify md:text-start ">
+                  Aula Gedung Fakultas Bisnis dan Ilmu Sosial, Universitas Amikom Purwokerto
+                </Text>
+              </div>
+            </div>
             <Link href={"/signup"}>
-              <Button size={"lg"} additionals={"w-60"}>
+              <Button size={"lg"} additionals={"w-60 font-medium"} color={"dark"}>
                 Daftar Sekarang
               </Button>
             </Link>
@@ -77,7 +98,7 @@ const SeminarSection = () => {
             initial={{ opacity: 0, x: 200 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, ease: "easeIn" }}
-            className="md:w-[40%] md:ps-28 lg:ms-[150px] md:bg-contain self-start w-full object-cover bg-red-500 lg:-ml-0"
+            className="md:w-[50%] md:ps-28 lg:ms-[150px] md:bg-contain self-start w-full object-cover bg-red-500 lg:-ml-0"
           >
             <div className="relative w-full h-auto">
               <AnimatePresence mode="wait">
@@ -96,6 +117,8 @@ const SeminarSection = () => {
                     height={1080}
                     className="w-full"
                   />
+                  <Image src={'/images/fuadit-nama.png'} alt="Gambar Tunjukan Skill" width={1080} height={1080} className="w-[300px] absolute top-[280px]" />
+                  {/* <div className="absolute top-[205px] left-0 right-0 h-60 bg-gradient-to-t from-white to-transparent"></div> */}
                 </motion.div>
               </AnimatePresence>
             </div>

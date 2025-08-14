@@ -3,7 +3,7 @@ import GetToken from "../utils/GetToken";
 import UrlSeminar from "../routes/seminar";
 
 const GetAllSeminarApi = async () => {
-  console.log("Token yang dikirim:", GetToken({ isAdmin: false }));
+  // console.log("Token yang dikirim:", GetToken({ isAdmin: false }));
   try {
     const res = await axios({
       method: "GET",

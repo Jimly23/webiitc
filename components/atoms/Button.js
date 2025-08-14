@@ -1,6 +1,6 @@
 import React from "react";
 import { variant } from "@/utils/utils";
-const Button = ({ color, size, additionals, isSquare = false, ...props }) => {
+const Button = ({ color, size, disabled = false, additionals, isSquare = false, ...props }) => {
   const button = variant(
     `${isSquare ? "rounded-md" : "rounded-full"} ${additionals}`,
     {
@@ -32,7 +32,8 @@ const Button = ({ color, size, additionals, isSquare = false, ...props }) => {
   );
   return (
     <button
-      className={`transition-all cursor-default lg:cursor-pointer duration-300 ${button(
+      disabled={disabled}
+      className={`transition-all disabled:opacity-70 cursor-default lg:cursor-pointer duration-300 ${button(
         { color, size }
       )}`}
       {...props}

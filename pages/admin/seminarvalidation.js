@@ -9,6 +9,7 @@ import PaymentValidationApi from "@/api/payment/PaymentValidation";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import Cookies from "js-cookie";
 import GetDetailSeminarAdminApi from "@/api/admin/seminars/Detail";
+import PaymentValidationSeminarApi from "@/api/payment/PaymentValidationSeminar";
 
 
 const SeminarDetailAdmin = () => {
@@ -24,7 +25,7 @@ const SeminarDetailAdmin = () => {
 
   useEffect(() => {
     const token = Cookies.get("adminKey");
-    if(!token){
+    if (!token) {
       router.push("/admin");
     }
   }, []);
@@ -41,17 +42,19 @@ const SeminarDetailAdmin = () => {
   }, [router.isReady]);
 
   useEffect(() => {
-    //console.log(user);
+    console.log(user);
   }, [user]);
   const handleSubmit = (e) => {
     e.preventDefault();
     setisHitApi(true);
-    PaymentValidationApi({ isApprove, reason, id }).then((res) => {
+    // console.log({isApprove, reason, id})
+    PaymentValidationSeminarApi({ isApprove, reason, id }).then((res) => {
       //console.log(res);
       if (res.status == 1) {
-        router.push("/admin/dashboard");
+        router.push("/admin/seminar");
       }
     });
+    // setisHitApi(false);
   };
   return (
     <div className="w-full bg-slate-50 min-h-screen">
@@ -61,7 +64,7 @@ const SeminarDetailAdmin = () => {
       >
         <ul className="flex space-x-3 items-center mb-8">
           <li>
-            <Link href={"/admin/dashboard"}>
+            <Link href={"/admin/seminar"}>
               <FiHome className="text-blue-400" />
             </Link>
           </li>
@@ -94,15 +97,13 @@ const SeminarDetailAdmin = () => {
 
         <div className="mt-8">
           <p className="py-3 border-y text-center">Bukti Pembayaran</p>
-          {user?.transferReceipt ? (
-            <img
-              src={user?.transferReceipt}
-              alt="bukti pembayaran"
-              width={1080}
-              height={1080}
-              className="w-full rounded-md mt-3"
-            />
-          ) : (
+          {user?.transferReceipt && user?.transferReceipt.length != 0 ? user?.transferReceipt.map(image => <img
+            src={image}
+            alt="bukti pembayaran"
+            width={1080}
+            height={1080}
+            className="w-full rounded-md mt-3"
+          />) : (
             <div className="w-full rounded-md bg-slate-200 mt-3 flex justify-center items-center h-96">
               <p>Belum bayar</p>
             </div>
@@ -117,9 +118,8 @@ const SeminarDetailAdmin = () => {
                 setIsApprove(true);
                 setCounter(true);
               }}
-              className={` ${
-                isApprove && counter && "ring-2 ring-green-600"
-              } bg-green-500/20  text-green-500 flex px-6 py-3 rounded-md w-full mt-6 justify-center items-center transition-all duration-300`}
+              className={` ${isApprove && counter && "ring-2 ring-green-600"
+                } bg-green-500/20  text-green-500 flex px-6 py-3 rounded-md w-full mt-6 justify-center items-center transition-all duration-300`}
             >
               <BiCheckCircle className="text-xl mr-2" />
               <p>Terima Pembayaran</p>
@@ -131,9 +131,8 @@ const SeminarDetailAdmin = () => {
                 setIsApprove(false);
                 setCounter(true);
               }}
-              className={` ${
-                !isApprove && counter && "ring-2 ring-red"
-              } bg-red/20 text-red flex px-6 py-3 rounded-md w-full mt-3 justify-center items-center transition-all duration-300`}
+              className={` ${!isApprove && counter && "ring-2 ring-red"
+                } bg-red/20 text-red flex px-6 py-3 rounded-md w-full mt-3 justify-center items-center transition-all duration-300`}
             >
               <FiXCircle className="text-xl mr-2" />
               <p>Tolak Pembayaran</p>
