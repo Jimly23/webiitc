@@ -96,7 +96,7 @@ export default function Home({ competitions }) {
         setCompetitionName={setCompetitionName}
         setIsCompetitionDetails={setIsCompetitionDetail}
       />
-      <SeminarSection />
+      {/* <SeminarSection /> */}
       <Timeline />
       <FaqSection />
       <MediaPartner />
