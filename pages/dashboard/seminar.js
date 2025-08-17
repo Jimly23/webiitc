@@ -174,7 +174,7 @@ const Seminar = () => {
         const user = users.find(user => user.id === targetId);
         // console.log(user)
 
-        if (user.isActive === "VALID") {
+        if (user?.isActive === "VALID") {
           setIsGrupShowing(true);
         }
 
@@ -209,14 +209,14 @@ const Seminar = () => {
             <p className="text-blue-600 text-sm">Seminar</p>
           </ul>
           <div className="flex justify-between space-y-2 lg:space-y-0 items-center mt-4 lg:flex-row flex-col">
-            <h1 className="text-2xl font-semibold ">Seminar Yang Diikuti</h1>
+            <h1 className="text-2xl font-semibold ">Seminar✨</h1>
           </div>
-          <div className='w-full h-[400px] mt-5 rounded-lg overflow-hidden'>
+          {/* <div className='w-full h-[400px] mt-5 rounded-lg overflow-hidden'>
             <img src="/images/bgseminar.png" alt="Seminar" className="w-full h-full object-cover" />
-          </div>
+          </div> */}
           <div className='md:grid grid-cols-3 gap-x-2 mt-5'>
             <div className='col-span-2'>
-              <h5 className='text-2xl font-medium mb-3'>Investasi Skill dan Pengembangan Karier di Dunia Teknologi</h5>
+              <h5 className='text-2xl font-medium mb-3'>Explore Career Journey: Investasi Skill Pengembangan Karir di Dunia Teknologi</h5>
               <div className='md:flex items-center gap-x-2'><BiMap /> <p className='text-normal'>Aula Gedung Fakultas Bisnis dan Ilmu Sosial, Universitas Amikom Purwokerto</p></div>
               <div className='md:flex items-center gap-x-2'><BiCalendar /> <p className='text-normal'>Sabtu, 27 September 2025</p></div>
               <div className='md:flex items-center gap-x-2'><BsClock /> <p className='text-normal'>08.00 - 12.00</p></div>
