@@ -62,14 +62,14 @@ const DashboardAdminTemplate = ({ title, children, props }) => {
         </>
       ),
     },
-    // {
-    //   href: "/admin/seminar",
-    //   label: (
-    //     <>
-    //       <BsTicket /> <p>Seminar</p>
-    //     </>
-    //   ),
-    // },
+    {
+      href: "/admin/seminar",
+      label: (
+        <>
+          <BsTicket /> <p>Seminar</p>
+        </>
+      ),
+    },
     {
       href: "/admin/event",
       label: (

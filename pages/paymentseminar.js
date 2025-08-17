@@ -23,6 +23,7 @@ import GetDetailUser from "@/api/user/GetDetailUser";
 import GetAllUserApi from "@/api/user/GetAllUser";
 import GetToken from "@/api/utils/GetToken";
 import FileInputMultiple from "@/components/atoms/FilePondSeminar";
+import Link from "next/link";
 
 const PaymentSeminar = () => {
   const [isSucces, setIsSucces] = useState(false);
@@ -121,9 +122,9 @@ const PaymentSeminar = () => {
               {formattedDate}
             </Text>
           </div>
-          <Text size={"smalltitle"} weight={"bold"} color={"white"}>
+          {/* <Text size={"smalltitle"} weight={"bold"} color={"white"}>
             Rp 15.000
-          </Text>
+          </Text> */}
         </div>
       </div>
       <form
@@ -156,12 +157,12 @@ const PaymentSeminar = () => {
             )}
             <div className="max-lg:mt-3">
               <Text size={"smalltitle"} color={"black"}>
-                Nama
+                {user?.name}
               </Text>
-              <Text>{user?.name}</Text>
+              {/* <Text></Text> */}
             </div>
           </div>
-          <div className=" text-green-500 max-lg:hidden">Pembayaran</div>
+          {/* <div className=" text-green-500 max-lg:hidden">Pembayaran</div> */}
         </div>
 
         {/* <div className="mb-6">
@@ -174,7 +175,7 @@ const PaymentSeminar = () => {
         <div className="py-6 border-y flex justify-center items-center space-x-3">
           {/* <Logo /> */}
           <Text color={"black"} size={"cardtitle"}>
-            Metode Pembayaran
+            Syarat Pendaftaran
           </Text>
         </div>
 
@@ -182,34 +183,22 @@ const PaymentSeminar = () => {
           {paymentMethods.map((item, idx) => (
             <li
               key={idx}
-              className="flex justify-center space-x-3 items-center"
+              className="flex justify-between items-center"
             >
-              <img
-                src={item.img}
-                alt={item.value}
-                width={1080}
-                height={1080}
-                className="w-20"
-              />
-              <div className="flex items-center w-full justify-between space-x-1">
+              <h5>{!copied && `${item.an}`}</h5>
+              <div className="flex items-center w-full justify-between">
                 <div className="mr-3 text-end w-full">
-                  <Text additionals={"text-green-500"}>
-                    {copied ? "Disalin" : `${item.value}`}
-                  </Text>
-                  <Text size={"small"}>{!copied && `${item.an}`}</Text>
+                  <Link
+                    href={item.value}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Text additionals={"text-blue-500 underline"}>
+                      {copied ? "Disalin" : `@iitc_intermedia `}
+                    </Text>
+                  </Link>
+                  {/* <Text size={"small"}>{!copied && `${item.an}`}</Text> */}
                 </div>
-                {/* <CopyToClipboard
-                  text={item.value}
-                  onCopy={() => setCopied(true)}
-                >
-                  <div className="hover:cursor-pointer">
-                    {copied ? (
-                      <BiCheckCircle className="text-xl text-green-500" />
-                    ) : (
-                      <IoCopyOutline className="text-xl" />
-                    )}
-                  </div>
-                </CopyToClipboard> */}
               </div>
             </li>
           ))}
@@ -231,7 +220,7 @@ const PaymentSeminar = () => {
           {isHitPay ? (
             <AiOutlineLoading3Quarters className="text-xl mx-auto text-white animate-spin" />
           ) : (
-            "Kirim Bukti Pembayaran"
+            "Kirim Bukti Persyaratan"
           )}
         </Button>
         <Button
@@ -253,17 +242,14 @@ export default PaymentSeminar;
 const paymentMethods = [
   {
     img: "https://upload.wikimedia.org/wikipedia/commons/7/72/Logo_dana_blue.svg",
-    value: "088232049206",
-    an: "an Dwi Rizkia Ashari",
+    value: "https://www.instagram.com/iitc_intermedia?igsh=d3RucXVzY3oydTZz",
+    an: "Follow Instagram IITC",
+    title: "@iitc_intermedia",
   },
   {
     img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/BANK_BRI_logo.svg/1280px-BANK_BRI_logo.svg.png",
-    value: "660701031336533",
-    an: "an Dwi Rizkia Ashari",
-  },
-  {
-    img: "https://upload.wikimedia.org/wikipedia/id/thumb/5/55/BNI_logo.svg/1280px-BNI_logo.svg.png",
-    value: "1854657263",
-    an: "an Ida Feriani",
-  },
+    value: "https://www.instagram.com/p/DNW9c3lTiCJ/?img_index=1&igsh=dnJlemsxemFvZ29v",
+    an: "Share Informasi Acara",
+    title: "@iitc_intermedia",
+  }
 ];

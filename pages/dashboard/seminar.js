@@ -213,8 +213,8 @@ const Seminar = () => {
             <div className='mt-5 md:mt-0'>
               <div className='grid grid-cols-2'>
                 <div>
-                  <p className='text-sm'>Harga</p>
-                  <h5 className='text-2xl font-bold'>Rp15.000</h5>
+                  {/* <p className='text-sm'>Harga</p> */}
+                  <h5 className='text-2xl font-bold text-brown'>GRATIS</h5>
                 </div>
                 {/* <button className='w-full py-2 bg-brown text-white rounded-md mt-3'>Beli Tiket</button> */}
                 <Link
@@ -222,7 +222,7 @@ const Seminar = () => {
                   className="w-full"
                 >
                   <Button isSquare additionals={"w-full"} color={"brown"}>
-                    Bayar Sekarang
+                    Daftar Sekarang
                   </Button>
                 </Link>
               </div>

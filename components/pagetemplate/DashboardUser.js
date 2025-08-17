@@ -33,11 +33,11 @@ const DashboardUserTemplate = ({ title, children }) => {
       label: "Lomba",
       icon: CgEditBlackPoint,
     },
-    // {
-    //   url: "/dashboard/seminar",
-    //   label: "Seminar",
-    //   icon: BsTicket,
-    // },
+    {
+      url: "/dashboard/seminar",
+      label: "Seminar",
+      icon: BsTicket,
+    },
     {
       url: "/dashboard/profile",
       label: "Profile",
