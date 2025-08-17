@@ -57,18 +57,18 @@ const FaqSection = () => {
               iitc_intermedia
             </a>
             <a
-              href="https://wa.me/6285133711082"
-              className="font-semibold flex items-center gap-2 text-blue-500 cursor-default lg:cursor-pointer"
-            >
-              <RiWhatsappFill />
-              +62 851-3371-1082 (CP 1)
-            </a>
-            <a
               href="https://wa.me/6285133711081"
               className="font-semibold flex items-center gap-2 text-blue-500 cursor-default lg:cursor-pointer"
             >
               <RiWhatsappFill />
-              +62 851-3371-1081 (CP 2)
+              +62 851-3371-1081 (CP 1)
+            </a>
+            <a
+              href="https://wa.me/6285133711082"
+              className="font-semibold flex items-center gap-2 text-blue-500 cursor-default lg:cursor-pointer"
+            >
+              <RiWhatsappFill />
+              +62 851-3371-1082 (CP 2)
             </a>
             {/* <a
               href="https://wa.me/6285133711082 "

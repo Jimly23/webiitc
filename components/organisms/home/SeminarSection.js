@@ -29,7 +29,7 @@ const SeminarSection = () => {
   }, []);
 
   return (
-    <section id="about" className="w-full mb-10 min-h-screen">
+    <section id="about" className="w-full mb-10 min-h-screen overflow-hidden">
       <Container>
         <div className="w-11/12 mx-auto my-20  flex flex-col  md:flex-row  md:items-center pb-[400px] md:pb-0">
           <motion.article
@@ -55,27 +55,41 @@ const SeminarSection = () => {
               Investasi Skill dan Pengembangan Karier di Dunia Teknologi
             </Text>
             <div className="pt-5">
-              <div className="md:flex gap-2 mb-2">
-                <MdDateRange size={25} className="text-brown" />
-                <Text color={"dark"} additionals="text-justify md:text-start ">
+              <div className="flex gap-2 mb-2.5 items-start">
+                <MdDateRange className="text-brown text-[1.25rem] flex-[1_1_5%]" />
+                <Text
+                  color={"dark"}
+                  additionals="text-justify md:text-start flex-[1_1_calc(95%-0.5rem)]"
+                >
                   Sabtu, 27 September 2025
                 </Text>
               </div>
-              <div className="md:flex gap-2 mb-2">
-                <FaClock size={25} className="text-brown" />
-                <Text color={"dark"} additionals="text-justify md:text-start ">
+              <div className="flex gap-2 mb-2.5 items-start">
+                <FaClock className="text-brown text-[1.18rem] flex-[1_1_5%]" />
+                <Text
+                  color={"dark"}
+                  additionals="text-justify md:text-start flex-[1_1_calc(95%-0.5rem)]"
+                >
                   08.00 - 12.00 WIB
                 </Text>
               </div>
-              <div className="md:flex gap-2 mb-2">
-                <IoLocation size={28} className="text-brown" />
-                <Text color={"dark"} additionals="text-justify md:text-start ">
-                  Aula Gedung Fakultas Bisnis dan Ilmu Sosial, Universitas Amikom Purwokerto
+              <div className="flex gap-2 mb-2.5 items-start">
+                <IoLocation className="text-brown text-[1.25rem] flex-[1_1_5%]" />
+                <Text
+                  color={"dark"}
+                  additionals="text-justify md:text-start flex-[1_1_calc(95%-0.5rem)]"
+                >
+                  Aula Gedung Fakultas Bisnis dan Ilmu Sosial, Universitas
+                  Amikom Purwokerto
                 </Text>
               </div>
             </div>
             <Link href={"/signup"}>
-              <Button size={"lg"} additionals={"w-60 font-medium"} color={"dark"}>
+              <Button
+                size={"lg"}
+                additionals={"w-60 font-medium"}
+                color={"dark"}
+              >
                 Daftar Sekarang
               </Button>
             </Link>
@@ -117,7 +131,13 @@ const SeminarSection = () => {
                     height={1080}
                     className="w-full"
                   />
-                  <Image src={'/images/fuadit-nama.png'} alt="Gambar Tunjukan Skill" width={1080} height={1080} className="w-[300px] absolute top-[280px]" />
+                  <Image
+                    src={"/images/fuadit-nama.png"}
+                    alt="Gambar Tunjukan Skill"
+                    width={1080}
+                    height={1080}
+                    className="w-[300px] absolute top-[280px]"
+                  />
                   {/* <div className="absolute top-[205px] left-0 right-0 h-60 bg-gradient-to-t from-white to-transparent"></div> */}
                 </motion.div>
               </AnimatePresence>
