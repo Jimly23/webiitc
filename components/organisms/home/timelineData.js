@@ -21,7 +21,7 @@ const timelineData = {
         year: "numeric",
       }),
       title: "Pendaftaran",
-      description: "Pendaftaran gelombang 1 IITC & pendaftaran webinar",
+      description: "Pendaftaran gelombang 1 IITC & pendaftaran seminar",
     },
     "2025-08-14": {
       date: new Date("2025-08-14").toLocaleString("id-ID", {

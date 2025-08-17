@@ -27,7 +27,7 @@ const HeroSection = () => {
               stiffness: "100",
               bounce: 0.3,
             }}
-            className="font-black sm:min-w-[400px] text-center md:text-start text-slate-800 z-10 text-4xl md:text-3xl lg:text-5xl leading-10 w-11/12  md:w-6/12"
+            className="font-black sm:min-w-[400px] text-center md:text-start text-slate-800 z-10 text-4xl md:text-3xl lg:text-5xl leading-10 w-full  md:w-6/12"
           >
             <div className=" text-center text-xs mx-auto md:mx-0 mb-5  w-fit px-3 border border-[#E9A319] py-1 rounded-full text-[#E9A319] bg-white">
               National IT Competition
