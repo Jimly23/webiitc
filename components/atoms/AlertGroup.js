@@ -34,7 +34,7 @@ function AlertGroup({name, link}) {
               </strong>
 
               <p className="mt-1 text-sm text-gray-700">
-                Pembayaran kamu valid silahkan masuk ke Whatsapp Group.
+                Silahkan masuk ke Whatsapp Group.
               </p>
 
               <div className="mt-4 flex gap-2">

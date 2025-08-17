@@ -37,7 +37,7 @@ const DashboardUser = () => {
   const [email, setEmail] = useState("");
   const [isGrupShowing, setIsGrupShowing] = useState(false);
   const [isPopUp, setIsPopUp] = useState(false);
-  console.log(teams[0]);
+  // console.log(teams[0]);
   const valid = Cookies.get("valid");
   useEffect(() => {
     GetMineTeam().then((res) => {

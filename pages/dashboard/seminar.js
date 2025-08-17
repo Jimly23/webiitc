@@ -21,6 +21,7 @@ import Cookies from 'js-cookie'
 import { useRouter } from 'next/router'
 import GetAllUserApi from '@/api/user/GetAllUser'
 import GetAllSeminarUserApi from '@/api/seminar/GetAllSeminarUser'
+import AlertGroup from '@/components/atoms/AlertGroup'
 
 const SeminarCard = ({ user, certificateNumber }) => {
   const releaseDate = new Date("2025-09-27"); // YYYY-MM-DD
@@ -46,7 +47,7 @@ const SeminarCard = ({ user, certificateNumber }) => {
     document.body.appendChild(container);
 
     const root = createRoot(container);
-    root.render(<CertificateSeminar name={name} certificateNumber={certificateNumber}/>);
+    root.render(<CertificateSeminar name={name} certificateNumber={certificateNumber} />);
 
     // Tunggu render selesai dengan sedikit delay
     await new Promise((resolve) => setTimeout(resolve, 500));
@@ -128,6 +129,7 @@ const Seminar = () => {
   const router = useRouter();
   const [user, setUser] = useState();
   const [userSeminar, setUserSeminar] = useState({});
+  const [isGrupShowing, setIsGrupShowing] = useState(false);
   const [certificataNumber, setCertificateNumber] = useState(0);
 
   useEffect(() => {
@@ -167,9 +169,14 @@ const Seminar = () => {
     GetAllSeminarUserApi().then((res) => {
       if (res.status === 1) {
         const users = res.data.users;
-
         // cari index berdasarkan id
         const index = users.findIndex(user => user.id === targetId);
+        const user = users.find(user => user.id === targetId);
+        // console.log(user)
+
+        if (user.isActive === "VALID") {
+          setIsGrupShowing(true);
+        }
 
         if (index !== -1) {
           // tambahkan +1 kalau mau mulai dari 1, bukan 0
@@ -182,8 +189,13 @@ const Seminar = () => {
 
   return (
     <DashboardUserTemplate>
-      {userSeminar?.isActive === "VALID" && <SeminarCard user={userSeminar} certificateNumber={certificataNumber}/>}
-      {userSeminar?.isActive === "PENDING" && <SeminarCard user={userSeminar} certificateNumber={certificataNumber}/>}
+      {isGrupShowing && (
+        <div className="px-6 md:px-10 lg:px-12 mx-auto w-full">
+          <AlertGroup name={'Grup Seminar'} link={'https://chat.whatsapp.com/IQQ4InmGmfaJrKLLlkitDW'} />
+        </div>
+      )}
+      {userSeminar?.isActive === "VALID" && <SeminarCard user={userSeminar} certificateNumber={certificataNumber} />}
+      {userSeminar?.isActive === "PENDING" && <SeminarCard user={userSeminar} certificateNumber={certificataNumber} />}
       {userSeminar?.isActive !== "PENDING" && userSeminar?.isActive !== "VALID" &&
 
         <DashboardCard>
