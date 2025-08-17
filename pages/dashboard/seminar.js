@@ -23,7 +23,7 @@ import GetAllUserApi from '@/api/user/GetAllUser'
 import GetAllSeminarUserApi from '@/api/seminar/GetAllSeminarUser'
 
 const SeminarCard = ({ user, certificateNumber }) => {
-  const releaseDate = new Date("2025-08-13"); // YYYY-MM-DD
+  const releaseDate = new Date("2025-09-27"); // YYYY-MM-DD
   const today = new Date();
 
   const isCertificateAvailable = today >= releaseDate;
