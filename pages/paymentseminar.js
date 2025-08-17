@@ -210,7 +210,7 @@ const PaymentSeminar = () => {
         </div>
 
         <FileInputMultiple
-          placeholder="Upload bukti pembayaran"
+          placeholder="Upload bukti persyaratan"
           className="bg-white rounded-xl text-center "
           images={images}
           setImages={setImages}
