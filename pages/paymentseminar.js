@@ -194,7 +194,7 @@ const PaymentSeminar = () => {
                     rel="noopener noreferrer"
                   >
                     <Text additionals={"text-blue-500 underline"}>
-                      {copied ? "Disalin" : `@iitc_intermedia `}
+                      {copied ? "Disalin" : `${item.title}`}
                     </Text>
                   </Link>
                   {/* <Text size={"small"}>{!copied && `${item.an}`}</Text> */}
@@ -250,6 +250,12 @@ const paymentMethods = [
     img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/BANK_BRI_logo.svg/1280px-BANK_BRI_logo.svg.png",
     value: "https://www.instagram.com/p/DNW9c3lTiCJ/?img_index=1&igsh=dnJlemsxemFvZ29v",
     an: "Share Informasi Lomba IITC",
-    title: "@iitc_intermedia",
+    title: "Poster Lomba IITC",
+  },
+  {
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/BANK_BRI_logo.svg/1280px-BANK_BRI_logo.svg.png",
+    value: "https://www.instagram.com/p/DNdVWtHT5CL/?img_index=1&igsh=MTk1YXc0ejV6MDFpZA==",
+    an: "Share Informasi Seminar",
+    title: "Poster Seminar IITC",
   }
 ];
