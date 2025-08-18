@@ -204,7 +204,15 @@ const PaymentSeminar = () => {
           ))}
         </ul>
 
-        
+        <div>
+          <p>Share informasi lomba <strong>DAN</strong> seminar ke <strong>salah satu</strong> platform berikut:</p>
+          <ul class="list-disc list-inside">
+            <li>Story/Feed di Instagram / Whatsapp / Facebook</li>
+            <li>Grup di Whatsapp / Discord / Facebook dengan minimal <strong>25 orang anggota</strong>.</li>
+          </ul>
+        </div>
+
+
         <div className="py-6">
           <p className="text-sm text-rose-700 italic">Tersisa {sisaBukti} bukti lagi</p>
         </div>
