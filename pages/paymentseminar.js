@@ -249,7 +249,7 @@ const paymentMethods = [
   {
     img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/BANK_BRI_logo.svg/1280px-BANK_BRI_logo.svg.png",
     value: "https://www.instagram.com/p/DNW9c3lTiCJ/?img_index=1&igsh=dnJlemsxemFvZ29v",
-    an: "Share Informasi Acara",
+    an: "Share Informasi Lomba IITC",
     title: "@iitc_intermedia",
   }
 ];
