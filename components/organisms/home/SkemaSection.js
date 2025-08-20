@@ -25,9 +25,10 @@ const SkemaSection = () => {
                 }
               />
             </div>
-            <motion.ol className="p-2 rounded-xl w-full mt-12 grid gap-3 md:grid-cols-4">
+            <motion.ol className="p-2 rounded-xl w-full mt-12 flex gap-5 flex-wrap justify-center items-center">
               <motion.li
                 whileInView={{ opacity: [0, 1], y: [20, 0] }}
+                className="max-sm:max-w-full max-sm:w-full max-md:w-[calc(50%-1.25rem)] max-lg:w-[calc(50%-1.25rem)] lg:w-[calc(33.33%-1.25rem)]"
                 transition={{
                   duration: 0.9,
                   delay: 0.1,
@@ -54,6 +55,7 @@ const SkemaSection = () => {
               </motion.li>
               <motion.li
                 whileInView={{ opacity: [0, 1], y: [20, 0] }}
+                className="max-sm:max-w-full max-sm:w-full max-md:w-[calc(50%-1.25rem)] max-lg:w-[calc(50%-1.25rem)] lg:w-[calc(33.33%-1.25rem)]"
                 transition={{
                   duration: 0.9,
                   delay: 0.2,
@@ -87,6 +89,7 @@ const SkemaSection = () => {
               </motion.li>
               <motion.li
                 whileInView={{ opacity: [0, 1], y: [20, 0] }}
+                className="max-sm:max-w-full max-sm:w-full max-md:w-[calc(50%-1.25rem)] max-lg:w-[calc(50%-1.25rem)] lg:w-[calc(33.33%-1.25rem)]"
                 transition={{
                   duration: 0.9,
                   delay: 0.3,
@@ -109,8 +112,8 @@ const SkemaSection = () => {
                         <span className="font-semibold text-brown">
                           1 Agustus 2025
                         </span>{" "}
-                        sampai dengan sebelum akhir pengumpulan projek yaitu pada
-                        tanggal <br />
+                        sampai dengan sebelum akhir pengumpulan projek yaitu
+                        pada tanggal <br />
                         <span className="font-semibold text-brown">
                           7 September 2025
                         </span>
@@ -121,6 +124,7 @@ const SkemaSection = () => {
               </motion.li>
               <motion.li
                 whileInView={{ opacity: [0, 1], y: [20, 0] }}
+                className="max-sm:max-w-full max-sm:w-full max-md:w-[calc(50%-1.25rem)] max-lg:w-[calc(50%-1.25rem)] lg:w-[calc(33.33%-1.25rem)]"
                 transition={{
                   duration: 0.9,
                   delay: 0.4,
@@ -143,6 +147,44 @@ const SkemaSection = () => {
                       <span className="text-brown font-semibold">
                         27 September 2025.
                       </span>
+                    </p>
+                  }
+                />
+              </motion.li>
+              <motion.li
+                whileInView={{ opacity: [0, 1], y: [20, 0] }}
+                className="max-sm:max-w-full max-sm:w-full max-md:w-[calc(50%-1.25rem)] max-lg:w-[calc(50%-1.25rem)] lg:w-[calc(33.33%-1.25rem)]"
+                transition={{
+                  duration: 0.9,
+                  delay: 0.4,
+                  type: "spring",
+                  bounce: 0.4,
+                  stiffness: "100",
+                }}
+              >
+                <SkemaCard
+                  buttonHref={
+                    "https://scribehow.com/shared/Step-by-step_guide_Signing_up_and_joining_a_competition_on_IITC__rrJ9DfysTWe-A0Se9oppIA"
+                  }
+                  buttonValue={"Cek info"}
+                  imgUrl={"/images/seminar.png"}
+                  title={"Seminar"}
+                  description={
+                    "Puncak kegiatan akan ditutup dengan seminar menarik terbuka untuk semua."
+                  }
+                  modalDescription={
+                    <p className="mb-10 p-2  min-h-20 w-full rounded-lg border-2 border-orange-300 bg-orange-50 text-slate-900">
+                      Kami mengundang kalian untuk hadir dalam Seminar pada{" "}
+                      <span className="text-brown font-semibold">
+                        27 September 2025.
+                      </span>{" "}
+                      Seminar ini menghadirkan pembicara inspiratif seputar{" "}
+                      <span className="text-brown font-semibold">
+                        "Explore Career Journey: Investasi Skill Pengembangan
+                        Karir di Dunia Teknologi".
+                      </span>{" "}
+                      Info lengkap dan pendaftaran dapat diakses melalui tombol
+                      di bawah.
                     </p>
                   }
                 />

@@ -128,6 +128,28 @@ const FaqSection = () => {
         </div>
       ),
     },
+    {
+      q: "Apakah seminar ini terbuka untuk umum?",
+      a: "Ya, seminar ini terbuka untuk umum dan siapa saja yang berminat bisa mengikuti acara ini.",
+    },
+    {
+      q: "Apakah seminar ini gratis?",
+      a: "Ya, seminar ini GRATIS tanpa dipungut biaya, namun kuota peserta terbatas sehingga disarankan segera mendaftar.",
+    },
+    {
+      q: "Apakah ada syarat khusus untuk mendaftar seminar?",
+      a: (
+        <div className="flex flex-col gap-2">
+          <span>Syarat pendaftaran antara lain :</span>
+          <ul>
+            <li>- Mengikuti akun media sosial IITC 2025</li>
+            <li>- Membagikan informasi acara ke media sosial masing-masing</li>
+            <li>- Menggunakan caption yang telah disediakan oleh panitia</li>
+            <li>- Melakukan pendaftaran melalui website resmi IITC</li>
+          </ul>
+        </div>
+      ),
+    },
   ];
 
   const variants = {
