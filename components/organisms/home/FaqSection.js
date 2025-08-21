@@ -30,14 +30,6 @@ const FaqSection = () => {
       q: "Apa format file untuk pengumpulan hasil karya?",
       a: "Format pengumpulan hasil karya berupa file proposal yang berada di dalam Google Drive",
     },
-    // {
-    //   q: "Siapa juri lomba ini?",
-    //   a: "Pada lomba IITC ini dewan juri berasal dari divisi keilmuan Intermedia dan beberapa pihak yang mungkin nantinya akan ditugaskan oleh UKM Intermedia sebagai dewan juri tambahan",
-    // },
-    // {
-    //   q: "Bagaimana cara juri menilai hasil karya?",
-    //   a: "Juri menilai hasil karya berdasarkan kriteria yang telah ditetapkan dan Mereka menggunakan rubrik penilaian untuk memberikan skor yang objektif dan konsisten.",
-    // },
     {
       q: "Bagaimana cara membayar biaya pendaftarannya?",
       a: "Pembayaran dapat dilakukan melalui transfer ke rekening bank atau e-wallet yang akan diinformasikan setelah kamu mendaftar.",

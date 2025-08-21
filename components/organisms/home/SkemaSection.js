@@ -180,9 +180,9 @@ const SkemaSection = () => {
                       </span>{" "}
                       Seminar ini menghadirkan pembicara inspiratif seputar{" "}
                       <span className="text-brown font-semibold">
-                        "Explore Career Journey: Investasi Skill Pengembangan
-                        Karir di Dunia Teknologi".
-                      </span>{" "}
+                        {`"Explore Career Journey: Investasi Skill Pengembangan Karir di Dunia Teknologi".`}
+                      </span>
+                      {" "}
                       Info lengkap dan pendaftaran dapat diakses melalui tombol
                       di bawah.
                     </p>
