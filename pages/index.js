@@ -6,6 +6,7 @@ import {
   Footer,
   HeroSection,
   SkemaSection,
+  FloatingButton,
 } from "@/components";
 import Head from "next/head";
 import { useState } from "react";
@@ -81,7 +82,7 @@ export default function Home({ competitions }) {
       setIsCompetitionDetail={setIsCompetitionDetail}
     />
   ) : (
-    <main>
+    <main style={{ position: 'relative', zIndex: 0 }}>
       <Head>
         <title>IITC</title>
         <meta name="title" content="IITC" />
@@ -101,6 +102,12 @@ export default function Home({ competitions }) {
       <FaqSection />
       <MediaPartner />
       <Footer />
+      {/* Floating chat button, always on top */}
+      <div style={{ position: 'fixed', bottom: 0, right: 0, zIndex: 9999, pointerEvents: 'none' }}>
+        <div style={{ pointerEvents: 'auto' }}>
+          <FloatingButton />
+        </div>
+      </div>
     </main>
   );
 }

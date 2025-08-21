@@ -8,3 +8,4 @@ export { default as FaqSection } from './organisms/home/FaqSection';
 export { default as Footer } from './organisms/home/Footer';
 export { default as CompetitionDetails } from './organisms/details/CompetitionDetails';
 export { default as Container } from './molecules/Container';
+export { default as FloatingButton } from './organisms/home/FloatingButton';
