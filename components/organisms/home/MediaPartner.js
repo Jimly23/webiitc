@@ -14,6 +14,12 @@ const sponsors = [
   { src: "/images/mediapartner/adaevent.png", alt: "Mediapartner" },
   { src: "/images/mediapartner/assem.png", alt: "Mediapartner" },
   { src: "/images/mediapartner/infolomba.jpg", alt: "Mediapartner" },
+  { src: "/images/mediapartner/csrel.png", alt: "Mediapartner" },
+  { src: "/images/mediapartner/eventmahasiswa.png", alt: "Mediapartner" },
+  { src: "/images/mediapartner/eventpwt.png", alt: "Mediapartner" },
+  { src: "/images/mediapartner/hmftv.png", alt: "Mediapartner" },
+  { src: "/images/mediapartner/ikutevent.png", alt: "Mediapartner" },
+  { src: "/images/mediapartner/infolombafilm.png", alt: "Mediapartner" },
 ];
 
 const MediaPartner = () => {

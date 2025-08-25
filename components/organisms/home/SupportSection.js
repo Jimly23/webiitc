@@ -7,6 +7,8 @@ const sponsors = [
   { src: "/images/Sponsor/dicoding.png", alt: "Sponsor Dicoding" },
   { src: "/images/Sponsor/queen.png", alt: "Sponsor Queen" },
   { src: "/images/Sponsor/vivo.png", alt: "Sponsor Vivo" },
+  { src: "/images/Sponsor/lanyard.png", alt: "Sponsor Lanyard" },
+  { src: "/images/Sponsor/nufa.png", alt: "Sponsor Nufa" },
 ];
 
 const SupportSection = () => {
@@ -33,7 +35,7 @@ const SupportSection = () => {
                 src={sponsor.src}
                 alt={sponsor.alt}
                 width={150}
-                height={80}
+                height={90}
                 className="object-contain h-16 w-auto"
               />
             </div>
