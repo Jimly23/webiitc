@@ -9,6 +9,9 @@ const sponsors = [
   { src: "/images/Sponsor/vivo.png", alt: "Sponsor Vivo" },
   { src: "/images/Sponsor/lanyard.png", alt: "Sponsor Lanyard" },
   { src: "/images/Sponsor/nufa.png", alt: "Sponsor Nufa" },
+  { src: "/images/Sponsor/kgs.jpg", alt: "Sponsor KGS" },
+  { src: "/images/Sponsor/kaveel.jpg", alt: "Sponsor Kaveel" },
+  { src: "/images/Sponsor/pish.png", alt: "Sponsor Pish" },
 ];
 
 const SupportSection = () => {
