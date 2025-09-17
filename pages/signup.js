@@ -29,7 +29,7 @@ const Signup = () => {
   const [isSucces, setIsSucces] = useState(false);
   const [Message, setMessage] = useState("");
   const [isUsed, setIsUsed] = useState(false);
-  const [isPopUp, setIsPopUp] = useState(false);
+  const [isPopUp, setIsPopUp] = useState(true);
   const [isAgree, setIsAgree] = useState(false);
   const router = useRouter();
   useEffect(() => {
