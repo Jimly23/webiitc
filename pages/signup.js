@@ -29,7 +29,7 @@ const Signup = () => {
   const [isSucces, setIsSucces] = useState(false);
   const [Message, setMessage] = useState("");
   const [isUsed, setIsUsed] = useState(false);
-  const [isPopUp, setIsPopUp] = useState(false);
+  const [isPopUp, setIsPopUp] = useState(true);
   const [isAgree, setIsAgree] = useState(false);
   const router = useRouter();
   useEffect(() => {
@@ -114,10 +114,10 @@ const Signup = () => {
             color={"text-black"}
             weight={"bold"}
           >
-            Peringatan
+            Pendaftaran IITC 2025 Telah Ditutup
           </Text>
           <Text additionals={"text-center"}>
-            {Message || "Silakan centang persetujuan terlebih dahulu."}
+            {Message || "Terima kasih atas antusiasme Anda. Nantikan IITC di tahun berikutnya!"}
           </Text>
         </div>
       </PopUp>

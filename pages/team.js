@@ -34,6 +34,8 @@ import Certificate from "@/components/molecules/Certificate";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import { createRoot } from 'react-dom/client';
+import GetAllUserApi from "@/api/user/GetAllUser";
+import GetAllUserParticipantApi from "@/api/user/GetAllUserParticipant";
 // import confetti from "canvas-confetti";
 const userMail = Cookies.get("email");
 export async function getServerSideProps(context) {
@@ -63,6 +65,8 @@ const TeamPage = () => {
   const [isHitCompetition, setIsHitCompetition] = useState(true);
   const [isHitTeam, setIsHitTeam] = useState(true);
   const [team, setTeam] = useState({});
+  const [users, setUsers] = useState([]);
+  const [usersParticipant, setUsersParticipant] = useState({});
   const [copied, setCopied] = useState(false);
   const [isCsr, setIsCsr] = useState(false);
   const [email, setEmail] = useState("");
@@ -93,8 +97,25 @@ const TeamPage = () => {
   const [teamTitle, setTeamTitle] = useState("-");
   const [submission, setSubmission] = useState("");
 
-  // certificate
   const handleDownloadCertificate = async (name, competitionName) => {
+    // number cert
+    // console.log("All users:", users);
+
+    // cari index berdasarkan name
+    const userIndex = users.findIndex((user) => user.name === name);
+
+    // if (userIndex !== -1) {
+    //   console.log(`User ${name} ada di index ke-${userIndex}`);
+    //   console.log("Data user:", users[userIndex]);
+    // } else {
+    //   console.log(`User dengan nama ${name} tidak ditemukan`);
+    // }
+
+    // di sini kamu bisa lanjutkan logic download certificate
+    // misalnya generate nomor sertifikat = userIndex + 1
+    const certificateNumber = userIndex + 100;
+    // console.log("Nomor sertifikat:", certificateNumber);
+
     const container = document.createElement("div");
     container.style.width = "1117px";
     container.style.height = "790px";
@@ -108,7 +129,7 @@ const TeamPage = () => {
     document.body.appendChild(container);
 
     const root = createRoot(container);
-    root.render(<Certificate name={name} competitionName={competitionName} />);
+    root.render(<Certificate certificateNumber={certificateNumber} name={name} competitionName={competitionName} />);
 
     // Tunggu render selesai dengan sedikit delay
     await new Promise((resolve) => setTimeout(resolve, 500));
@@ -175,6 +196,21 @@ const TeamPage = () => {
       // .catch((err) => //console.log(err));
     }
   }, [router]);
+  const GetAllUsers = () => {
+    GetAllUserParticipantApi()
+      .then((res) => {
+        // console.log(res.data);
+        setUsers(res.data.users.slice(400));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    GetAllUsers();
+  }, [])
+
   const getDetailTeam = () => {
     setIsHitTeam(true);
     GetDetailTeam({ id: teamId })
@@ -773,12 +809,12 @@ export const PopUp = ({ onClose, isModal, children }) => {
         } transition-all duration-300 p-5 bg-dark/10 backdrop-blur-md w-full fixed h-screen z-50 flex justify-center items-center`}
     >
       <div className="w-full max-w-[450px] p-4 bg-white rounded-md flex flex-col justify-start items-center relative">
-        <button
+        {/* <button
           onClick={onClose}
           className="bg-red/10 text-red rounded-full p-1 absolute top-3 right-3"
         >
           <FiX />
-        </button>
+        </button> */}
         {children}
       </div>
     </div>
