@@ -12,6 +12,7 @@ const sponsors = [
   { src: "/images/Sponsor/kgs.jpg", alt: "Sponsor KGS" },
   { src: "/images/Sponsor/kaveel.jpg", alt: "Sponsor Kaveel" },
   { src: "/images/Sponsor/pish.png", alt: "Sponsor Pish" },
+  { src: "/images/Sponsor/domainesia.png", alt: "Sponsor Domainesia" },
 ];
 
 const SupportSection = () => {

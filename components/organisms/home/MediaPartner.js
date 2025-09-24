@@ -20,6 +20,8 @@ const sponsors = [
   { src: "/images/mediapartner/hmftv.png", alt: "Mediapartner" },
   { src: "/images/mediapartner/ikutevent.png", alt: "Mediapartner" },
   { src: "/images/mediapartner/infolombafilm.png", alt: "Mediapartner" },
+  { src: "/images/mediapartner/rri.jpg", alt: "Mediapartner" },
+  { src: "/images/mediapartner/bmstv.png", alt: "Mediapartner" },
 ];
 
 const MediaPartner = () => {
