@@ -883,7 +883,7 @@ const MemberItem = ({ avatar, name, email, leaderEmail, onKick, onCert }) => {
 
       {email == userMail && (
         <Button
-          additionals={"lg:w-[220px] max-lg:w-full max-lg:mt-3 hidden"}
+          additionals={"lg:w-[220px] max-lg:w-full max-lg:mt-3"}
           onClick={onCert}
           color={"brown"}
         >
