@@ -50,9 +50,9 @@ const HeroSection = () => {
               <span className="font-bold">Universitas Amikom Purwokerto</span>
             </Text>
             <div className="flex items-center justify-center md:justify-start gap-x-3">
-              <Link href={"/signup"}>
+              <Link href={"/login"}>
                 <Button additionals={"text-[20px] lg:py-3"}>
-                  Daftar Sekarang
+                  Login Sekarang
                 </Button>
               </Link>
               <NavItem additionals={"-mt-1 font-semibold "}>
